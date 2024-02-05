@@ -102,7 +102,7 @@ class Auth extends CI_Controller
             ];
 
             // siapkan token
-            $token = base64_encode(random_bytes(32));
+            $token = 'QRSTUVWXYZabcdefghijklmnopqrst';
             $user_token = [
                 'email' => $email,
                 'token' => $token,
@@ -117,6 +117,17 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please activate your account</div>');
             redirect('auth');
         }
+    }
+
+    function generateRandomText($length = 10) {
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        $randomText = '';
+    
+        for ($i = 0; $i < $length; $i++) {
+            $randomText .= $characters[rand(0, strlen($characters) - 1)];
+        }
+    
+        return $randomText;
     }
 
 

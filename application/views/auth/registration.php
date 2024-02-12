@@ -27,6 +27,10 @@
                                     <input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Repeat Password">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" id="phone" name="phone" placeholder="Phone Number" value="<?= set_value('phone'); ?>">
+                                <?= form_error('phone', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
                             <button type="submit" class="btn btn-primary btn-user btn-block">
                                 Register Account
                             </button>

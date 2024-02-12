@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Makaan - Real Estate HTML Template</title>
+    <title>Alinia Park</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -46,9 +46,9 @@
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
                 <a href="index.html" class="navbar-brand d-flex align-items-center text-center">
                     <div class="icon p-2 me-2">
-                        <img class="img-fluid" src="assets/img/icon-deal.png" alt="Icon" style="width: 30px; height: 30px;">
+                        <img class="img-fluid" src="assets/img/alinia-logo.png" alt="Icon" style="width: 30px; height: 30px;">
                     </div>
-                    <h1 class="m-0 text-primary">Alinia Park</h1>
+                    <h1 class="m-0 text-primary">Alinia Park & Resort</h1>
                 </a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -56,9 +56,9 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
                         <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <a href="about.html" class="nav-item nav-link">null</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Property</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">null</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <a href="property-list.html" class="dropdown-item">Property List</a>
                                 <a href="property-type.html" class="dropdown-item">Property Type</a>
@@ -66,15 +66,15 @@
                             </div>
                         </div>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">null</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                                 <a href="404.html" class="dropdown-item">404 Error</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="contact.html" class="nav-item nav-link">null</a>
                     </div>
-                    <a href="" class="btn btn-primary px-3 d-none d-lg-flex">Add Property</a>
+                    <a href="" class="btn btn-primary px-3 d-none d-lg-flex">null</a>
                 </div>
             </nav>
         </div>
@@ -85,18 +85,21 @@
         <div class="container-fluid header bg-white p-0">
             <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
                 <div class="col-md-6 p-5 mt-lg-5">
-                    <h1 class="display-5 animated fadeIn mb-4">Find A <span class="text-primary">Perfect Home</span> To Live With Your Family</h1>
-                    <p class="animated fadeIn mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet
-                        sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
-                    <a href="" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Get Started</a>
+                    <h1 class="display-5 animated fadeIn mb-4">Taman <span class="text-primary">Rekreasi Keluarga</span> & Edukasi Terlengkap & Terunik</h1>
+                    <p class="animated fadeIn mb-4 pb-2">Objek wisata yang menawarkan hiburan dan edukasi untuk masyarakat dharmasraya 
+                        dengan keasrian dan keindahan alamnya.</p>
+                    <a href="<?= base_url('auth'); ?>" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Reservasi</a>
                 </div>
                 <div class="col-md-6 animated fadeIn">
                     <div class="owl-carousel header-carousel">
                         <div class="owl-carousel-item">
-                            <img class="img-fluid" src="assets/img/carousel-1.jpg" alt="">
+                            <img class="img-fluid" src="assets/img/slide-1.png" alt="">
                         </div>
                         <div class="owl-carousel-item">
-                            <img class="img-fluid" src="assets/img/carousel-2.jpg" alt="">
+                            <img class="img-fluid" src="assets/img/slide-2.png" alt="">
+                        </div>
+                        <div class="owl-carousel-item">
+                            <img class="img-fluid" src="assets/img/slide-3.png" alt="">
                         </div>
                     </div>
                 </div>

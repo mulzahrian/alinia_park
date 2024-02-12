@@ -31,7 +31,7 @@
                                 <input type="text" class="form-control form-control-user" id="phone" name="phone" placeholder="Phone Number" value="<?= set_value('phone'); ?>">
                                 <?= form_error('phone', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-user btn-block">
+                            <button type="submit" class="btn btn-success btn-user btn-block">
                                 Register Account
                             </button>
                         </form>

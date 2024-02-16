@@ -152,10 +152,10 @@ class Auth extends CI_Controller
         $this->email->to($this->input->post('email'));
 
         if ($type == 'verify') {
-            $this->email->subject('Account Verification');
+            $this->email->subject('Account Verification - Alinia Park');
             $this->email->message('Click this link to verify you account : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Activate</a>');
         } else if ($type == 'forgot') {
-            $this->email->subject('Reset Password');
+            $this->email->subject('Reset Password - Alinia Park');
             $this->email->message('Click this link to reset your password : <a href="' . base_url() . 'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
         }
 

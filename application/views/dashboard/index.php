@@ -668,7 +668,7 @@
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <h1 class="mb-3">Our Clients Say!</h1>
+                    <h1 class="mb-3">Review Pelanggan Kita!</h1>
                     <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
                 </div>
                 <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
@@ -742,22 +742,22 @@
                         <h5 class="text-white mb-4">Photo Gallery</h5>
                         <div class="row g-2 pt-2">
                             <div class="col-4">
-                                <img class="img-fluid rounded bg-light p-1" src="img/property-1.jpg" alt="">
+                                <img class="img-fluid rounded bg-light p-1" src="assets/img/slide-1.png" alt="">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid rounded bg-light p-1" src="img/property-2.jpg" alt="">
+                                <img class="img-fluid rounded bg-light p-1" src="assets/img/slide-2.png" alt="">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid rounded bg-light p-1" src="img/property-3.jpg" alt="">
+                                <img class="img-fluid rounded bg-light p-1" src="assets/img/slide-3.png" alt="">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid rounded bg-light p-1" src="img/property-4.jpg" alt="">
+                                <img class="img-fluid rounded bg-light p-1" src="assets/img/slide-1.png" alt="">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid rounded bg-light p-1" src="img/property-5.jpg" alt="">
+                                <img class="img-fluid rounded bg-light p-1" src="assets/img/slide-2.png" alt="">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid rounded bg-light p-1" src="img/property-6.jpg" alt="">
+                                <img class="img-fluid rounded bg-light p-1" src="assets/img/slide-3.png" alt="">
                             </div>
                         </div>
                     </div>

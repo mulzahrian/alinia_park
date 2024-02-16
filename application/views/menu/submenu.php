@@ -7,7 +7,7 @@
 
 
     <div class="row">
-        <div class="col-lg">
+        <div class="col-lg" style="overflow-x:auto;">
             <?php if (validation_errors()) : ?>
             <div class="alert alert-danger" role="alert">
                 <?= validation_errors(); ?>

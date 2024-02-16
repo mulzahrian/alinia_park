@@ -56,8 +56,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">null</a>
+                        <a href="index.html" class="nav-item nav-link active">Reservasi</a>
+                        <a href="about.html" class="nav-item nav-link">Tiket</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">null</a>
                             <div class="dropdown-menu rounded-0 m-0">
@@ -173,20 +173,20 @@
                 <div class="row g-0 gx-5 align-items-end">
                     <div class="col-lg-6">
                         <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
-                            <h1 class="mb-3">Property Listing</h1>
-                            <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit diam justo sed rebum.</p>
+                            <h1 class="mb-3">List Hotel</h1>
+                            <p>Tempat menginap dengan tipe yang bervariasi di Alinia Park & Resort yang mengedepankan kebersihan dan kenyaman pengguna.</p>
                         </div>
                     </div>
                     <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
                         <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
                             <li class="nav-item me-2">
-                                <a class="btn btn-outline-primary active" data-bs-toggle="pill" href="#tab-1">Featured</a>
+                                <a class="btn btn-outline-primary active" data-bs-toggle="pill" href="#tab-1">Umum</a>
                             </li>
                             <li class="nav-item me-2">
-                                <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-2">For Sell</a>
+                                <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-2">Termurah</a>
                             </li>
                             <li class="nav-item me-0">
-                                <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-3">For Rent</a>
+                                <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-3">Terbaik</a>
                             </li>
                         </ul>
                     </div>
@@ -568,15 +568,15 @@
                     <div class="bg-white rounded p-4" style="border: 1px dashed rgba(0, 185, 142, .3)">
                         <div class="row g-5 align-items-center">
                             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                                <img class="img-fluid rounded w-100" src="img/call-to-action.jpg" alt="">
+                                <img class="img-fluid rounded w-100" src="assets/img/slide-1.png" alt="">
                             </div>
                             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                                 <div class="mb-4">
-                                    <h1 class="mb-3">Contact With Our Certified Agent</h1>
-                                    <p>Eirmod sed ipsum dolor sit rebum magna erat. Tempor lorem kasd vero ipsum sit sit diam justo sed vero dolor duo.</p>
+                                    <h1 class="mb-3">Mempunyai Pertanyaan ? Hubungi Customer Service Kami</h1>
+                                    <p>Customer Service kami aktif 24 jam siap melayani semua keluhan dan pertanyaan dengan response yang cepat.</p>
                                 </div>
-                                <a href="" class="btn btn-primary py-3 px-4 me-2"><i class="fa fa-phone-alt me-2"></i>Make A Call</a>
-                                <a href="" class="btn btn-dark py-3 px-4"><i class="fa fa-calendar-alt me-2"></i>Get Appoinment</a>
+                                <a href="" class="btn btn-primary py-3 px-4 me-2"><i class="fa fa-phone-alt me-2"></i>Hubungi Kami</a>
+                                <!-- <a href="" class="btn btn-dark py-3 px-4"><i class="fa fa-calendar-alt me-2"></i>Get Appoinment</a> -->
                             </div>
                         </div>
                     </div>

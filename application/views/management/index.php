@@ -1,5 +1,5 @@
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container-fluid" id="main-form-room">
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
@@ -12,9 +12,23 @@
 
             <?= $this->session->flashdata('message'); ?>
 
-            <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMenuModal">Add New Room</a>
+            <input type="button" class="btn btn-inline btn-primary" id="btn-submit-revise" value="Submit">
 
-            <table class="table table-hover">
+            <a href="" id="btn_tekan" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMenuModal">Add New Room</a>
+
+            <table id="table-list-room" class="table table-hover" width="100%">
+								<thead>
+                                <tr>
+											<th>Room</th>
+											<th>Action</th>
+											
+										</tr> 
+								</thead>
+								<tbody>
+								</tbody>
+								<tfoot></tfoot>
+							</table>
+            <!-- <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Room Type</th>
@@ -34,7 +48,7 @@
                     <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
-            </table>
+            </table> -->
 
 
         </div>
@@ -74,3 +88,40 @@
         </div>
     </div>
 </div> 
+
+
+<script>
+// $('#btn-submit-revise').on('click', function() {
+//     get_room_data();
+// });
+
+function get_room_data() {
+    $.ajax({  
+        'url':'<?= base_url("management/get_room_data"); ?>',
+        'type': 'GET',
+        success: function(response) {
+            try {
+                console.log(response);
+                var data = $.parseJSON(response);
+                // data1 = $.parseJSON(data);
+                // console.log(data1);
+                // table_list_room.clear().draw();
+                console.log(data);
+                var array = [];
+                $.each(data1['Data'], function(index) {
+                    array.push([
+                        this['npwp_name']
+                    ])
+                });
+                table_list_room.rows.add(array).draw();
+            } catch (e) {
+                console.log(e);
+                alert_error("Terjadi Kesalahan => 2" + e);
+            }
+        },
+        error: function(response) {
+            alert_error('Error Connection');
+        }
+    });
+}                
+</script>

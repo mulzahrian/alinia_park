@@ -50,11 +50,19 @@
 
             <!-- Add datatable -->
             <script src="<?= base_url('assets/'); ?>DataTables/datatables.min.js"></script>
+            <script src="<?= base_url('assets/'); ?>DataTables/datatables.js"></script>
 
             <!-- Coding Process JavaScript -->
             <!-- <script type="text/javascript" src="<?php echo base_url(); ?>assets/alinia/room.js?v=<?php echo $this->config->item('version'); ?>"></script> -->
             <!-- <script src="<?= base_url('assets/'); ?>alinia/room.js"></script> -->
             <script src="<?php echo base_url(); ?>assets/alinia/room.js"></script>
+            <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+            <!-- <script>
+                $(document).ready(function() {
+                    $('#table-list-room').DataTable();
+                });
+            </script> -->
 
             <script>
                 $('.custom-file-input').on('change', function() {

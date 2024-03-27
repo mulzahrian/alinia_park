@@ -12,45 +12,25 @@
 
             <?= $this->session->flashdata('message'); ?>
 
-            <input type="button" class="btn btn-inline btn-primary" id="btn-submit-revise" value="Submit">
+            <!-- <input type="button" class="btn btn-inline btn-primary" id="btn-submit-revise" value="Submit"> -->
 
-            <a href="" id="btn_tekan" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMenuModal">Add New Room</a>
+            <a href="" id="btn_tekan" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newPackageModal">Add Package</a>
 
-            <table id="table-list-room" class="table table-hover" width="100%">
+            <table id="table-list-room" class="mdl-data-table" style="width:100%">
 								<thead>
                                 <tr>
-											<th>Room</th>
-											<th>Action</th>
+									<th>Nama Paket</th>
+                                    <th>Nama Paket</th>
+                                    <th>Nama Paket</th>
+                                    <th>Nama Paket</th>
+									<th>Action</th>
 											
-										</tr> 
+								</tr> 
 								</thead>
 								<tbody>
 								</tbody>
 								<tfoot></tfoot>
 							</table>
-            <!-- <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Room Type</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $i = 1; ?>
-                    <?php foreach ($menu as $m) : ?>
-                    <tr>
-                        <td><?= $m['menu']; ?></td>
-                        <td>
-                            <a href="" class="badge badge-success">edit</a>
-                            <a href="" class="badge badge-danger">delete</a>
-                        </td>
-                    </tr>
-                    <?php $i++; ?>
-                    <?php endforeach; ?>
-                </tbody>
-            </table> -->
-
-
         </div>
     </div>
 
@@ -65,11 +45,11 @@
 <!-- Modal -->
 
 <!-- Modal -->
-<div class="modal fade" id="newMenuModal" tabindex="-1" role="dialog" aria-labelledby="newMenuModalLabel" aria-hidden="true">
+<div class="modal fade" id="newPackageModal" tabindex="-1" role="dialog" aria-labelledby="newPackageModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="newMenuModalLabel">Add New Menu</h5>
+                <h5 class="modal-title" id="newPackageModalLabel">Tambah Paket Baru</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

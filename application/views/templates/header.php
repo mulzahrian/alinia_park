@@ -33,7 +33,7 @@
     <link href="<?= base_url('assets/'); ?>datatable/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="<?= base_url('assets/'); ?>datatable/css/select.dataTables.min.css" rel="stylesheet"> -->
     <!-- table 3 -->
-    <link href="<?= base_url('assets/'); ?>DataTables/datatables.css" rel="stylesheet">
+    <!-- <link href="<?= base_url('assets/'); ?>DataTables/datatables.css" rel="stylesheet"> -->
 
 </head>
 

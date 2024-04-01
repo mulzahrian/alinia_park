@@ -16,7 +16,7 @@
 
             <a href="" id="btn_tekan" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newPackageModal">Add Package</a>
 
-            <table id="table-list-room" class="mdl-data-table" style="width:100%">
+            <table id="table-list-room" class="mdl-data-table" style="width:100%" cellspacing="0">
 								<thead>
                                 <tr>
 									<th>Nama Paket</th>

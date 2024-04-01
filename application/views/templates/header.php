@@ -23,8 +23,9 @@
     <!-- table 0 -->
     <!-- <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"> -->
     <!-- table 1 -->
-    <link href="<?= base_url('assets/'); ?>DataTables/datatables.min.css" rel="stylesheet">
-    <link href="<?= base_url('assets/'); ?>DataTables/datatables.css" rel="stylesheet">
+    <!-- <link href="<?= base_url('assets/'); ?>DataTables/datatables.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/'); ?>DataTables/datatables.css" rel="stylesheet"> -->
+    <link href="<?= base_url('assets/'); ?>Dtbels/datatables.min.css" rel="stylesheet">
     <!-- table 2 -->
     <!-- <link href="<?= base_url('assets/'); ?>datatable/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="<?= base_url('assets/'); ?>datatable/css/dataTables.checkboxes.css" rel="stylesheet">

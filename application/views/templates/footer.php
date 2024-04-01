@@ -52,8 +52,9 @@
             <!-- table 0 -->
              <!-- <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script> -->
              <!-- table 1 -->
-            <script src="<?= base_url('assets/'); ?>DataTables/datatables.min.js"></script>
-            <script src="<?= base_url('assets/'); ?>DataTables/datatables.js"></script>
+            <!-- <script src="<?= base_url('assets/'); ?>DataTables/datatables.min.js"></script>
+            <script src="<?= base_url('assets/'); ?>DataTables/datatables.js"></script> -->
+            <script src="<?= base_url('assets/'); ?>Dtbels/datatables.min.js"></script> 
             <!-- table 2 -->
             <!-- <script src="<?= base_url('assets/'); ?>datatable/js/dataTables.bootstrap.min.js"></script> 
             <script src="<?= base_url('assets/'); ?>datatable/js/dataTables.bootstrapp.min.js"></script> 

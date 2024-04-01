@@ -49,14 +49,31 @@
             <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
 
             <!-- Add datatable -->
+            <!-- table 0 -->
+             <!-- <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script> -->
+             <!-- table 1 -->
             <script src="<?= base_url('assets/'); ?>DataTables/datatables.min.js"></script>
             <script src="<?= base_url('assets/'); ?>DataTables/datatables.js"></script>
+            <!-- table 2 -->
+            <!-- <script src="<?= base_url('assets/'); ?>datatable/js/dataTables.bootstrap.min.js"></script> 
+            <script src="<?= base_url('assets/'); ?>datatable/js/dataTables.bootstrapp.min.js"></script> 
+            <script src="<?= base_url('assets/'); ?>datatable/js/dataTables.checkboxes.min.js"></script> 
+            <script src="<?= base_url('assets/'); ?>datatable/js/dataTables.fixedColumns.min.js"></script> 
+            <script src="<?= base_url('assets/'); ?>datatable/js/datatables.min.js"></script> 
+            <script src="<?= base_url('assets/'); ?>datatable/js/dataTables.responsive.js"></script> 
+            <script src="<?= base_url('assets/'); ?>datatable/js/dataTables.select.min.js"></script> 
+            <script src="<?= base_url('assets/'); ?>datatable/js/jquery.dataTables.min.js"></script> 
+            <script src="<?= base_url('assets/'); ?>datatable/js/jquery.dataTabless.min.js"></script>  -->
+            <!-- table testing no css -->
+            <script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script>
+            <!-- <script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script>
+            <script src="<?= base_url('assets/'); ?>detatabledatatables.min.js"></script> -->
 
             <!-- Coding Process JavaScript -->
             <!-- <script type="text/javascript" src="<?php echo base_url(); ?>assets/alinia/room.js?v=<?php echo $this->config->item('version'); ?>"></script> -->
             <!-- <script src="<?= base_url('assets/'); ?>alinia/room.js"></script> -->
             <script src="<?php echo base_url(); ?>assets/alinia/room.js"></script>
-            <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+           
 
             <!-- <script>
                 $(document).ready(function() {

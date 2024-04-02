@@ -7,7 +7,7 @@
 
 
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
             <?= $this->session->flashdata('message'); ?>
@@ -16,6 +16,7 @@
 
             <a href="" id="btn_tekan" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newPackageModal">Add Package</a>
 
+            
             <table id="table-list-room" class="mdl-data-table" style="width:100%" cellspacing="0">
 								<thead>
                                 <tr>

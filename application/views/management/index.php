@@ -21,11 +21,8 @@
 								<thead>
                                 <tr>
 									<th>Nama Paket</th>
-                                    <th>Nama Paket</th>
-                                    <th>Nama Paket</th>
-                                    <th>Nama Paket</th>
-									<th>Action</th>
-											
+                                    <th>Creator</th>
+									<th>Action</th>		
 								</tr> 
 								</thead>
 								<tbody>

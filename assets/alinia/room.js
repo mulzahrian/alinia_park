@@ -63,9 +63,9 @@ function get_room_data() {
                 var array = [];
                 $.each(data['Data'], function(index) {
                     var action = '';
-                    hapus_cek = '<a type="button" class="btn btn-inline btn-default style="width:30px; border: none;"><span class="fa fa-trash" style="color:red"></span></a>' +
-                    '<a type="button" class="btn btn-inline btn-default style="width:30px; border: none;"><span class="fa fa-trash" style="color:red"></span></a>' +
-                    '<a type="button" class="btn btn-inline btn-default style="width:30px; border: none;"><span class="fa fa-trash" style="color:red"></span></a>';
+                    hapus_cek = '<a type="button" class="btn btn-primary btn-sm float-center" onclick="addMasterPackage('+ this['id_package'] +')"><i class="fas fa-plus" style="color:green"></i></a>' + 
+                    '<a type="button" class="btn btn-warning btn-sm float-center "><i class="fas fa-pen" style="color:green"></i></a>' +
+                    '<a type="button" class="btn btn-danger btn-sm float-center"><i class="fas fa-trash-alt" style="color:green"></i></a>';
                     array.push([
                         this['package_name'],
                         this['name'],

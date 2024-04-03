@@ -1,16 +1,4 @@
-
-// var table_list_room = $('#table-list-room').DataTable({
-//     "columnDefs": [{
-//         'bSortable': true,
-//         "targets": [],
-//         "visible": false,
-//         "scrollX": true,
-//         "responsive": true,
-//     }]
-// });
-
-//$(document).ready(function() {
-    var table_list_room = $('#table-list-room').DataTable({
+var table_list_room = $('#table-list-room').DataTable({
         "columnDefs": [{
             "targets": [],
             "visible": false,
@@ -20,33 +8,13 @@
         paging: true,
         searching: true,
         });
-//});
-
-// $(document).ready(function() {
-//     $('#datatable1').DataTable();
-// });
-
-// if ($("#main-form-room").length) {
-//     get_room_data();
-// }
-
-// $('#btn-submit-revise').on('click', function() {
-//     get_room_data();
-// });
 
 if ($("#main-form-room").length) {
     get_room_data();
-    // $('#notif-pengajuan').hide();
-    // $('#pilihan-tab').val('5');
-    // validasi_branch();
-    // getChannleType();
-    // getTagProgram();
-    // send_nik();
-    // $('#btn-proses-submit').prop('disabled', true);
-    // $('#btn-proses-export').prop('disabled', true);
-
 }
 
+//VARIABLE PUBLIC
+var id_package_public = '';
 function get_room_data() {
     $.ajax({ 
         url: 'management/get_room_data',
@@ -82,4 +50,10 @@ function get_room_data() {
             alert_error('Error Connection');
         }
     });
+}
+
+
+function addMasterPackage(id_package) {
+    id_package_public = id_package;
+    
 }

@@ -17,7 +17,7 @@ class Room_model extends CI_Model
 
     public function getPackageMasterById($id_package)
     {
-        $query = $this->db->query("SELECT * FROM tbl_package_master WHERE id_package = 1");
+        $query = $this->db->query("SELECT * FROM tbl_package_master WHERE id_package = ?", array($id_package));
         return $query->result_array();
     // return $this->db->get('tbl_package_master', ['id_package' => $id_package])->result();
     }

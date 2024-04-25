@@ -19,6 +19,17 @@ var table_list_master = $('#table-list-master').DataTable({
             paging: true,
             searching: true,
 });
+
+var table_list_detail = $('#table-list-detail').DataTable({
+    "columnDefs": [{
+        "targets": [],
+        "visible": false,
+        "responsive": true,
+    }],
+    retrieve: false,
+    paging: true,
+    searching: true,
+});
 //VARIABLE PUBLIC
 var id_package_public = '';
 
@@ -89,7 +100,7 @@ function addDataMaster(id_package){
                     console.log(data);
                     var array = [];
                     $.each(data['Data'], function(index) {
-                        hapus_cek = '<a type="button" class="btn btn-primary btn-sm float-center" onclick="addMasterPackage1('+ this['id_package'] +')"><i class="fas fa-plus" style="color:green"></i></a>' + 
+                        hapus_cek = '<a type="button" class="btn btn-primary btn-sm float-center" onclick="addDetailPackage('+ this['Id_package_master'] +')"><i class="fas fa-plus" style="color:green"></i></a>' + 
                         '<a type="button" class="btn btn-warning btn-sm float-center "><i class="fas fa-pen" style="color:green"></i></a>' +
                         '<a type="button" class="btn btn-danger btn-sm float-center"><i class="fas fa-trash-alt" style="color:green"></i></a>';    
                        //cek_Data = this['employee_no']
@@ -110,4 +121,43 @@ function addDataMaster(id_package){
             alert('Koneksi Error');
         }
     });
+}
+
+function addDetailPackage(id_master_package){
+    $('#detailPaketModal').modal('show');
+    console.log(id_master_package);
+    $.ajax({
+        url: '../management/get_master_package',
+        method: 'POST',
+        data : {
+            id_package : id_master_package
+        },
+        success: function(response) {
+                try {
+                    var data = $.parseJSON(response);
+                    table_list_detail.clear().draw();
+                    console.log(data);
+                    var array = [];
+                    $.each(data['Data'], function(index) {
+                        hapus_cek = '<a type="button" class="btn btn-warning btn-sm float-center "><i class="fas fa-pen" style="color:white"></i></a>' +
+                        '<a type="button" class="btn btn-danger btn-sm float-center"><i class="fas fa-trash-alt" style="color:white"></i></a>';    
+                       //cek_Data = this['employee_no']
+                       array.push([
+                        this['master_package_name'],
+                        this['package_price'],
+                        hapus_cek
+                    ])
+                    });
+                    table_list_detail.rows.add(array).draw(); 
+                } catch (e) {
+                    console.log(e);
+                    alert("Terjadi Kesalahan =>" + e);
+                }
+        },
+        error: function(response) {
+            console.log(response);
+            alert('Koneksi Error');
+        }
+    });
+    
 }

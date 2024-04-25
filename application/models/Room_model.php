@@ -14,5 +14,12 @@ class Room_model extends CI_Model
         $query = $this->db->query("CALL PRC_GET_PACKAGE()");
         return $query->result();
     }
+
+    public function getPackageMasterById($id_package)
+    {
+        $query = $this->db->query("SELECT * FROM tbl_package_master WHERE id_package = 1");
+        return $query->result_array();
+    // return $this->db->get('tbl_package_master', ['id_package' => $id_package])->result();
+    }
     
 }

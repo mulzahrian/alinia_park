@@ -54,9 +54,35 @@ class Management extends CI_Controller
     public function get_master_package(){
         $id_package = $this->input->post('id_package');
         $result['Data'] = $this->Room_model->getPackageMasterById($id_package);
-        //$result['Data'] = $this->Room_model->getRoomData();
 		$this->output->set_output(json_encode($result));
         
+    }
+
+    public function get_detail_package(){
+        $id_master_package = $this->input->post('id_master_package');
+        $result['Data'] = $this->Room_model->getPackageDetailById($id_master_package);
+		$this->output->set_output(json_encode($result));
+    }
+
+    public function add_package_detail() {
+        // Assuming you're getting data from a form post
+        $data = array(
+            'Id_package_master' => $this->input->post('Id_package_master'),
+            'name_detail_pack' => $this->input->post('name_detail_pack'),
+            'create_by' => $this->input->post('create_by'),
+            'status' => $this->input->post('status'),
+            // Add other fields as needed
+        );
+        // Call the insert function
+        if ($this->Room_model->insert_package_detail($data)) {
+            // Insert successful
+            $this->output->set_status_header(200);
+            $this->output->set_output(json_encode(array('status' => '200')));
+        } else {
+            // Insert failed
+            $this->output->set_status_header(500);
+            $this->output->set_output(json_encode(array('status' => '500')));
+        }
     }
 
 

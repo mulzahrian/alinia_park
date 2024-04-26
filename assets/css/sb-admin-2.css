@@ -6197,7 +6197,7 @@ a.close.disabled {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  width: 100%;
+  width: 120%;
   pointer-events: auto;
   background-color: #fff;
   background-clip: padding-box;

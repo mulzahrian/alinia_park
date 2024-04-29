@@ -19,14 +19,12 @@ class Room_model extends CI_Model
     {
         $query = $this->db->query("SELECT * FROM tbl_package_master WHERE id_package = ?", array($id_package));
         return $query->result_array();
-    // return $this->db->get('tbl_package_master', ['id_package' => $id_package])->result();
     }
 
     public function getPackageDetailById($id_package_master)
     {
         $query = $this->db->query("SELECT a.id_package_detail, a.name_detail_pack, b.name FROM tbl_package_detail a, USER b WHERE a.create_by = b.id and a.id_package_master = ?", array($id_package_master));
         return $query->result_array();
-    // return $this->db->get('tbl_package_master', ['id_package' => $id_package])->result();
     }
 
     public function insert_package_detail($data) {
@@ -36,6 +34,12 @@ class Room_model extends CI_Model
         } else {
             return false; // Insert failed
         }
+    }
+
+    public function getTypeData()
+    {
+        $query = $this->db->query("SELECT a.Id_type_package, a.type_name, b.name FROM tbl_package_type a, USER b WHERE a.create_by = b.id");
+        return $query->result_array();
     }
     
 }

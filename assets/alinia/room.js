@@ -53,9 +53,43 @@ var table_list_hotel = $('#table-list-hotel').DataTable({
     searching: true,
 });
 
+var table_list_detail_hotel = $('#table-list-detail-hotel').DataTable({
+    "columnDefs": [{
+        "targets": [],
+        "visible": false,
+        "responsive": true,
+    }],
+    retrieve: false,
+    paging: true,
+    searching: true,
+});
+
+var table_list_manage_hotel = $('#table-list-manage-hotel').DataTable({
+    "columnDefs": [{
+        "targets": [],
+        "visible": false,
+        "responsive": true,
+    }],
+    retrieve: false,
+    paging: true,
+    searching: true,
+});
+
+var table_list_hotel_type = $('#table-list-hotel-type').DataTable({
+    "columnDefs": [{
+        "targets": [],
+        "visible": false,
+        "responsive": true,
+    }],
+    retrieve: false,
+    paging: true,
+    searching: true,
+});
+
 //VARIABLE PUBLIC
 var id_package_public = '';
 var id_package_master_public = '';
+var id_hotel_public = '';
 
 if ($("#main-form-room").length) {
     get_room_data();
@@ -71,6 +105,10 @@ if ($("#main-type-data").length) {
 
 if ($("#main-form-hotel").length) {
     getHotelData();
+}
+
+if ($("#main-type-hotel").length) {
+    getTypeHotelData();
 }
 
 
@@ -276,10 +314,11 @@ function getHotelData() {
                 console.log(data);
                 var array = [];
                 $.each(data['Data'], function(index) {
-                    hapus_cek = '<a type="button" class="btn btn-info btn-sm float-center" onclick="seeImage('+ this['Id_hotel'] +')"><i class="fas fa-image" style="color:green"></i></a>' + 
-                    '<a type="button" class="btn btn-primary btn-sm float-center" onclick="addDetailPackage('+ this['Id_hotel'] +')"><i class="fas fa-plus" style="color:green"></i></a>' + 
-                    '<a type="button" class="btn btn-warning btn-sm float-center "><i class="fas fa-pen" style="color:green"></i></a>' +
-                    '<a type="button" class="btn btn-danger btn-sm float-center"><i class="fas fa-trash-alt" style="color:green"></i></a>';
+                    hapus_cek = '<a type="button" class="btn btn-info btn-sm float-center" onclick="seeImage('+ this['Id_hotel'] +')"><i class="fas fa-image" style="color:white"></i></a>' + 
+                    '<a type="button" class="btn btn-primary btn-sm float-center" onclick="addDetailHotel('+ this['Id_hotel'] +')"><i class="fas fa-plus" style="color:white"></i></a>' + 
+                    '<a type="button" class="btn btn-success btn-sm float-center" onclick="addManageHotel('+ this['Id_hotel'] +')"><i class="fas fa-dollar-sign" style="color:white"></i></a>' + 
+                    '<a type="button" class="btn btn-warning btn-sm float-center "><i class="fas fa-pen" style="color:white"></i></a>' +
+                    '<a type="button" class="btn btn-danger btn-sm float-center"><i class="fas fa-trash-alt" style="color:white"></i></a>';
                     array.push([
                         this['hotel_name'],
                         this['price'],
@@ -325,20 +364,20 @@ function seeImage(Id_hotel){
 }
 
 
-function addDetailHotel(id_master_package){
-    $('#detailPaketModal').modal('show');
-    console.log(id_master_package);
-    id_package_master_public = id_master_package;
+function addDetailHotel(id_hotel){
+    $('#detailHotelModal').modal('show');
+    console.log(id_hotel);
+    id_hotel_public = id_hotel;
     $.ajax({
-        url: '../management/get_detail_package',
+        url: '../management/get_hotel_detail',
         method: 'POST',
         data : {
-            id_master_package : id_master_package
+            id_hotel : id_hotel
         },
         success: function(response) {
                 try {
                     var data = $.parseJSON(response);
-                    table_list_detail.clear().draw();
+                    table_list_detail_hotel.clear().draw();
                     console.log(data);
                     var array = [];
                     $.each(data['Data'], function(index) {
@@ -346,12 +385,12 @@ function addDetailHotel(id_master_package){
                         '<a type="button" class="btn btn-danger btn-sm float-center"><i class="fas fa-trash-alt" style="color:white"></i></a>';    
                        //cek_Data = this['employee_no']
                        array.push([
-                        this['name_detail_pack'],
+                        this['hotel_detail'],
                         this['name'],
                         hapus_cek
                     ])
                     });
-                    table_list_detail.rows.add(array).draw(); 
+                    table_list_detail_hotel.rows.add(array).draw(); 
                 } catch (e) {
                     console.log(e);
                     alert("Terjadi Kesalahan =>" + e);
@@ -361,6 +400,76 @@ function addDetailHotel(id_master_package){
             console.log(response);
             alert('Koneksi Error');
         }
+    });  
+}
+
+function addManageHotel(id_hotel){
+    $('#manageHotelModal').modal('show');
+    console.log(id_hotel);
+    id_hotel_public = id_hotel;
+    $.ajax({
+        url: '../management/get_hotel_manage',
+        method: 'POST',
+        data : {
+            id_hotel : id_hotel
+        },
+        success: function(response) {
+                try {
+                    var data = $.parseJSON(response);
+                    table_list_manage_hotel.clear().draw();
+                    console.log(data);
+                    var array = [];
+                    $.each(data['Data'], function(index) {
+                        hapus_cek = '<a type="button" class="btn btn-warning btn-sm float-center "><i class="fas fa-pen" style="color:white"></i></a>' +
+                        '<a type="button" class="btn btn-danger btn-sm float-center"><i class="fas fa-trash-alt" style="color:white"></i></a>';    
+                       array.push([
+                        this['room_avail'],
+                        this['people'],
+                        this['name'],
+                        hapus_cek
+                    ])
+                    });
+                    table_list_manage_hotel.rows.add(array).draw(); 
+                } catch (e) {
+                    console.log(e);
+                    alert("Terjadi Kesalahan =>" + e);
+                }
+        },
+        error: function(response) {
+            console.log(response);
+            alert('Koneksi Error');
+        }
+    });  
+}
+
+function getTypeHotelData() {
+    $.ajax({ 
+        url: '../management/get_type_hotel',
+        method: 'GET',
+        success: function(response) {
+            try {
+                var data = $.parseJSON(response);
+                table_list_hotel_type.clear().draw();
+                console.log(data);
+                var array = [];
+                $.each(data['Data'], function(index) {
+                    hapus_cek = '<a type="button" class="btn btn-warning btn-sm float-center "><i class="fas fa-pen" style="color:green"></i></a>' +
+                    '<a type="button" class="btn btn-danger btn-sm float-center"><i class="fas fa-trash-alt" style="color:green"></i></a>';
+                    array.push([
+                        this['hotel_type'],
+                        this['name'],
+                        hapus_cek
+                    ])
+                });
+                table_list_hotel_type.rows.add(array).draw();
+            } catch (e) {
+                console.log(e);
+                alert("Terjadi Kesalahan => 2" + e);
+            }
+        },
+        error: function(response) {
+            console.log(response);
+            alert('koneksi salah');
+        }
     });
-    
 }

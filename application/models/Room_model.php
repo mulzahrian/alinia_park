@@ -53,5 +53,23 @@ class Room_model extends CI_Model
         $query = $this->db->query("SELECT a.image_hotel FROM tbl_hotel a WHERE a.Id_hotel = ?", array($id_hotel));
         return $query->result_array();
     }
+
+    public function getHotelDetailById($id_hotel)
+    {
+        $query = $this->db->query("SELECT a.id_hotel_detail, a.hotel_detail, b.name FROM tbl_hotel_detail a, USER b WHERE a.create_by = b.id and a.id_hotel = ?", array($id_hotel));
+        return $query->result_array();
+    }
+
+    public function getHotelManageById($id_hotel)
+    {
+        $query = $this->db->query("SELECT a.id_hotel_manage, a.room_avail,a.people, b.name FROM tbl_hotel_manage a, USER b WHERE a.create_by = b.id and a.id_hotel = ?", array($id_hotel));
+        return $query->result_array();
+    }
+
+    public function getHotelTypeData()
+    {
+        $query = $this->db->query("SELECT a.Id_hotel_type, a.hotel_type, b.name FROM tbl_hotel_type a, USER b WHERE a.create_by = b.id");
+        return $query->result_array();
+    }
     
 }

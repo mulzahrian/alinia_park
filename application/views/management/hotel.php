@@ -91,8 +91,91 @@
             </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    
                 </div>
         </div>
     </div>
 </div>
+
+<!-- detail hotel-->
+<div class="modal fade" id="detailHotelModal" tabindex="-1" role="dialog" aria-labelledby="newHotelDetailModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newHotelDetailModalLabel">Tambah detail hotel</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="detail_hotel" name="detail_hotel" placeholder="Detail Hotel">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="submit_hotel_det" class="btn btn-primary">Add</button>
+                </div>
+            </form>
+            <!-- table modal -->
+
+            <table id="table-list-detail-hotel" class="mdl-data-table" style="width:100%" cellspacing="0">
+				<thead>
+                     <tr>
+							<th>Detail Paket</th>
+                            <th>Creator</th>
+							<th>Action</th>		
+				    </tr> 
+				</thead>
+					<tbody>
+					</tbody>
+				<tfoot></tfoot>
+			</table>
+            <!-- end table modal -->
+        </div>
+    </div>
+</div> 
+
+<!-- detail hotel manage-->
+<div class="modal fade" id="manageHotelModal" tabindex="-1" role="dialog" aria-labelledby="newHotelManageModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newHotelManageModalLabel">Tambah detail hotel</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="room_avail" name="room_avail" placeholder="Jumlah Kamar">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="jumlah_orang" name="jumlah_orang" placeholder="Jumlah orang per Kamar">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="submit_manage_hotel" class="btn btn-primary">Add</button>
+                </div>
+            </form>
+            <!-- table modal -->
+
+            <table id="table-list-manage-hotel" class="mdl-data-table" style="width:100%" cellspacing="0">
+				<thead>
+                     <tr>
+							<th>Kamar</th>
+                            <th>Orang</th>
+                            <th>Creator</th>
+							<th>Action</th>		
+				    </tr> 
+				</thead>
+					<tbody>
+					</tbody>
+				<tfoot></tfoot>
+			</table>
+            <!-- end table modal -->
+        </div>
+    </div>
+</div> 

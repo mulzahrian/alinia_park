@@ -172,4 +172,36 @@ class Management extends CI_Controller
         echo base_url('assets/img/profile/') . $result['image_hotel'];
     }
 
+    public function get_hotel_detail(){
+        $id_hotel = $this->input->post('id_hotel');
+        $result['Data'] = $this->Room_model->getHotelDetailById($id_hotel);
+		$this->output->set_output(json_encode($result));
+    }
+
+    public function get_hotel_manage(){
+        $id_hotel = $this->input->post('id_hotel');
+        $result['Data'] = $this->Room_model->getHotelManageById($id_hotel);
+		$this->output->set_output(json_encode($result));
+    }
+
+    public function type_hotel(){
+        $data['title'] = 'Type Hotel';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('management/hotel_type');
+            $this->load->view('templates/footer');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">New Master Package Added!</div>');
+        } 
+    }
+
+    public function get_type_hotel(){
+		$result['Data'] = $this->Room_model->getHotelTypeData();
+		$this->output->set_output(json_encode($result));
+	}
+
 }

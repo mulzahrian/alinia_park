@@ -106,10 +106,70 @@ class Management extends CI_Controller
 		$result['Data'] = $this->Room_model->getTypeData();
 		$this->output->set_output(json_encode($result));
 	}
+
+    public function hotel()
+    {
+        $data['title'] = 'Hotel Management';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+
+        $this->form_validation->set_rules('hotel_name', 'Hotel_name', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('management/hotel',$data);
+            $this->load->view('templates/footer');
+        }
+    }
     
+    public function get_hotel_data(){
+		$result['Data'] = $this->Room_model->getHotelData();
+		$this->output->set_output(json_encode($result));
+	}
 
+    public function insertHotel()
+    {
+        
+        $hotel_name = $this->input->post('hotel_name');
+        $hotel_price = $this->input->post('hotel_price');
+        $hotel_type = $this->input->post('hotel_price');
+        $user_id = $this->input->post('user_id_hotel');
+            // cek jika ada gambar yang akan diupload
+        $upload_image = $_FILES['image_hotel']['name'];
+            if ($upload_image) {
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size']      = '2048';
+                $config['upload_path'] = './assets/img/profile/';
 
-    
+                $this->load->library('upload', $config);
 
+                if ($this->upload->do_upload('image_hotel')) {
+                    $new_image = $this->upload->data('file_name');
+                    $this->db->set('image_hotel', $new_image);
+                } else {
+                    echo $this->upload->dispay_errors();
+                }
+            }
+            $data = [
+                'hotel_name' => $hotel_name,
+                'price' => $hotel_price,
+                'type_hotel' => $hotel_type,
+                'image_hotel' => $upload_image,
+                'create_by' => $user_id
+            ];
+            $this->db->insert('tbl_hotel', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data baru telah di upload</div>');
+            redirect('management/hotel');
+        
+    }
+
+    public function get_image_hotel(){
+        $Id_hotel = $this->input->post('Id_hotel');
+        $query = $this->db->query("SELECT a.image_hotel FROM tbl_hotel a WHERE a.Id_hotel = ?", array($Id_hotel));
+        $result = $query->row_array();
+        echo base_url('assets/img/profile/') . $result['image_hotel'];
+    }
 
 }

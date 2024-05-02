@@ -71,5 +71,13 @@ class Room_model extends CI_Model
         $query = $this->db->query("SELECT a.Id_hotel_type, a.hotel_type, b.name FROM tbl_hotel_type a, USER b WHERE a.create_by = b.id");
         return $query->result_array();
     }
+
+    public function get_hotel_types() {
+        return $this->db->get('tbl_hotel_type')->result_array();
+    }
+    
+    public function get_hotels_by_type($type_id) {
+        return $this->db->get_where('tbl_hotel', ['hotel_type' => $type_id])->result_array();
+    }
     
 }

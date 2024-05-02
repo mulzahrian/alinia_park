@@ -321,7 +321,7 @@ function getHotelData() {
                     '<a type="button" class="btn btn-danger btn-sm float-center"><i class="fas fa-trash-alt" style="color:white"></i></a>';
                     array.push([
                         this['hotel_name'],
-                        this['price'],
+                        formatRupiah(this['price']),
                         this['name'],
                         hapus_cek
                     ])
@@ -337,6 +337,13 @@ function getHotelData() {
             alert('koneksi salah');
         }
     });
+}
+
+function formatRupiah(angka) {
+    var reverse = angka.toString().split('').reverse().join('');
+    var ribuan = reverse.match(/\d{1,3}/g);
+    var hasil = ribuan.join('.').split('').reverse().join('');
+    return 'Rp ' + hasil;
 }
 
 function seeImage(Id_hotel){

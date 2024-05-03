@@ -1,7 +1,7 @@
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><b style="color: green;"> Hotel</b></a>
-    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><b style="color: green;"> Paket</b></a>
     <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
   </div>
 </nav>
@@ -129,6 +129,40 @@
 <!-- end hotel -->
   </div>
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-  </div>
+    <!-- Paket -->
+    <?php foreach ($package_tbls as $package_tbl): ?>
+    <div class="card col-lg-9 mx-auto" >
+        <div class="card-header">
+        <h4><b><?= $package_tbl['package_name']; ?></b></h4>
+        </div>
+        <div class="card-body">
+        <?php if(isset($packages[$package_tbl['package_name']])): ?>
+            <?php foreach ($packages[$package_tbl['package_name']] as $package_master_id => $package_data): ?>
+                <h5 class="card-title"><?= $package_data['master']['master_package_name']; ?></h5>
+                <!-- <p class="card-text">Detail:</p> -->
+                <?php if(isset($package_data['details']) && is_array($package_data['details'])): ?>
+                    <ul>
+                        <?php foreach ($package_data['details'] as $detail): ?>
+                            <li><?= $detail['name_detail_pack']; ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php else: ?>
+                    <p>No details available</p>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No packages available</p>
+        <?php endif; ?>
+        <div style="text-align: right;">
+            <a href="#" class="btn btn-success">Pesan Sekarang</a>
+        </div>
+        </div>
+        
+    </div>
+    <?php endforeach; ?>
+    <!-- end paket -->
+</div>
+
+
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">ccc</div>
 </div>

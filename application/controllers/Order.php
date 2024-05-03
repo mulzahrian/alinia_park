@@ -26,6 +26,31 @@ class Order extends CI_Controller
             $data['hotels'][$hotel_type['hotel_type']] = $hotels;
         }
     }
+
+    // Mengambil data package
+    // Mengambil data package
+$data['package_tbls'] = $this->db->get('tbl_package')->result_array();
+
+$data['packages'] = [];
+foreach ($data['package_tbls'] as $package_tbl) {
+    $query_master = $this->db->query("SELECT * FROM tbl_package_master WHERE id_package = ?", array($package_tbl['Id_package']));
+    if ($query_master) {
+        $packages_master = $query_master->result_array();
+        foreach ($packages_master as $package_master) {
+            $query_detail = $this->db->query("SELECT * FROM tbl_package_detail WHERE id_package_master = ?", array($package_master['Id_package_master']));
+            if ($query_detail) {
+                $package_details = $query_detail->result_array();
+                // Menyimpan data detail paket ke dalam array dengan key berdasarkan nama paket
+                $data['packages'][$package_tbl['package_name']][$package_master['Id_package_master']] = [
+                    'master' => $package_master,
+                    'details' => $package_details
+                ];
+            }
+        }
+    }
+}
+
+
     $this->load->view('templates/header', $data);
     $this->load->view('templates/topbar', $data);
     $this->load->view('order/index',$data);

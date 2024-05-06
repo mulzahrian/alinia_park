@@ -86,6 +86,17 @@ var table_list_hotel_type = $('#table-list-hotel-type').DataTable({
     searching: true,
 });
 
+var table_list_view_package = $('#table-list-view-package').DataTable({
+    "columnDefs": [{
+        "targets": [],
+        "visible": false,
+        "responsive": true,
+    }],
+    retrieve: false,
+    paging: true,
+    searching: true,
+});
+
 //VARIABLE PUBLIC
 var id_package_public = '';
 var id_package_master_public = '';

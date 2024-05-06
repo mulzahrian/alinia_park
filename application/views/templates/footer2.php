@@ -1,6 +1,6 @@
             <!-- Footer -->
             <footer class="android-footer">
-            <a href="#" class="android-footer-item">
+            <a href="<?php echo base_url('order'); ?>" class="android-footer-item">
             <i class="fas fa-home"></i>
             <span>Home</span>
             </a>
@@ -21,7 +21,7 @@
                 </a>
             </div>
 
-            <a href="#" class="android-footer-item">
+            <a href="<?php echo base_url('order/order'); ?>" class="android-footer-item">
                 <i class="fas fa-shopping-cart"></i>
                 <span>Order</span>
             </a>
@@ -104,6 +104,7 @@
             <!-- <script type="text/javascript" src="<?php echo base_url(); ?>assets/alinia/room.js?v=<?php echo $this->config->item('version'); ?>"></script> -->
             <!-- <script src="<?= base_url('assets/'); ?>alinia/room.js"></script> -->
             <script src="<?php echo base_url(); ?>assets/alinia/room.js"></script>
+            <script src="<?php echo base_url(); ?>assets/alinia/order.js"></script>
            
 
             <!-- <script>
@@ -140,7 +141,7 @@
             </script>
 
 <style>
-    .android-footer {
+.android-footer {
     display: flex;
     justify-content: space-around;
     align-items: center;

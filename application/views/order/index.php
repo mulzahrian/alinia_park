@@ -2,7 +2,7 @@
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><b style="color: green;"> Hotel</b></a>
     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><b style="color: green;"> Paket</b></a>
-    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"><b style="color: green;"> Tiket</b></a>
   </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">
@@ -128,6 +128,8 @@
 
 <!-- end hotel -->
   </div>
+
+
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
     <!-- Paket -->
     <?php foreach ($package_tbls as $package_tbl): ?>
@@ -138,7 +140,18 @@
         <div class="card-body">
         <?php if(isset($packages[$package_tbl['package_name']])): ?>
             <?php foreach ($packages[$package_tbl['package_name']] as $package_master_id => $package_data): ?>
-                <h5 class="card-title"><?= $package_data['master']['master_package_name']; ?></h5>
+                <div class="row">
+                    <div class="col-6">
+                        <h5 class="card-title"><?= $package_data['master']['master_package_name']; ?></h5>
+                    </div>
+                    <div class="col-6">
+                        <p class="card-text" style="color: orange;">
+                            <a><i class="fas fa-money-bill"></i><b><?= 
+                                "Rp " . number_format($package_data['master']['package_price'], 0, ",", "."); 
+                            ?></b></a>
+                        </p>
+                    </div>
+                </div>
                 <!-- <p class="card-text">Detail:</p> -->
                 <?php if(isset($package_data['details']) && is_array($package_data['details'])): ?>
                     <ul>
@@ -154,15 +167,227 @@
             <p>No packages available</p>
         <?php endif; ?>
         <div style="text-align: right;">
-            <a href="#" class="btn btn-success">Pesan Sekarang</a>
+            <a type="button" class="btn btn-success" onclick="orderPackage(<?php echo $package_tbl['Id_package']; ?>)"><b style="color: white;">Pesan Sekarang</b></a>
         </div>
         </div>
-        
     </div>
     <?php endforeach; ?>
     <!-- end paket -->
+    <div class="card col-lg-9 mx-auto" >
+        <div class="card-header">
+            <h4><b>blank</b></h4>
+        </div>
+    </div>
 </div>
 
 
-  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">ccc</div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+    <!-- conten -->
+    <!-- HTML -->
+    <?php foreach ($tickets as $tickets): ?>
+    <div class="card col-lg-9 bg-light mx-auto" >
+        <article class="card_ticket">
+            <section class="date_ticket">
+                <time datetime="23th feb"> 
+                    <span><?= $tickets['current_month']; ?></span><span><?= $tickets['master_package_name']; ?></span>
+                </time>
+            </section>
+            <section class="card-cont_ticket">
+                <small>tiket digital</small>
+                <h3><?= $tickets['package_name']; ?></h3>
+                <div class="even-date_ticket">
+                    <i class="fa fa-"></i>
+                    <time>
+                        <span> Alinia Park </span>
+                        <span> 07:00pm to 19:00 am </span>
+                    </time>
+                </div>
+                <div class="even-info_ticket"  style="color: orange;">
+                    <i class="fa fa-money-bill"> </i>
+                    <p><?= "Rp " . number_format($tickets['package_price'], 0, ",", "."); ?></p>
+                </div>
+                <a href="#">tickets</a>
+            </section>
+        </article>    
+    </div>
+    <?php endforeach; ?>
+    <!-- content -->
+    </div>
 </div>
+
+<style>
+/* CSS */
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+.fl-left {
+    float: center
+}
+
+.fl-right {
+    float: right
+}
+
+h1 {
+    text-transform: uppercase;
+    font-weight: 900;
+    border-left: 10px solid #fec500;
+    padding-left: 10px;
+    margin-bottom: 30px
+}
+
+.row {
+    overflow: hidden
+}
+
+.card_ticket {
+    display: block;
+    width: 60%;
+    background-color: #fff;
+    color: #989898;
+    margin-bottom: 10px;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    border-radius: 4px;
+    margin-left: auto; /* Geser elemen ke tengah */
+    margin-right: auto; /* Geser elemen ke tengah */
+    position: relative
+}
+
+.card_ticket+.card_ticket {
+    margin-left: 2%
+}
+
+.date_ticket {
+    display: table-cell;
+    width: 25%;
+    position: relative;
+    text-align: center;
+    border-right: 2px dashed #dadde6;
+    background-color: #1cc88a; /* Warna hijau */
+    color: white; /* Warna teks putih */
+}
+
+.date_ticket:before,
+.date_ticket:after {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    z-index: 1;
+    border-radius: 50%
+}
+
+.date_ticket:after {
+    top: auto;
+    bottom: -15px
+}
+
+.date_ticket time {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%)
+}
+
+.date_ticket time span {
+    display: block
+}
+
+.date_ticket time span:first-child {
+    color: #2b2b2b;
+    font-weight: 600;
+    font-size: 250%
+}
+
+.date_ticket time span:last-child {
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: -10px
+}
+
+.card-cont_ticket {
+    display: table-cell;
+    width: 75%;
+    font-size: 85%;
+    padding: 10px 10px 30px 50px
+}
+
+.card-cont_ticket h3 {
+    color: #1cc88a;
+    font-size: 130%
+}
+
+.row:last-child .card_ticket:last-of-type .card-cont_ticket h3 {
+    text-decoration: line-through
+}
+
+.card-cont_ticket>div {
+    display: table-row
+}
+
+.card-cont_ticket .even-date_ticket i,
+.card-cont_ticket .even-info_ticket i,
+.card-cont_ticket .even-date_ticket time,
+.card-cont_ticket .even-info_ticket p {
+    display: table-cell
+}
+
+.card-cont_ticket .even-date_ticket i,
+.card-cont_ticket .even-info_ticket i {
+    padding: 5% 5% 0 0
+}
+
+.card-cont_ticket .even-info_ticket p {
+    padding: 30px 50px 0 0
+}
+
+.card-cont_ticket .even-date_ticket time span {
+    display: block
+}
+
+.card-cont_ticket a {
+    display: block;
+    text-decoration: none;
+    width: 80px;
+    height: 30px;
+    background-color: #1cc88a;
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 2px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px
+}
+
+.row:last-child .card_ticket:first-child .card-cont_ticket a {
+    background-color: #037FDD
+}
+
+.row:last-child .card_ticket:last-child .card-cont_ticket a {
+    background-color: #F8504C
+}
+
+@media screen and (max-width: 860px) {
+    .card_ticket {
+        display: block;
+        float: none;
+        width: 100%;
+        margin-bottom: 10px
+    }
+    .card_ticket+.card_ticket {
+        margin-left: 0
+    }
+    .card-cont_ticket .even-date_ticket,
+    .card-cont_ticket .even-info_ticket {
+        font-size: 75%
+    }
+}
+</style>

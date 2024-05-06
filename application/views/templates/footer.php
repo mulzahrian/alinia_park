@@ -74,6 +74,7 @@
             <!-- <script type="text/javascript" src="<?php echo base_url(); ?>assets/alinia/room.js?v=<?php echo $this->config->item('version'); ?>"></script> -->
             <!-- <script src="<?= base_url('assets/'); ?>alinia/room.js"></script> -->
             <script src="<?php echo base_url(); ?>assets/alinia/room.js"></script>
+            <script src="<?php echo base_url(); ?>assets/alinia/order.js"></script>
            
 
             <!-- <script>

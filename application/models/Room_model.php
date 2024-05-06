@@ -79,5 +79,14 @@ class Room_model extends CI_Model
     public function get_hotels_by_type($type_id) {
         return $this->db->get_where('tbl_hotel', ['hotel_type' => $type_id])->result_array();
     }
+
+    public function insert_order_package($data) {
+        $this->db->insert('tbl_order', $data);
+        if ($this->db->affected_rows() > 0) {
+            return true; // Insert successful
+        } else {
+            return false; // Insert failed
+        }
+    }
     
 }

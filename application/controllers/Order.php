@@ -49,13 +49,51 @@ foreach ($data['package_tbls'] as $package_tbl) {
         }
     }
 }
-
-
+    $ticket = $this->db->query("SELECT DATE_FORMAT(CURDATE(), '%d') AS current_month, b.package_name, a.master_package_name, a.package_price FROM tbl_package_master a, tbl_package b WHERE a.id_package = b.Id_package AND b.Id_package = 1");
+    $data['tickets'] = $ticket->result_array();
     $this->load->view('templates/header', $data);
     $this->load->view('templates/topbar', $data);
     $this->load->view('order/index',$data);
+    $this->load->view('modal/order_modal');
     $this->load->view('templates/footer2');
 }
+
+        public function order()
+        {
+            $data['title'] = 'Order';
+            $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+            // Menambahkan pengambilan data dari tabel tbl_order
+            $data['orders'] = $this->db->get_where('tbl_order', ['create_by' => $data['user']['id']])->result_array();
+
+            $this->load->view('templates/header2', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('order/order',$data);
+            $this->load->view('modal/order_modal');
+            $this->load->view('templates/footer2');
+        }
+
+        public function add_order_package() {
+            // Assuming you're getting data from a form post
+            $data = array(
+                'order_type' => $this->input->post('order_type'),
+                'type' => $this->input->post('type'),
+                'start_date' => $this->input->post('date'),
+                'create_by' => $this->input->post('create_by'),
+                'status' => $this->input->post('status'),
+                // Add other fields as needed
+            );
+            // Call the insert function
+            if ($this->Room_model->insert_order_package($data)) {
+                // Insert successful
+                $this->output->set_status_header(200);
+                $this->output->set_output(json_encode(array('status' => '200')));
+            } else {
+                // Insert failed
+                $this->output->set_status_header(500);
+                $this->output->set_output(json_encode(array('status' => '500')));
+            }
+        }
 
 
 

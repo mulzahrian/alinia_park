@@ -55,7 +55,7 @@
             <form action="<?= base_url('menu'); ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="menu" name="menu" placeholder="Menu name">
+                        <input type="text" class="form-control" id="menu" name="menu" placeholder="Package Name">
                     </div>
                 </div>
                 <div class="modal-footer">

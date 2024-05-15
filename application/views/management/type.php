@@ -47,7 +47,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="newPackageModalLabel">Tambah Paket Baru</h5>
+                <h5 class="modal-title" id="newPackageModalLabel">Add new Type</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -55,7 +55,7 @@
             <form action="<?= base_url('menu'); ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="menu" name="menu" placeholder="Menu name">
+                        <input type="text" class="form-control" id="menu" name="menu" placeholder="New Type...">
                     </div>
                 </div>
                 <div class="modal-footer">

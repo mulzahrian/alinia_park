@@ -131,29 +131,45 @@
 
 
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-    <!-- Paket -->
-    <?php foreach ($package_tbls as $package_tbl): ?>
-    <div class="card col-lg-9 mx-auto" >
-        <div class="card-header">
-        <h4><b><?= $package_tbl['package_name']; ?></b></h4>
-        </div>
-        <div class="card-body">
-        <?php if(isset($packages[$package_tbl['package_name']])): ?>
+
+
+  <!-- content -->
+  <?php foreach ($package_tbls as $package_tbl): ?>
+  <div class="card col-lg-9 mx-auto" >
+    <div class="card-header">
+    <h4><b><?= $package_tbl['package_name']; ?></b></h4>
+    </div>
+    <div class="row justify-content-center mb-3">
+      <div class="col-md-12 col-xl-12">
+        <div class="card shadow-0 border rounded-3">
+          <div class="card-body">
+          <?php if(isset($packages[$package_tbl['package_name']])): ?>
             <?php foreach ($packages[$package_tbl['package_name']] as $package_master_id => $package_data): ?>
                 <div class="row">
-                    <div class="col-6">
-                        <h5 class="card-title"><?= $package_data['master']['master_package_name']; ?></h5>
-                    </div>
-                    <div class="col-6">
-                        <p class="card-text" style="color: orange;">
-                            <a><i class="fas fa-money-bill"></i><b><?= 
-                                "Rp " . number_format($package_data['master']['package_price'], 0, ",", "."); 
-                            ?></b></a>
-                        </p>
+                <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                    <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                    <img src="<?= base_url('assets/img/profile/') . $package_data['master']['package_image']; ?>"
+                        class="w-100" style="border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"/>
+                    <a href="#!">
+                        <div class="hover-overlay">
+                        <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                        </div>
+                    </a>
                     </div>
                 </div>
-                <!-- <p class="card-text">Detail:</p> -->
-                <?php if(isset($package_data['details']) && is_array($package_data['details'])): ?>
+                <div class="col-md-6 col-lg-6 col-xl-6">
+                    <h5><?= $package_data['master']['master_package_name']; ?></h5>
+                    <div class="d-flex flex-row">
+                    <div class="text-danger mb-1 me-2">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <!-- <span>310</span> -->
+                    </div>
+                    <?php if(isset($package_data['details']) && is_array($package_data['details'])): ?>
                     <ul>
                         <?php foreach ($package_data['details'] as $detail): ?>
                             <li><?= $detail['name_detail_pack']; ?></li>
@@ -162,17 +178,52 @@
                 <?php else: ?>
                     <p>No details available</p>
                 <?php endif; ?>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p>No packages available</p>
-        <?php endif; ?>
-        <div style="text-align: right;">
-            <a type="button" class="btn btn-success" onclick="orderPackage(<?php echo $package_tbl['Id_package']; ?>)"><b style="color: white;">Pesan Sekarang</b></a>
+                    <div class="mt-1 mb-0 text-muted small">
+                    <!-- <span>100% cotton</span> -->
+                    <span class="text-primary"> • </span>
+                    <span>Tidak Bisa Refund</span>
+                    </div>
+                    <!-- <p class="text-truncate mb-4 mb-md-0">
+                    There are many variations of passages of Lorem Ipsum available, but the
+                    majority have suffered alteration in some form, by injected humour, or
+                    randomised words which don't look even slightly believable.
+                    </p> -->
+                </div>
+                <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+                    <div class="d-flex flex-row align-items-center mb-1">
+                    <h4 class="mb-1 me-1"><b><?= 
+                                "Rp " . number_format($package_data['master']['package_price'], 0, ",", "."); 
+                            ?></b></h4>
+                    <!-- <span class="text-danger"><s>$20.99</s></span> -->
+                    </div>
+                    <h6 class="text-success">Baca kebijakan Pembatalan</h6>
+                    <div class="d-flex flex-column mt-4">
+                    <a data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-sm" type="button" onclick="orderPackage(<?php echo $package_tbl['Id_package']; ?>)"><b style="color: white;">Pesan Sekarang</b></a>
+                    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-success btn-sm mt-2" type="button">
+                        Tambah ke Favorite
+                    </button>
+                    <h6 class="text-success"></h6>
+                    </div>
+                </div>
+                </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="card mb-3 col-lg-8 mx-auto">
+                    <div class="card-body">
+                    <p>No packages available</p>
+                    </div>
+                </div>
+            <?php endif; ?>
+          </div>
         </div>
-        </div>
+      </div>
     </div>
-    <?php endforeach; ?>
-    <!-- end paket -->
+
+  </div>
+  <?php endforeach; ?>
+  
+
+  <!-- content -->
     <div class="card col-lg-9 mx-auto" >
         <div class="card-header">
             <h4><b>blank</b></h4>
@@ -193,8 +244,8 @@
                 </time>
             </section>
             <section class="card-cont_ticket">
-                <small>tiket digital</small>
-                <h3><?= $tickets['package_name']; ?></h3>
+                <small><?= $tickets['package_name']; ?></small>
+                <h3><?= $tickets['master_package_name']; ?></h3>
                 <div class="even-date_ticket">
                     <i class="fa fa-"></i>
                     <time>
@@ -206,7 +257,7 @@
                     <i class="fa fa-money-bill"> </i>
                     <p><?= "Rp " . number_format($tickets['package_price'], 0, ",", "."); ?></p>
                 </div>
-                <a href="#">tickets</a>
+                <a href="#">Pesan</a>
             </section>
         </article>    
     </div>

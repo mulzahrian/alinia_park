@@ -88,5 +88,26 @@ class Room_model extends CI_Model
             return false; // Insert failed
         }
     }
+
+    public function getPackageDetailorder($id_package_mas)
+    {
+        $query = $this->db->query("SELECT * FROM tbl_package_master WHERE Id_package_master = ?", array($id_package_mas));
+        return $query->result_array();
+    }
+
+    public function getOrderStatusActive()
+    {
+        $query = $this->db->query("SELECT * FROM `tbl_order` a WHERE a.status = 1");
+        return $query->result_array();
+    }
+
+    public function insert_order_detail($data) {
+        $this->db->insert('tbl_order_detail', $data);
+        if ($this->db->affected_rows() > 0) {
+            return true; // Insert successful
+        } else {
+            return false; // Insert failed
+        }
+    }
     
 }

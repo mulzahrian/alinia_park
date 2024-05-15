@@ -20,6 +20,7 @@
                     <?= $this->session->flashdata('message'); ?>
 
                     <a href="" id="btn_tekan" class="btn btn-success mb-3 btn-lg rounded-circle" data-toggle="modal" data-target="#modalPackageOrder"> + </a>
+                    <a href="" id="btn_tekan" class="btn btn-danger mb-3 btn-lg rounded-circle" data-toggle="modal" data-target="#detailOrderModal"> + </a>
                   <!-- CONTENT -->
                   <?php if (!empty($orders)) : ?>
                       <?php foreach ($orders as $order) : ?>

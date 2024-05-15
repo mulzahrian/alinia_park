@@ -59,7 +59,7 @@
                         <a href="index.html" class="nav-item nav-link active">Reservasi</a>
                         <a href="about.html" class="nav-item nav-link">Tiket</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">null</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Paket</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <a href="property-list.html" class="dropdown-item">Property List</a>
                                 <a href="property-type.html" class="dropdown-item">Property Type</a>
@@ -67,15 +67,15 @@
                             </div>
                         </div>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">null</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Ketentuan</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                                 <a href="404.html" class="dropdown-item">404 Error</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">null</a>
+                        <!-- <a href="contact.html" class="nav-item nav-link">null</a> -->
                     </div>
-                    <a href="" class="btn btn-primary px-3 d-none d-lg-flex">null</a>
+                    <a href="" class="btn btn-primary px-3 d-none d-lg-flex">Login</a>
                 </div>
             </nav>
         </div>

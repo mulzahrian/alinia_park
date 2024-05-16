@@ -95,9 +95,15 @@ class Room_model extends CI_Model
         return $query->result_array();
     }
 
-    public function getOrderStatusActive()
+    public function check_has_order($create_by)
     {
-        $query = $this->db->query("SELECT * FROM `tbl_order` a WHERE a.status = 1");
+        $query = $this->db->query("SELECT COUNT(1) as total FROM `tbl_order` a WHERE a.status = 1 AND a.create_by = ?",array($create_by));
+        return $query->result_array();
+    }
+
+    public function getOrderStatusActive($create_by)
+    {
+        $query = $this->db->query("SELECT * FROM `tbl_order` a WHERE a.status = 1 AND a.create_by = ?",array($create_by));
         return $query->result_array();
     }
 

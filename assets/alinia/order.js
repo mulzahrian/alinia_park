@@ -37,7 +37,7 @@ function orderPackage(id_package){
 }
 
 $('#confirm_order_package').on('click', function() {
-    insertOrderPackage();
+    checkHasOrder();
 });
 
 function insertOrderPackage(){
@@ -76,10 +76,15 @@ function insertOrderPackage(){
     });
 }
 
+
 function getOrderStatusActive(id_package_order_pub){
-    $.ajax({ 
+    var user_id = $('#user_id').val();
+    $.ajax({
         url: '../order/get_order_status_active',
-        method: 'GET',
+        method: 'POST',
+        data : {
+            create_by : user_id,
+        },
         success: function(response) {
             try {
                 var data = $.parseJSON(response);
@@ -151,6 +156,48 @@ $('#confirm_detail_package').on('click', function() {
     insertOrderDetailPackage();
 });
 
+function checkHasOrder(){
+    var user_id = $('#user_id').val();
+    $.ajax({
+        url: '../order/check_has_order',
+        method: 'POST',
+        data : {
+            create_by : user_id,
+        },
+        success: function(response) {
+            try {
+                var data = $.parseJSON(response);
+                var has_order = "";
+                console.log(data);
+                var array = [];
+                $.each(data['Data'], function(index) {
+                    array.push([
+                        this['total']
+                    ]);
+                    has_order = this['total'];
+                });
+                if(has_order != '0'){
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Masih ada proses Order yang berlangsung!"
+                      });
+                }else{
+                    insertOrderPackage();
+                }
+                
+            } catch (e) {
+                console.log(e);
+                alert("Terjadi Kesalahan => 2" + e);
+            }
+        },
+        error: function(response) {
+            console.log(response);
+            alert('koneksi salah');
+        }
+    });
+}
+
 function insertOrderDetailPackage(){
     var order_total = $('#order_total').val(); //order_number
     var harga_order = $('#harga_order').val(); //order price
@@ -174,8 +221,26 @@ function insertOrderDetailPackage(){
                 try {
                     var data = $.parseJSON(response);
                     if (data['status'] == '200') {
-                        // var id_package_order_pub = localStorage.getItem('id_package_order_pub');
-                        // getOrderStatusActive(id_package_order_pub);
+                         Swal.fire({
+                            title: "Berhasil di Proses",
+                            text: "Success",
+                            icon: "success"
+                          });
+                          //
+                          Swal.fire({
+                            title: "Berhasil di Proses",
+                            showDenyButton: false,
+                            showCancelButton: false,
+                            confirmButtonText: "Oke",
+                            text: "Success",
+                            icon: "success"
+                          }).then((result) => {
+                            if (result.isConfirmed) {
+                                order_request_type = '';
+                                localStorage.setItem('order_request_type', order_request_type);
+                                window.location.href = 'order/order';
+                            }
+                          });
                     }else{
                         alert('data gagal diinputkan')
                     }

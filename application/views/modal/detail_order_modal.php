@@ -26,7 +26,7 @@
                     <button type="button" class="btn btn-primary btn-circle btn-sm" onclick="decrement()">-</button>
                     <button type="button" class="btn btn-primary btn-circle btn-sm ml-2" onclick="increment()">+</button>
                 </div>
-                <input type="hidden" class="form-control" id="harga_order" name="harga_order"> <!-- Contoh nilai harga_order -->
+                <input type="hidden" class="form-control" id="harga_order" name="harga_order">
                 <input type="hidden" class="form-control" id="id_package_mas" name="id_package_mas">
                 <input type="hidden" class="form-control" id="id_order" name="id_order">
                 <div class="form-group d-flex align-items-center mt-3">

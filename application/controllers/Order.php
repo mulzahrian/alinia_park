@@ -63,8 +63,49 @@ foreach ($data['package_tbls'] as $package_tbl) {
             $data['title'] = 'Order';
             $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-            // Menambahkan pengambilan data dari tabel tbl_order
-            $data['orders'] = $this->db->get_where('tbl_order', ['create_by' => $data['user']['id']])->result_array();
+            //$data['orders'] = $this->db->get_where('tbl_order', ['create_by' => $data['user']['id'], 'status' => 1])->result_array();
+
+            // $this->db->select('b.type, b.order_type, a.total_price');
+            // $this->db->from('tbl_order_detail a');
+            // $this->db->join('tbl_order b', 'a.id_order = b.id_order');
+            // $this->db->where('a.status', 1);
+            // $this->db->where('b.status', 1);
+            // $this->db->where('b.create_by', $data['user']['id']);
+            // $data['orders'] = $this->db->get()->result_array();
+
+            // Ambil nilai type dari tbl_order_detail terlebih dahulu
+            $this->db->select('b.order_type');
+            $this->db->from('tbl_order_detail a');
+            $this->db->join('tbl_order b', 'a.id_order = b.id_order');
+            $this->db->where('b.create_by', $data['user']['id']);
+            $this->db->limit(1); // Asumsikan kita hanya perlu satu nilai type untuk pengecekan
+            $query = $this->db->get();
+            $row = $query->row();
+
+            if ($row) {
+                $type = $row->order_type;
+                // Membuat query utama berdasarkan nilai type
+                $this->db->select('b.type, b.order_type, a.total_price,c.master_package_name');
+            
+                if ($type == 1) {
+                    $this->db->select('a.id_package_mas');
+                    $this->db->from('tbl_order_detail a');
+                    $this->db->join('tbl_order b', 'a.id_order = b.id_order');
+                    $this->db->join('tbl_package_master c', 'a.id_package_mas = c.Id_package_master');
+                } elseif ($type == 2) {
+                    $this->db->select('a.id_hotel');
+                    $this->db->from('tbl_order_detail a');
+                    $this->db->join('tbl_order b', 'a.id_order = b.id_order');
+                    $this->db->join('tbl_hotel c', 'a.id_hotel = c.id_hotel');
+                }
+                $this->db->where('a.status', 1);
+                $this->db->where('b.status', 1);
+                $this->db->where('b.create_by', $data['user']['id']);
+                $data['orders'] = $this->db->get()->result_array();
+            } else {
+                $data['orders'] = []; // Tidak ada data jika tidak ditemukan type
+            }
+
 
             $this->load->view('templates/header2', $data);
             $this->load->view('templates/topbar', $data);
@@ -104,7 +145,15 @@ foreach ($data['package_tbls'] as $package_tbl) {
         }
 
         public function get_order_status_active(){
-            $result['Data'] = $this->Room_model->getOrderStatusActive();
+            $create_by = $this->input->post('create_by');
+            $result['Data'] = $this->Room_model->getOrderStatusActive($create_by);
+            $this->output->set_output(json_encode($result));
+            
+        }
+
+        public function check_has_order(){
+            $create_by = $this->input->post('create_by');
+            $result['Data'] = $this->Room_model->check_has_order($create_by);
             $this->output->set_output(json_encode($result));
             
         }

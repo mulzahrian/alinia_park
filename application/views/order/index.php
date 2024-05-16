@@ -183,11 +183,6 @@
                     <span class="text-primary"> • </span>
                     <span>Tidak Bisa Refund</span>
                     </div>
-                    <!-- <p class="text-truncate mb-4 mb-md-0">
-                    There are many variations of passages of Lorem Ipsum available, but the
-                    majority have suffered alteration in some form, by injected humour, or
-                    randomised words which don't look even slightly believable.
-                    </p> -->
                 </div>
                 <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
                     <div class="d-flex flex-row align-items-center mb-1">
@@ -198,7 +193,7 @@
                     </div>
                     <h6 class="text-success">Baca kebijakan Pembatalan</h6>
                     <div class="d-flex flex-column mt-4">
-                    <a data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-sm" type="button" onclick="orderPackage(<?php echo $package_tbl['Id_package']; ?>)"><b style="color: white;">Pesan Sekarang</b></a>
+                    <a data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-sm" type="button" onclick="orderPackage(<?php echo $package_data['master']['Id_package_master']; ?>)"><b style="color: white;">Pesan Sekarang</b></a>
                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-success btn-sm mt-2" type="button">
                         Tambah ke Favorite
                     </button>

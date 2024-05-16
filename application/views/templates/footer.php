@@ -75,6 +75,7 @@
             <!-- <script src="<?= base_url('assets/'); ?>alinia/room.js"></script> -->
             <script src="<?php echo base_url(); ?>assets/alinia/room.js"></script>
             <script src="<?php echo base_url(); ?>assets/alinia/order.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js"></script>
            
 
             <!-- <script>

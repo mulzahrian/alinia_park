@@ -35,6 +35,7 @@
     <link href="<?= base_url('assets/'); ?>datatable/css/select.dataTables.min.css" rel="stylesheet"> -->
     <!-- table 3 -->
     <!-- <link href="<?= base_url('assets/'); ?>DataTables/datatables.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.min.css" rel="stylesheet">
 
 </head>
 

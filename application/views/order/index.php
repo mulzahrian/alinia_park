@@ -98,7 +98,8 @@
                             
                             <div class="col-md-12">
                                 <div style="text-align: right;">
-                                    <a href="#" class="btn btn-success">Pesan Sekarang</a>
+                                <!-- <a data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-sm" type="button" onclick="orderPackage(<?php echo $package_data['master']['Id_package_master']; ?>)"><b style="color: white;">Pesan Sekarang</b></a> -->
+                                    <a class="btn btn-success" type="button" onclick="orderHotel(<?php echo $hotel['Id_hotel']; ?>)"><b style="color: white;">Pesan Sekarang</b></a>
                                 </div>
                             </div>
                         </div>
@@ -252,7 +253,8 @@
                     <i class="fa fa-money-bill"> </i>
                     <p><?= "Rp " . number_format($tickets['package_price'], 0, ",", "."); ?></p>
                 </div>
-                <a href="#">Pesan</a>
+                <a type="button" onclick="orderPackage(<?= $tickets['Id_package_master']; ?>)"><b style="color: white;">Pesan</b></a>
+                <!-- <a href="#">Pesan</a> -->
             </section>
         </article>    
     </div>

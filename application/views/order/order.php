@@ -30,19 +30,42 @@
                         </div>
                         <form>
                           <div class="products">
+                          <a href="" id="btn__add_all" class="btn btn-success mb-3 btn-lg rounded-circle" data-toggle="modal" data-target="#checkOrderModal"> + </a>
                             <h3 class="title">Checkout</h3>
+                            <!-- <a href="" id="btn_delete_all" class="btn btn-danger mb-3 btn-lg rounded-circle"> - </a>
+                            <a href="" id="btn_tekan" class="btn btn-success mb-3 btn-lg rounded-circle" data-toggle="modal" data-target="#modalPackageOrder"> + </a> -->
                       <?php
                       $total_harga = 0; 
+                      $id_order = "";
+                      $tipe = "";
+                      $order_type = "";
                       foreach ($orders as $order) : ?>
-                        <?php if ($order['order_type'] == "1") : 
-                          $total_harga += $order['total_price'];?>
-                          <div class="item"> 
+                        <?php if ($order['type'] == "Paket") : 
+                          $total_harga += $order['total_price'];
+                          $id_order = $order['id_order'];
+                          $tipe = $order['type'];
+                          $order_type = $order['order_type']?>
+                            <div class="item"> 
                               <!-- <span class="price"><?= $order['total_price']; ?></span> -->
                               <span class="price">
                                 <?= 
                                 "Rp " . number_format($order['total_price'], 0, ",", "."); 
                                 ?></span>
                               <p class="item-name"><?= $order['master_package_name']; ?></p>
+                              <p class="item-description">Lorem ipsum dolor sit amet</p>
+                            </div>
+                      <?php elseif($order['type'] == "Hotel") : 
+                        $total_harga += $order['total_price'];
+                        $id_order = $order['id_order'];
+                        $tipe = $order['type'];
+                        $order_type = $order['order_type']?>
+                         <div class="item"> 
+                              <!-- <span class="price"><?= $order['total_price']; ?></span> -->
+                              <span class="price">
+                                <?= 
+                                "Rp " . number_format($order['total_price'], 0, ",", "."); 
+                                ?></span>
+                              <p class="item-name"><?= $order['hotel_name']; ?></p>
                               <p class="item-description">Lorem ipsum dolor sit amet</p>
                             </div>
                           <?php endif; ?>
@@ -53,9 +76,12 @@
                               <p class="item-description">Lorem ipsum dolor sit amet</p>
                             </div> -->
                             <div class="total">Total<span class="price"><?= "Rp " . number_format($total_harga, 0, ",", "."); ?></span></div>
+                            <input type="hidden" class="form-control" id="id_order_save" name="id_order_save" value="<?= $id_order; ?>">
+                            <input type="hidden" class="form-control" id="tipe_pesanan" name="tipe_pesanan" value="<?= $tipe; ?>">
+                            <input type="hidden" class="form-control" id="pub_order_type" name="pub_order_type" value="<?= $order_type; ?>">
                           </div>
                           <div class="card-details">
-                            <h3 class="title">Credit Card Details</h3>
+                            <h3 class="title">Payment Account</h3>
                             <div class="row">
                               <div class="form-group col-sm-7">
                                 <label for="card-holder">Card Holder</label>

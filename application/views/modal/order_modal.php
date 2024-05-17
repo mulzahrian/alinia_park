@@ -1,4 +1,4 @@
-<!-- Modal -->
+<!-- Modal Package-->
 <div class="modal fade" id="modalPackageOrder" tabindex="-1" role="dialog" aria-labelledby="newOrderModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -42,3 +42,51 @@
         </div>
     </div>
 </div> 
+<!-- end modal Package-->
+
+<!-- Modal Package hotel-->
+<div class="modal fade" id="modalHotelOrder" tabindex="-1" role="dialog" aria-labelledby="newOrderHotelModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newOrderHotelModalLabel">Pesanan Anda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="<?= base_url('menu'); ?>" method="post">
+                <div class="modal-body">
+                <div class="form-group row">
+                    <div class="col-sm-12" id='div-order_type'>
+                        <select id="order_type_hotel" class="form-control res-select">
+                            <option value="1">Personal</option>
+                            <option value="2">Group</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12" id='div-drpdw-tgprogram'>
+                        <input type="text" class="form-control" id="type_hotel" name="type_hotel" value="Hotel" placeholder="Pesanan_anda" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6 ">
+                            <span>Tanggal Check In</span>
+                            <input type="date" class="form-control" id="start_date1" name="start_date1" placeholder="Password">
+                    </div>
+                    <div class="col-sm-6">
+                            <span>Tanggal Check Out</span>
+                            <input type="date" class="form-control " id="end_date" name="end_date" placeholder="Repeat Password">
+                    </div>
+                </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a type="button" class="btn btn-success" id="confirm_order_hotel"><b style="color: white;">Confirm</b></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 
+<!-- end modal Package hotel-->

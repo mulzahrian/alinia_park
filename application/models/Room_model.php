@@ -95,6 +95,12 @@ class Room_model extends CI_Model
         return $query->result_array();
     }
 
+    public function getHotelDetailorder($id_hotel)
+    {
+        $query = $this->db->query("SELECT * FROM tbl_hotel WHERE Id_hotel = ?", array($id_hotel));
+        return $query->result_array();
+    }
+
     public function check_has_order($create_by)
     {
         $query = $this->db->query("SELECT COUNT(1) as total FROM `tbl_order` a WHERE a.status = 1 AND a.create_by = ?",array($create_by));
@@ -114,6 +120,12 @@ class Room_model extends CI_Model
         } else {
             return false; // Insert failed
         }
+    }
+
+    public function getAllPackageMaster()
+    {
+        $query = $this->db->query("SELECT * FROM tbl_package_master k where k.status = 1");
+        return $query->result_array();
     }
     
 }

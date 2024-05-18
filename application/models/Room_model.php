@@ -127,5 +127,11 @@ class Room_model extends CI_Model
         $query = $this->db->query("SELECT * FROM tbl_package_master k where k.status = 1");
         return $query->result_array();
     }
+
+    public function updateOrder($create_by)
+    {
+        $query = $this->db->query("UPDATE tbl_order a SET a.status = 2 WHERE a.create_by = ?",array($create_by));
+        return $query->result_array();
+    }
     
 }

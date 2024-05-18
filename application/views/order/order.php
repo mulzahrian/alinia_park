@@ -46,13 +46,12 @@
                           $tipe = $order['type'];
                           $order_type = $order['order_type']?>
                             <div class="item"> 
-                              <!-- <span class="price"><?= $order['total_price']; ?></span> -->
                               <span class="price">
                                 <?= 
                                 "Rp " . number_format($order['total_price'], 0, ",", "."); 
                                 ?></span>
                               <p class="item-name"><?= $order['master_package_name']; ?></p>
-                              <p class="item-description">Lorem ipsum dolor sit amet</p>
+                              <p class="item-description">Pembayaran di dalam proses</p>
                             </div>
                       <?php elseif($order['type'] == "Hotel") : 
                         $total_harga += $order['total_price'];
@@ -60,21 +59,15 @@
                         $tipe = $order['type'];
                         $order_type = $order['order_type']?>
                          <div class="item"> 
-                              <!-- <span class="price"><?= $order['total_price']; ?></span> -->
                               <span class="price">
                                 <?= 
                                 "Rp " . number_format($order['total_price'], 0, ",", "."); 
                                 ?></span>
                               <p class="item-name"><?= $order['hotel_name']; ?></p>
-                              <p class="item-description">Lorem ipsum dolor sit amet</p>
+                              <p class="item-description">Pembayaran di dalam proses</p>
                             </div>
                           <?php endif; ?>
                         <?php endforeach; ?>
-                            <!-- <div class="item">
-                              <span class="price">$120</span>
-                              <p class="item-name">Product 2</p>
-                              <p class="item-description">Lorem ipsum dolor sit amet</p>
-                            </div> -->
                             <div class="total">Total<span class="price"><?= "Rp " . number_format($total_harga, 0, ",", "."); ?></span></div>
                             <input type="hidden" class="form-control" id="id_order_save" name="id_order_save" value="<?= $id_order; ?>">
                             <input type="hidden" class="form-control" id="tipe_pesanan" name="tipe_pesanan" value="<?= $tipe; ?>">
@@ -83,28 +76,16 @@
                           <div class="card-details">
                             <h3 class="title">Payment Account</h3>
                             <div class="row">
-                              <div class="form-group col-sm-7">
-                                <label for="card-holder">Card Holder</label>
-                                <input id="card-holder" type="text" class="form-control" placeholder="Card Holder" aria-label="Card Holder" aria-describedby="basic-addon1">
-                              </div>
-                              <div class="form-group col-sm-5">
-                                <label for="">Expiration Date</label>
-                                <div class="input-group expiration-date">
-                                  <input type="text" class="form-control" placeholder="MM" aria-label="MM" aria-describedby="basic-addon1">
-                                  <span class="date-separator">/</span>
-                                  <input type="text" class="form-control" placeholder="YY" aria-label="YY" aria-describedby="basic-addon1">
-                                </div>
-                              </div>
-                              <div class="form-group col-sm-8">
-                                <label for="card-number">Card Number</label>
-                                <input id="card-number" type="text" class="form-control" placeholder="Card Number" aria-label="Card Holder" aria-describedby="basic-addon1">
-                              </div>
-                              <div class="form-group col-sm-4">
-                                <label for="cvc">CVC</label>
-                                <input id="cvc" type="text" class="form-control" placeholder="CVC" aria-label="Card Holder" aria-describedby="basic-addon1">
+                              <div class="form-group col-sm-12">
+                                <label for="card-holder">Bank Account</label>
+                                <select id="bank_account" class="form-control res-select">
+                                          <option value="0976213123">Bank Bca</option>
+                                          <option value="8219873193">Bank Mandiri</option>
+                                          <option value="7765723198">Bank Bri</option>
+                                      </select>
                               </div>
                               <div class="form-group col-sm-12">
-                                <button type="button" class="btn btn-primary btn-block">Proceed</button>
+                                <a type="button" id="proses_order" class="btn btn-primary btn-block"><b style="color: white;">Proses</b></a>
                               </div>
                             </div>
                           </div>

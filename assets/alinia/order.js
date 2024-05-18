@@ -366,3 +366,49 @@ $('#table-all-master-package tbody').on('click', 'tr', function() {
 
     }
 });
+
+
+$('#proses_order').on('click', function() {
+    var bank_account = $('#bank_account').val();
+    proses_order(bank_account);
+});
+
+function proses_order(bank_account){
+    var user_id = $('#user_id').val();
+    $.ajax({
+        url: '../order/update_order',
+        method: 'POST',
+        data : {
+            create_by : user_id,
+        },
+        success: function(response) {
+            try {
+                var data = $.parseJSON(response);
+                if (data['status'] == '200') {
+                    Swal.fire({
+                        title: "Berhasil di Proses",
+                        showDenyButton: false,
+                        showCancelButton: false,
+                        confirmButtonText: "Oke",
+                        text: "Success",
+                        icon: "success"
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                            order_request_type = '';
+                            localStorage.setItem('order_request_type', order_request_type);
+                            //window.location.href = 'order/order';
+                            location.reload();
+                        }
+                      });
+                }
+            } catch (e) {
+                console.log(e);
+                alert("Terjadi Kesalahan => 2" + e);
+            }
+        },
+        error: function(response) {
+            console.log(response);
+            alert('koneksi salah');
+        }
+    });
+}

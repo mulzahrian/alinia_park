@@ -236,4 +236,17 @@ foreach ($data['package_tbls'] as $package_tbl) {
             $this->output->set_output(json_encode($result));
             
         }
+
+        public function update_order(){
+            $create_by = $this->input->post('create_by');
+            if ($this->Room_model->updateOrder($create_by)) {
+                // Insert successful
+                $this->output->set_status_header(200);
+                $this->output->set_output(json_encode(array('status' => '200')));
+            } else {
+                // Insert failed
+                $this->output->set_status_header(500);
+                $this->output->set_output(json_encode(array('status' => '500')));
+            }
+        }
 }

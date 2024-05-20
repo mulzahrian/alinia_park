@@ -29,7 +29,7 @@
                 <i class="fas fa-history"></i>
                 <span>History</span>
             </a>
-            <a href="#" class="android-footer-item">
+            <a href="<?php echo base_url('payment'); ?>" class="android-footer-item">
                 <i class="fas fa-credit-card"></i>
                 <span>Payment</span>
             </a>

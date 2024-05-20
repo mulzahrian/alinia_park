@@ -103,7 +103,7 @@ class Room_model extends CI_Model
 
     public function check_has_order($create_by)
     {
-        $query = $this->db->query("SELECT COUNT(1) as total FROM `tbl_order` a WHERE a.status = 1 AND a.create_by = ?",array($create_by));
+        $query = $this->db->query("SELECT COUNT(1) as total FROM `tbl_order` a WHERE a.status IN(1,2) AND a.create_by = ?",array($create_by));
         return $query->result_array();
     }
 
@@ -128,9 +128,19 @@ class Room_model extends CI_Model
         return $query->result_array();
     }
 
-    public function updateOrder($create_by)
+    public function updateOrder($create_by, $bank_code)
     {
-        $query = $this->db->query("UPDATE tbl_order a SET a.status = 2 WHERE a.create_by = ?",array($create_by));
+        $this->db->query("UPDATE tbl_order a SET a.status = 2, a.bank_code = ? WHERE a.status = 1 AND a.create_by = ?", array($bank_code, $create_by));
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getPaymentOrder($create_by)
+    {
+        $query = $this->db->query("SELECT a.*,b.account_no,b.bank_name FROM tbl_order a,tbl_bank b WHERE a.status IN(2,3)  AND a.bank_code = b.account_no AND a.create_by = ?",array($create_by));
         return $query->result_array();
     }
     

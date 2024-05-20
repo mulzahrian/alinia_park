@@ -380,6 +380,7 @@ function proses_order(bank_account){
         method: 'POST',
         data : {
             create_by : user_id,
+            bank_code : bank_account
         },
         success: function(response) {
             try {
@@ -394,10 +395,7 @@ function proses_order(bank_account){
                         icon: "success"
                       }).then((result) => {
                         if (result.isConfirmed) {
-                            order_request_type = '';
-                            localStorage.setItem('order_request_type', order_request_type);
-                            //window.location.href = 'order/order';
-                            location.reload();
+                            window.location.href = '../payment';
                         }
                       });
                 }

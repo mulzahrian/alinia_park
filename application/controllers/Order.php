@@ -239,14 +239,27 @@ foreach ($data['package_tbls'] as $package_tbl) {
 
         public function update_order(){
             $create_by = $this->input->post('create_by');
-            if ($this->Room_model->updateOrder($create_by)) {
-                // Insert successful
+            $bank_code = $this->input->post('bank_code');
+            if ($this->Room_model->updateOrder($create_by,$bank_code)) {
                 $this->output->set_status_header(200);
                 $this->output->set_output(json_encode(array('status' => '200')));
             } else {
-                // Insert failed
                 $this->output->set_status_header(500);
                 $this->output->set_output(json_encode(array('status' => '500')));
             }
+        }
+
+        public function payment()
+        {
+            $data['title'] = 'Payment';
+            $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+            $id_user = $data['user']['id'];
+            $data['payments'] = $this->Room_model->getPaymentOrder($id_user);
+
+            $this->load->view('templates/header2', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('order/payment',$data);
+            $this->load->view('templates/footer2');
         }
 }

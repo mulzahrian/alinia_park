@@ -26,23 +26,34 @@
 									<i class="fas fa-copy"></i> Copy
 									</button>
 								</div>
-								<div class="col-sm-9">
+							<?= form_open_multipart('payment/payment_proses'); ?> 
+							<div class="col-sm-9">
 									<h5 class="card-title">Upload Bukti Pembayaran</h5>
                             	<div class="custom-file">
-									<input type="file" class="custom-file-input" id="payment_image" name="payment_image">
+									<input type="file" class="custom-file-input" id="payment_image" name="payment_image" required>
 									<label class="custom-file-label" for="image">Choose file</label>
                             	</div>
-                        		</div>
-								<div class="col-sm-3">
+                        	</div>
+							<div class="col-sm-3">
 									<h5 class="card-title"></h5>
-									<button class="btn btn-primary copy-btn">Proses Pembayaran</button>
+									<input type="hidden" class="form-control" id="user_id" name="user_id" value="<?= $user['id']; ?>">
+									<button type="submit" class="btn btn-primary">Proses Pembayaran</button>
+									<!-- <a class="btn btn-success" id="payment_proses" type="submit"><b style="color: white;">Proses Pembayaran</b></a> -->
 									<h5 class="card-title"></h5>
-						</div>
+							</div>
+
 					
 							<?php elseif($payments['status'] == "3") :?>
 								<div class="text-center">
 									<h2><b>Pemesanan anda di reject</b></h2>
                             		<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="<?= base_url('assets/img/undraw_cancel_.svg') ?>" alt="">
+									<h5 class="card-title"></h5>
+									<h5 class="card-title"></h5>
+                        		</div>
+							<?php elseif($payments['status'] == "4") :?>
+								<div class="text-center">
+									<h2><b>Pemesanan Sedang Dalam Proses</b></h2>
+                            		<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="<?= base_url('assets/img/undraw_wait.svg') ?>" alt="">
 									<h5 class="card-title"></h5>
 									<h5 class="card-title"></h5>
                         		</div>

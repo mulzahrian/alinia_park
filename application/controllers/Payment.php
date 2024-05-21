@@ -23,4 +23,32 @@ class Payment extends CI_Controller
             $this->load->view('payment/index',$data);
             $this->load->view('templates/footer2');
         }
+
+        public function payment_proses(){
+            //$create_by = $this->input->post('create_by');
+            $user_id = $this->input->post('user_id');
+
+            // cek jika ada gambar yang akan diupload
+            $upload_image = $_FILES['payment_image']['name'];
+            if ($upload_image) {
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size']      = '2048';
+                $config['upload_path'] = './assets/img/data/';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('payment_image')) {
+                    $new_image = $this->upload->data('file_name');
+                    $this->db->set('payment_image', $new_image);
+                } else {
+                    echo $this->upload->dispay_errors();
+                }
+            }
+            
+            if ($this->Room_model->paymentProses($upload_image,$user_id)) {
+                redirect('payment');
+            } else {
+                echo print_r("Error Data");
+            }
+        }
 }

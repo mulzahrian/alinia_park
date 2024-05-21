@@ -410,3 +410,44 @@ function proses_order(bank_account){
         }
     });
 }
+
+$('#payment_proses').on('click', function() {
+    payment_proses();
+});
+
+function payment_proses(){
+    var user_id = $('#user_id').val();
+    $.ajax({
+        url: '../payment/payment_proses',
+        method: 'POST',
+        data : {
+            create_by : user_id
+        },
+        success: function(response) {
+            try {
+                var data = $.parseJSON(response);
+                if (data['status'] == '200') {
+                    Swal.fire({
+                        title: "Berhasil di Proses",
+                        showDenyButton: false,
+                        showCancelButton: false,
+                        confirmButtonText: "Oke",
+                        text: "Success",
+                        icon: "success"
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                            location.reload();
+                        }
+                      });
+                }
+            } catch (e) {
+                console.log(e);
+                alert("Terjadi Kesalahan => 2" + e);
+            }
+        },
+        error: function(response) {
+            console.log(response);
+            alert('koneksi salah');
+        }
+    });
+}

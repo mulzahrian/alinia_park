@@ -140,8 +140,18 @@ class Room_model extends CI_Model
 
     public function getPaymentOrder($create_by)
     {
-        $query = $this->db->query("SELECT a.*,b.account_no,b.bank_name FROM tbl_order a,tbl_bank b WHERE a.status IN(2,3)  AND a.bank_code = b.account_no AND a.create_by = ?",array($create_by));
+        $query = $this->db->query("SELECT a.*,b.account_no,b.bank_name FROM tbl_order a,tbl_bank b WHERE a.status IN(2,3,4)  AND a.bank_code = b.account_no AND a.create_by = ?",array($create_by));
         return $query->result_array();
+    }
+
+    public function paymentProses($upload_image,$create_by)
+    {
+        $this->db->query("UPDATE tbl_order a SET a.status = 4,a.image_order = ? WHERE a.status = 2 AND a.create_by = ?", array($upload_image,$create_by));
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
 }

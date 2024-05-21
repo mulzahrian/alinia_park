@@ -262,4 +262,5 @@ foreach ($data['package_tbls'] as $package_tbl) {
             $this->load->view('order/payment',$data);
             $this->load->view('templates/footer2');
         }
+        
 }

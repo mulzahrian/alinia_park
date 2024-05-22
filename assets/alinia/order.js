@@ -41,6 +41,13 @@ var table_all_master_package = $('#table-all-master-package').DataTable({
 id_package_order_pub = '';
 order_request_type = '';
 
+if ($("#id_home").length) {
+    var show_modal = $('#show_modal').val();
+    if(show_modal == "1"){
+        $('#modalPackageOrder').modal('show');
+    }
+}
+
 
 if ($("#main-order-data").length) {
     var order_request_type = localStorage.getItem('order_request_type');
@@ -448,6 +455,44 @@ function payment_proses(){
         error: function(response) {
             console.log(response);
             alert('koneksi salah');
+        }
+    });
+}
+
+function checkOrderDone(){
+    var user_id = $('#user_id').val();
+    $.ajax({
+        url: '../order/check_order',
+        method: 'POST',
+        data : {
+            create_by : user_id,
+        },
+        success: function(response) {
+            try {
+                var data = $.parseJSON(response);
+                var has_order = "";
+                console.log(data);
+                var array = [];
+                $.each(data['Data'], function(index) {
+                    array.push([
+                        this['total']
+                    ]);
+                    has_order = this['total'];
+                });
+                if(has_order != '0'){
+                   
+                }else{
+                    
+                }
+                
+            } catch (e) {
+                console.log(e);
+                alert("Terjadi Kesalahan => 2" + e);
+            }
+        },
+        error: function(response) {
+            console.log(response);
+            alert('koneksi Error disini');
         }
     });
 }

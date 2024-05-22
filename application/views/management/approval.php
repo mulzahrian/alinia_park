@@ -5,15 +5,16 @@
     <div class="row">
         <div class="col-lg-12">
             <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
-            <?= $this->session->flashdata('message'); ?>
-            
-            <a href="" id="btn_tekan" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newPackageModal">Add Type</a>
-            
+            <?= $this->session->flashdata('message'); ?>            
                 <table id="table-list-approval" class="mdl-data-table" style="width:100%" cellspacing="0">
 					<thead>
                         <tr>
-							<th>Type Hotel</th>
-                            <th>Creator</th>
+							<th>Name</th>
+                            <th>Type</th>
+                            <th>Bank Name</th>
+                            <th>No Rek</th>
+                            <th>Phone</th>
+                            <th>Email</th>
 							<th>Action</th>		
 						</tr> 
 					</thead>

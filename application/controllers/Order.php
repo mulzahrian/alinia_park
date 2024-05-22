@@ -51,6 +51,13 @@ foreach ($data['package_tbls'] as $package_tbl) {
 }
     $ticket = $this->db->query("SELECT DATE_FORMAT(CURDATE(), '%d') AS current_month, a.Id_package_master, b.package_name, a.master_package_name, a.package_price FROM tbl_package_master a, tbl_package b WHERE a.id_package = b.Id_package AND b.Id_package = 1");
     $data['tickets'] = $ticket->result_array();
+
+    $status = 5;
+    $user_id = 13; // Sesuaikan dengan user_id yang diperlukan
+
+    $total_orders = $this->Room_model->get_total_orders_by_status_and_user($status, $user_id);
+    $data['show_modal'] = ($total_orders == 1) ? true : false;
+    
     $this->load->view('templates/header', $data);
     $this->load->view('templates/topbar', $data);
     $this->load->view('order/index',$data);
@@ -261,6 +268,14 @@ foreach ($data['package_tbls'] as $package_tbl) {
             $this->load->view('templates/topbar', $data);
             $this->load->view('order/payment',$data);
             $this->load->view('templates/footer2');
+        }
+
+        public function check_order(){
+            $create_by = $this->input->post('create_by');
+            $data['Data'] = $this->Room_model->checkOrderDone($create_by);
+            echo var_dump($data);
+            $this->output->set_output(json_encode($data));
+            
         }
         
 }

@@ -165,6 +165,28 @@ class Room_model extends CI_Model
         return $query->result_array();
     }
 
-    
-    
+    public function updateOrderFlag($id_order)
+    {
+        $this->db->query("UPDATE tbl_order a SET a.status = 5 WHERE a.status = 4 AND a.id_order = ?", array($id_order));
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function checkOrderDone($create_by)
+    {
+        $query = $this->db->query("SELECT COUNT(1) as total FROM `tbl_order` a WHERE a.status = 5 AND a.create_by = ?",array($create_by));
+        return $query->result_array();
+    }
+
+    public function get_total_orders_by_status_and_user($status, $user_id) {
+        $this->db->select('COUNT(1) AS TOTAL');
+        $this->db->from('tbl_order');
+        $this->db->where('status', $status);
+        $this->db->where('create_by', $user_id);
+        $query = $this->db->get();
+        return $query->row()->TOTAL;
+    }    
 }

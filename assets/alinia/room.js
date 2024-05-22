@@ -519,11 +519,15 @@ function getApprovalData() {
                 console.log(data);
                 var array = [];
                 $.each(data['Data'], function(index) {
-                    hapus_cek = '<a type="button" class="btn btn-warning btn-sm float-center ">Approve</a>' +
-                    '<a type="button" class="btn btn-danger btn-sm float-center">Reject</a>';
+                    hapus_cek = '<a type="button" class="btn btn-warning btn-sm float-center" onclick="appData('+ this['id_order'] +')"><b style="color: white;">Approve</b></a>' +
+                    '<a type="button" class="btn btn-danger btn-sm float-center"><b style="color: white;">Reject</b></a>';
                     array.push([
-                        this['hotel_type'],
                         this['name'],
+                        this['type'],
+                        this['bank_name'],
+                        this['account_no'],
+                        this['phone'],
+                        this['email'],
                         hapus_cek
                     ])
                 });
@@ -536,6 +540,61 @@ function getApprovalData() {
         error: function(response) {
             console.log(response);
             alert('koneksi salah');
+        }
+    });
+}
+
+function appData(id_order){
+    console.log(id_order);
+    $.ajax({
+        url: '../management/update_flag_app',
+        method: 'POST',
+        data : {
+            id_order : id_order
+        },
+        success: function(response) {
+                try {
+                    var data = $.parseJSON(response);
+                    
+                    if (data['status'] == '200') {
+                        //alert
+                        Swal.fire({
+                            title: "Berhasil di Approve",
+                            showDenyButton: false,
+                            showCancelButton: false,
+                            confirmButtonText: "Oke",
+                            text: "Success",
+                            icon: "success"
+                          }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                          });
+                    }else{
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.onmouseenter = Swal.stopTimer;
+                                toast.onmouseleave = Swal.resumeTimer;
+                            }
+                            });
+                            Toast.fire({
+                            icon: "warning",
+                            title: "Pemesanan gagal di approve tedapat kesalahan"
+                            });
+                    }
+                } catch (e) {
+                    console.log(e);
+                    alert("Terjadi Kesalahan =>" + e);
+                }
+        },
+        error: function(response) {
+            console.log(response);
+            alert('Koneksi Error');
         }
     });
 }

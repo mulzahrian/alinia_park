@@ -224,4 +224,15 @@ class Management extends CI_Controller
 		$this->output->set_output(json_encode($result));
 	}
 
+    public function update_flag_app(){;
+        $id_order = $this->input->post('id_order');
+        if ($this->Room_model->updateOrderFlag($id_order)) {
+            $this->output->set_status_header(200);
+            $this->output->set_output(json_encode(array('status' => '200')));
+        } else {
+            $this->output->set_status_header(500);
+            $this->output->set_output(json_encode(array('status' => '500')));
+        }
+    }
+
 }

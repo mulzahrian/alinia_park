@@ -153,5 +153,18 @@ class Room_model extends CI_Model
             return false;
         }
     }
+
+    public function getApprovalData()
+    {
+        $query = $this->db->query("SELECT a.id_order,d.name,a.type,a.image_order,c.bank_name,c.account_no,d.phone,d.email FROM tbl_order a,tbl_bank c,user d  WHERE a.bank_code = c.account_no
+        AND a.create_by = d.id
+        AND a.status = 4
+        AND c.status = 1
+        AND d.is_active = 1
+        ORDER BY a.id_order ASC;");
+        return $query->result_array();
+    }
+
+    
     
 }

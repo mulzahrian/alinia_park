@@ -137,25 +137,84 @@ class Auth extends CI_Controller
 
     private function _sendEmail($token, $type)
     {
+        // $config = [
+        //     'protocol'  => 'smtp',
+        //     'smtp_host' => 'ssl://smtp.googlemail.com',
+        //     'smtp_user' => 'aliniaemail@kariau.com',
+        //     'smtp_pass' => 'Al1nie123@',
+        //     'smtp_port' => 465,
+        //     'mailtype'  => 'html',
+        //     'charset'   => 'utf-8',
+        //     'newline'   => "\r\n"
+        // ];
+
         $config = [
             'protocol'  => 'smtp',
-            'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_user' => 'wpunpas@gmail.com',
-            'smtp_pass' => '1234567890',
+            'smtp_host' => 'ssl://smtp.hostinger.com',
+            'smtp_user' => 'aliniaemail@kariau.com',
+            'smtp_pass' => 'Al1nie123@',
             'smtp_port' => 465,
             'mailtype'  => 'html',
             'charset'   => 'utf-8',
             'newline'   => "\r\n"
         ];
+        
 
         $this->email->initialize($config);
 
-        $this->email->from('wpunpas@gmail.com', 'Web Programming UNPAS');
+        $this->email->from('aliniaemail@kariau.com', 'Alinia Park');
         $this->email->to($this->input->post('email'));
+
+        // Konten HTML email
+        $message = '
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Verify Your Account</title>
+            <style>
+                .email-container {
+                    font-family: Arial, sans-serif;
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    background-color: #f9f9f9;
+                }
+                .banner {
+                    width: 100%;
+                    height: auto;
+                }
+                .btn {
+                    display: inline-block;
+                    padding: 10px 20px;
+                    margin: 20px 0;
+                    color: #fff;
+                    background-color: #28a745;
+                    text-decoration: none;
+                    border-radius: 5px;
+                }
+                .btn:hover {
+                    background-color: #218838;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="email-container">
+                <img src="https://mulzahrian.wordpress.com/wp-content/uploads/2024/05/banner_data.png?w=1024" alt="Banner" class="banner">
+                <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '" class="btn"><b style="color: white;">Aktivasi</b></a>
+                <p>Click Tombol Aktivasi Di Bawah untuk mengaktifkan akun anda:</p>
+                
+            </div>
+        </body>
+        </html>
+        ';
 
         if ($type == 'verify') {
             $this->email->subject('Account Verification - Alinia Park');
-            $this->email->message('Click this link to verify you account : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Activate</a>');
+            $this->email->message($message);
         } else if ($type == 'forgot') {
             $this->email->subject('Reset Password - Alinia Park');
             $this->email->message('Click this link to reset your password : <a href="' . base_url() . 'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
@@ -313,3 +372,5 @@ class Auth extends CI_Controller
         }
     }
 }
+
+

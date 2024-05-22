@@ -97,6 +97,17 @@ var table_list_view_package = $('#table-list-view-package').DataTable({
     searching: true,
 });
 
+var table_list_approval = $('#table-list-approval').DataTable({
+    "columnDefs": [{
+        "targets": [],
+        "visible": false,
+        "responsive": true,
+    }],
+    retrieve: false,
+    paging: true,
+    searching: true,
+});
+
 //VARIABLE PUBLIC
 var id_package_public = '';
 var id_package_master_public = '';
@@ -120,6 +131,10 @@ if ($("#main-form-hotel").length) {
 
 if ($("#main-type-hotel").length) {
     getTypeHotelData();
+}
+
+if ($("#main-approval").length) {
+    getApprovalData();
 }
 
 
@@ -480,6 +495,39 @@ function getTypeHotelData() {
                     ])
                 });
                 table_list_hotel_type.rows.add(array).draw();
+            } catch (e) {
+                console.log(e);
+                alert("Terjadi Kesalahan => 2" + e);
+            }
+        },
+        error: function(response) {
+            console.log(response);
+            alert('koneksi salah');
+        }
+    });
+}
+
+
+function getApprovalData() {
+    $.ajax({ 
+        url: '../management/get_approval',
+        method: 'GET',
+        success: function(response) {
+            try {
+                var data = $.parseJSON(response);
+                table_list_approval.clear().draw();
+                console.log(data);
+                var array = [];
+                $.each(data['Data'], function(index) {
+                    hapus_cek = '<a type="button" class="btn btn-warning btn-sm float-center ">Approve</a>' +
+                    '<a type="button" class="btn btn-danger btn-sm float-center">Reject</a>';
+                    array.push([
+                        this['hotel_type'],
+                        this['name'],
+                        hapus_cek
+                    ])
+                });
+                table_list_approval.rows.add(array).draw();
             } catch (e) {
                 console.log(e);
                 alert("Terjadi Kesalahan => 2" + e);

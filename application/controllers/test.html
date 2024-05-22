@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Verify Your Account</title>
+            <style>
+                .email-container {
+                    font-family: Arial, sans-serif;
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    background-color: #f9f9f9;
+                }
+                .banner {
+                    width: 100%;
+                    height: auto;
+                }
+                .btn {
+                    display: inline-block;
+                    padding: 10px 20px;
+                    margin: 20px 0;
+                    color: #fff;
+                    background-color: #28a745;
+                    text-decoration: none;
+                    border-radius: 5px;
+                }
+                .btn:hover {
+                    background-color: #218838;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="email-container">
+                <img src="https://mulzahrian.wordpress.com/wp-content/uploads/2024/05/banner_data.png?w=1024" alt="Banner" class="banner">
+                <h2>Verify Your Account</h2>
+                <p>Click the button below to verify your account:</p>
+                <a href="' . $base_url . 'auth/verify?email=' . $email . '&token=' . $token . '" class="btn">Activate</a>
+            </div>
+        </body>
+        </html>

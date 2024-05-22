@@ -204,4 +204,24 @@ class Management extends CI_Controller
 		$this->output->set_output(json_encode($result));
 	}
 
+    public function approval(){
+        $data['title'] = 'Approval';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('management/approval');
+            $this->load->view('templates/footer');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">New Master Package Added!</div>');
+        } 
+    }
+
+    public function get_approval(){
+		$result['Data'] = $this->Room_model->getApprovalData();
+		$this->output->set_output(json_encode($result));
+	}
+
 }

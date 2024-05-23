@@ -63,6 +63,8 @@ foreach ($data['package_tbls'] as $package_tbl) {
     $this->load->view('order/index',$data);
     $this->load->view('modal/order_modal');
     $this->load->view('modal/check_order');
+    $this->load->view('modal/order_done');
+    $this->load->view('modal/rate_modal');
     $this->load->view('templates/footer2');
 }
 
@@ -273,9 +275,40 @@ foreach ($data['package_tbls'] as $package_tbl) {
         public function check_order(){
             $create_by = $this->input->post('create_by');
             $data['Data'] = $this->Room_model->checkOrderDone($create_by);
-            echo var_dump($data);
             $this->output->set_output(json_encode($data));
-            
+        }
+
+        public function finalProses(){
+            $create_by = $this->input->post('create_by');
+            if ($this->Room_model->finalProses($create_by)) {
+                $this->output->set_status_header(200);
+                $this->output->set_output(json_encode(array('status' => '200')));
+            } else {
+                $this->output->set_status_header(500);
+                $this->output->set_output(json_encode(array('status' => '500')));
+            }
+        }
+
+        public function check_comment(){
+            $create_by = $this->input->post('create_by');
+            $data['Data'] = $this->Room_model->checkHasComment($create_by);
+            $this->output->set_output(json_encode($data));
+        }
+
+        public function insetRate() {
+            $data = array(
+                'comment' => $this->input->post('comment'),
+                'start' => $this->input->post('start'),
+                'created_by' => $this->input->post('created_by'),
+                'status' => $this->input->post('status')
+            );
+            if ($this->Room_model->insert_rate($data)) {
+                $this->output->set_status_header(200);
+                $this->output->set_output(json_encode(array('status' => '200')));
+            } else {
+                $this->output->set_status_header(500);
+                $this->output->set_output(json_encode(array('status' => '500')));
+            }
         }
         
 }

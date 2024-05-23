@@ -188,5 +188,31 @@ class Room_model extends CI_Model
         $this->db->where('create_by', $user_id);
         $query = $this->db->get();
         return $query->row()->TOTAL;
-    }    
+    }
+    
+    public function finalProses($create_by)
+    {
+        $this->db->query("UPDATE tbl_order a SET a.status = 6 WHERE a.status = 5 AND a.create_by = ?", array($create_by));
+
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function checkHasComment($create_by)
+    {
+        $query = $this->db->query("SELECT COUNT(1) as total FROM `tbl_rate` a WHERE a.status = 1 AND a.created_by = ?",array($create_by));
+        return $query->result_array();
+    }
+
+    public function insert_rate($data) {
+        $this->db->insert('tbl_rate', $data);
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

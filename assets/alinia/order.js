@@ -44,7 +44,7 @@ order_request_type = '';
 if ($("#id_home").length) {
     var show_modal = $('#show_modal').val();
     if(show_modal == "1"){
-        $('#modalPackageOrder').modal('show');
+        $('#doneOrderModal').modal('show');
     }
 }
 
@@ -493,6 +493,143 @@ function checkOrderDone(){
         error: function(response) {
             console.log(response);
             alert('koneksi Error disini');
+        }
+    });
+}
+
+$('#finalOrderProses').on('click', function() {
+    finalProses();
+});
+
+function finalProses(){
+    var user_id = $('#user_id').val();
+    $.ajax({
+        url: 'order/finalProses',
+        method: 'POST',
+        data : {
+            create_by : user_id
+        },
+        success: function(response) {
+            try {
+                var data = $.parseJSON(response);
+                if (data['status'] == '200') {
+                    checkHasRate();
+                }
+            } catch (e) {
+                console.log(e);
+                alert("Terjadi Kesalahan => 2" + e);
+            }
+        },
+        error: function(response) {
+            console.log(response);
+            alert('koneksi salah');
+        }
+    });
+}
+
+function checkHasRate(){
+    var user_id = $('#user_id').val();
+    $.ajax({
+        url: 'order/check_comment',
+        method: 'POST',
+        data : {
+            create_by : user_id
+        },
+        success: function(response) {
+            try {
+                var data = $.parseJSON(response);
+                var has_order = "";
+                console.log(data);
+                var array = [];
+                $.each(data['Data'], function(index) {
+                    array.push([
+                        this['total']
+                    ]);
+                    has_order = this['total'];
+                });
+                if(has_order != '0'){
+                    
+                }else{
+                    $('#doneOrderModal').modal('hide');
+                    $('#ratingModal').modal('show');
+                }
+            } catch (e) {
+                console.log(e);
+                alert("Terjadi Kesalahan => 2" + e);
+            }
+        },
+        error: function(response) {
+            console.log(response);
+            alert('koneksi salah');
+        }
+    });
+}
+
+$('#doneRate').on('click', function() {
+    insertRate();
+});
+
+function insertRate(){
+    var comment = $('#comment').val();
+    var user_id = $('#user_id').val();
+    var selectedOption = $('input[name="feedback"]:checked').val();
+    if(comment == ""){
+        Swal.fire({
+            icon: "warning",
+            title: "Oops...",
+            text: "Harap isi Comment!"
+          });
+          return false;
+    }
+    if(selectedOption == ""){
+        Swal.fire({
+            icon: "warning",
+            title: "Oops...",
+            text: "Harap Rate terlebih dahulu"
+          });
+        return false;
+    }
+    var data = selectedOption;
+    console.log(selectedOption);
+    $.ajax({
+        url: 'order/insetRate',
+        method: 'POST',
+        data : {
+            comment : comment,
+            start : selectedOption,
+            created_by	 : user_id,
+            status : 1
+        },
+        success: function(response) {
+            try {
+                var data = $.parseJSON(response);
+            if (data['status'] == '200') {
+            //alert
+            $('#ratingModal').modal('hide');
+		    const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+            });
+            Toast.fire({
+            icon: "success",
+            title: "terimakasih sudah memberikan masukkan:"
+            });
+            }
+            } catch (e) {
+                console.log(e);
+                alert("Terjadi Kesalahan => 2" + e);
+            }
+        },
+        error: function(response) {
+            console.log(response);
+            alert('koneksi salah');
         }
     });
 }

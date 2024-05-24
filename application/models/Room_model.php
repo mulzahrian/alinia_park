@@ -215,4 +215,69 @@ class Room_model extends CI_Model
             return false;
         }
     }
+
+    public function getHistoryData($create_by)
+    {
+        $query = $this->db->query("SELECT
+        a.id_order,
+        b.account_no,
+        b.bank_name,
+        a.type,
+        a.orderId,
+        CASE
+            WHEN a.end_date < CURDATE() THEN 1
+            ELSE 0
+        END AS status,
+        CASE
+            WHEN a.order_type = 1 THEN 'Personal'
+            ELSE 'Group'
+        END AS status_order,
+        SUM(c.total_price) AS total_order
+    FROM 
+        tbl_order a
+        JOIN tbl_bank b ON a.bank_code = b.account_no
+        JOIN tbl_order_detail c ON a.id_order = c.id_order
+    WHERE 
+        a.status = 6
+        a.create_by = ?
+    GROUP BY 
+        b.account_no, 
+        b.bank_name, 
+        a.type, 
+        a.orderId, 
+        status, 
+        status_order",array($create_by));
+        return $query->result_array();
+    }
+
+    public function get_orders_by_date($id_user) {
+        $this->db->select('a.id_order, b.account_no, b.bank_name, a.type, a.orderId, 
+            CASE
+                WHEN a.end_date < CURDATE() THEN 1
+                ELSE 0
+            END AS status,
+            CASE
+                WHEN a.order_type = 1 THEN \'Personal\'
+                ELSE \'Group\'
+            END AS status_order,
+            DATE_FORMAT(a.create_date, \'%d %b,%Y,%H:%i:%s\') AS formatted_create_date,
+            SUM(c.total_price) AS total_order');
+        $this->db->from('tbl_order a');
+        $this->db->join('tbl_bank b', 'a.bank_code = b.account_no');
+        $this->db->join('tbl_order_detail c', 'a.id_order = c.id_order');
+        $this->db->where('a.create_by', $id_user);
+        $this->db->where('a.status', 6);
+        $this->db->order_by('a.id_order', 'DESC');
+        $this->db->group_by('a.id_order, b.account_no, b.bank_name, a.type, a.orderId, status, status_order');
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function getDetailHistory($id_order,$create_by)
+    {
+        $query = $this->db->query("SELECT * FROM tbl_order k WHERE k.id_order = ? and k.status = 6 and k.create_by = ?",array($id_order,$create_by));
+        return $query->result_array();
+    }
+
 }

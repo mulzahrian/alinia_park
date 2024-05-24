@@ -73,6 +73,7 @@ function checkHasOrder2(){
 
 
 function insertOrderHotel(){
+    var idWithDateTime = generateIdWithDateTime();
     var order_type = $('#order_type_hotel').val();
     var type = $('#type_hotel').val();
     var date = $('#start_date1').val();
@@ -87,6 +88,7 @@ function insertOrderHotel(){
             date : date,
             end_date : end_date,
             create_by : user_id,
+            orderId : idWithDateTime,
             status : 1
         },
         success: function(response) {

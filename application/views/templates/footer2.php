@@ -25,7 +25,7 @@
                 <i class="fas fa-shopping-cart"></i>
                 <span>Order</span>
             </a>
-            <a href="#" class="android-footer-item">
+            <a href="<?php echo base_url('order/history'); ?>" class="android-footer-item">
                 <i class="fas fa-history"></i>
                 <span>History</span>
             </a>

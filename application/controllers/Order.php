@@ -78,6 +78,7 @@ foreach ($data['package_tbls'] as $package_tbl) {
             $this->db->from('tbl_order_detail a');
             $this->db->join('tbl_order b', 'a.id_order = b.id_order');
             $this->db->where('b.create_by', $data['user']['id']);
+            $this->db->where('b.status', 1);
             $this->db->limit(1); // Asumsikan kita hanya perlu satu nilai type untuk pengecekan
             $query = $this->db->get();
             $row = $query->row();
@@ -124,7 +125,8 @@ foreach ($data['package_tbls'] as $package_tbl) {
             $data = array(
                 'order_type' => $this->input->post('order_type'),
                 'type' => $this->input->post('type'),
-                'start_date' => $this->input->post('date'),
+                'end_date' => $this->input->post('date'),
+                'orderId' => $this->input->post('orderId'),
                 'create_by' => $this->input->post('create_by'),
                 'status' => $this->input->post('status'),
                 // Add other fields as needed
@@ -149,6 +151,7 @@ foreach ($data['package_tbls'] as $package_tbl) {
                 'start_date' => $this->input->post('date'),
                 'end_date' => $this->input->post('end_date'),
                 'create_by' => $this->input->post('create_by'),
+                'orderId' => $this->input->post('orderId'),
                 'status' => $this->input->post('status'),
                 // Add other fields as needed
             );
@@ -309,6 +312,27 @@ foreach ($data['package_tbls'] as $package_tbl) {
                 $this->output->set_status_header(500);
                 $this->output->set_output(json_encode(array('status' => '500')));
             }
+        }
+
+        public function history()
+        {
+            $data['title'] = 'History';
+            $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+            $id_user = $data['user']['id'];
+            $data['payments'] = $this->Room_model->get_orders_by_date($id_user);
+
+            $this->load->view('templates/header2', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('order/history',$data);
+            $this->load->view('templates/footer2');
+        }
+
+        public function getDetailHistory(){
+            $create_by = $this->input->post('create_by');
+            $id_order = $this->input->post('id_order');
+            $data['Data'] = $this->Room_model->getDetailHistory($id_order,$create_by);
+            $this->output->set_output(json_encode($data));
         }
         
 }

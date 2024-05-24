@@ -77,6 +77,7 @@ $('#confirm_order_package').on('click', function() {
 
 var publik_order_type = "";
 function insertOrderPackage(){
+    var idWithDateTime = generateIdWithDateTime();
     var order_type = $('#order_type').val();
     var type = $('#type').val();
     var date = $('#start_date').val();
@@ -90,6 +91,7 @@ function insertOrderPackage(){
             type : type,
             date : date,
             create_by : user_id,
+            orderId : idWithDateTime,
             status : 1
         },
         success: function(response) {
@@ -114,6 +116,32 @@ function insertOrderPackage(){
     });
 }
 
+//Random Id
+function generateIdWithDateTime() {
+    let randomId = generateRandomId(9);
+    let dateTime = getCurrentDateTime();
+    return randomId + dateTime;
+}
+
+function getCurrentDateTime() {
+    let now = new Date();
+    let year = now.getFullYear();
+    let month = String(now.getMonth() + 1).padStart(2, '0');
+    let day = String(now.getDate()).padStart(2, '0');
+    let hours = String(now.getHours()).padStart(2, '0');
+    let minutes = String(now.getMinutes()).padStart(2, '0');
+    let seconds = String(now.getSeconds()).padStart(2, '0');
+    return `${year}${month}${day}${hours}${minutes}${seconds}`;
+}
+
+function generateRandomId(length) {
+    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let randomId = '';
+    for (let i = 0; i < length; i++) {
+        randomId += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return randomId;
+}
 
 function getOrderStatusActive(id_package_order_pub){
     var user_id = $('#user_id').val();
@@ -522,7 +550,7 @@ function finalProses(){
         },
         error: function(response) {
             console.log(response);
-            alert('koneksi salah');
+            alert('koneksi salah finalProses');
         }
     });
 }
@@ -548,6 +576,8 @@ function checkHasRate(){
                     has_order = this['total'];
                 });
                 if(has_order != '0'){
+                    $('#doneOrderModal').modal('hide');
+                    return false;
                     
                 }else{
                     $('#doneOrderModal').modal('hide');
@@ -560,7 +590,7 @@ function checkHasRate(){
         },
         error: function(response) {
             console.log(response);
-            alert('koneksi salah');
+            alert('koneksi salah checkHasRate');
         }
     });
 }
@@ -629,7 +659,46 @@ function insertRate(){
         },
         error: function(response) {
             console.log(response);
-            alert('koneksi salah');
+            alert('koneksi salah insertRate');
+        }
+    });
+}
+
+function getDetailHistory(id_order){
+    var user_id = $('#user_id').val();
+    $.ajax({
+        url: 'order/getDetailHistory',
+        method: 'POST',
+        data : {
+            create_by : user_id,
+            id_order : id_order
+        },
+        success: function(response) {
+            try {
+                var data = $.parseJSON(response);
+                var type = "";
+                var orderId = "";
+                console.log(data);
+                var array = [];
+                $.each(data['Data'], function(index) {
+                    array.push([
+                        this['type'],
+                        this['orderId']
+                    ]);
+                    type = this['type'];
+                    orderId = this['orderId'];
+                });
+                $('#detailOrderHotelModal').modal('show');
+                $('#harga_order_hotel').val(total);
+                $('#harga_order_hotel').val(total);
+            } catch (e) {
+                console.log(e);
+                alert("Terjadi Kesalahan => 2" + e);
+            }
+        },
+        error: function(response) {
+            console.log(response);
+            alert('koneksi salah checkHasRate');
         }
     });
 }

@@ -10,12 +10,12 @@
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown1">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="<?php echo base_url('user/detailUser'); ?>">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         My Profile
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="<?php echo base_url('user/editd'); ?>">
                     <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
                         Edit Profile
                 </a>

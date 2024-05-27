@@ -61,16 +61,16 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Paket</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="property-list.html" class="dropdown-item">Property List</a>
-                                <a href="property-type.html" class="dropdown-item">Property Type</a>
-                                <a href="property-agent.html" class="dropdown-item">Property Agent</a>
+                                <a href="property-list.html" class="dropdown-item">Paket 1</a>
+                                <a href="property-type.html" class="dropdown-item">Paket 2</a>
+                                <a href="property-agent.html" class="dropdown-item">Paket 3</a>
                             </div>
                         </div>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Ketentuan</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="404.html" class="dropdown-item">404 Error</a>
+                                <a href="testimonial.html" class="dropdown-item">Regulasi</a>
+                                <a href="404.html" class="dropdown-item">Pembayaran</a>
                             </div>
                         </div>
                         <!-- <a href="contact.html" class="nav-item nav-link">null</a> -->
@@ -116,22 +116,22 @@
                     <div class="col-md-10">
                         <div class="row g-2">
                             <div class="col-md-4">
-                                <input type="text" class="form-control border-0 py-3" placeholder="Search Keyword">
+                                <input type="text" class="form-control border-0 py-3" placeholder="Cari....">
                             </div>
                             <div class="col-md-4">
                                 <select class="form-select border-0 py-3">
-                                    <option selected>Property Type</option>
-                                    <option value="1">Property Type 1</option>
-                                    <option value="2">Property Type 2</option>
-                                    <option value="3">Property Type 3</option>
+                                    <option selected>Paket</option>
+                                    <option value="1">Paket 1</option>
+                                    <option value="2">Paket 2</option>
+                                    <option value="3">Paket 3</option>
                                 </select>
                             </div>
                             <div class="col-md-4">
                                 <select class="form-select border-0 py-3">
-                                    <option selected>Location</option>
-                                    <option value="1">Location 1</option>
-                                    <option value="2">Location 2</option>
-                                    <option value="3">Location 3</option>
+                                    <option selected>Hotel</option>
+                                    <option value="1">Hotel 1</option>
+                                    <option value="2">Hotel 2</option>
+                                    <option value="3">Hotel 3</option>
                                 </select>
                             </div>
                         </div>

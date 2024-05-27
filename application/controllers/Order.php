@@ -53,7 +53,7 @@ foreach ($data['package_tbls'] as $package_tbl) {
     $data['tickets'] = $ticket->result_array();
 
     $status = 5;
-    $user_id = 13; // Sesuaikan dengan user_id yang diperlukan
+    $user_id = $data['user']['id']; // Sesuaikan dengan user_id yang diperlukan
 
     $total_orders = $this->Room_model->get_total_orders_by_status_and_user($status, $user_id);
     $data['show_modal'] = ($total_orders == 1) ? true : false;
@@ -325,6 +325,7 @@ foreach ($data['package_tbls'] as $package_tbl) {
             $this->load->view('templates/header2', $data);
             $this->load->view('templates/topbar', $data);
             $this->load->view('order/history',$data);
+            $this->load->view('modal/detail_history');
             $this->load->view('templates/footer2');
         }
 

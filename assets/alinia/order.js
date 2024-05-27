@@ -667,7 +667,7 @@ function insertRate(){
 function getDetailHistory(id_order){
     var user_id = $('#user_id').val();
     $.ajax({
-        url: 'order/getDetailHistory',
+        url: '../order/getDetailHistory',
         method: 'POST',
         data : {
             create_by : user_id,
@@ -688,9 +688,11 @@ function getDetailHistory(id_order){
                     type = this['type'];
                     orderId = this['orderId'];
                 });
-                $('#detailOrderHotelModal').modal('show');
-                $('#harga_order_hotel').val(total);
-                $('#harga_order_hotel').val(total);
+                $('#type_data_detail').text(type);
+                $('#order_id_detail').text(orderId);
+                console.log(type,orderId);
+                $('#detailHistoryModal').modal('show');
+                
             } catch (e) {
                 console.log(e);
                 alert("Terjadi Kesalahan => 2" + e);

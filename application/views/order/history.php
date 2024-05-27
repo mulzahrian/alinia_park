@@ -35,7 +35,7 @@
                                                     <?php if ($payments->status == 0) : ?>
                                                     <div>
                                                         <p></p>
-                                                        <a type="button" id="proses_order" class="btn btn-success" onclick="getDetailHistory(<?php echo $payments->id_order; ?>)"><b style="color: white;">Detail</b></a>
+                                                        <a type="button" id="get_detail_hist" class="btn btn-success" onclick="getDetailHistory(<?php echo $payments->id_order; ?>)"><b style="color: white;">Detail</b></a>
                                                     </div>
                                                     <?php else : ?>
                                                         <p><i class="fas fa-check"></i> Pesanan Selesai</p>

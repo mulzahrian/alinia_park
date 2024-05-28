@@ -308,13 +308,59 @@ function getTypeData() {
                 console.log(data);
                 var array = [];
                 $.each(data['Data'], function(index) {
-                    hapus_cek = '<a type="button" class="btn btn-warning btn-sm float-center "><i class="fas fa-pen" style="color:green"></i></a>' +
+                    hapus_cek = '<a type="button" class="btn btn-success btn-sm float-center "><i class="fas fa-pen" style="color:green" onclick="reloadPage('+ this['Id_type_package'] +')"></i></a>' +
+                    '<a type="button" class="btn btn-warning btn-sm float-center "><i class="fas fa-pen" style="color:green"></i></a>' +
                     '<a type="button" class="btn btn-danger btn-sm float-center"><i class="fas fa-trash-alt" style="color:green"></i></a>';
                     array.push([
                         this['type_name'],
                         this['name'],
                         hapus_cek
                     ])
+                });
+                table_list_type.rows.add(array).draw();
+            } catch (e) {
+                console.log(e);
+                alert("Terjadi Kesalahan => 2" + e);
+            }
+        },
+        error: function(response) {
+            console.log(response);
+            alert('koneksi salah');
+        }
+    });
+}
+
+function reloadPage(Id_type_package){
+    $.ajax({ 
+        url: '../management/get_type_data',
+        method: 'GET',
+        success: function(response) {
+            try {
+                var data = $.parseJSON(response);
+                table_list_type.clear().draw();
+                console.log(data);
+                var array = [];
+                $.each(data['Data'], function(index) {
+                    hapus_cek = '<a type="button" class="btn btn-success btn-sm float-center "><i class="fas fa-pen" style="color:green" onclick="reloadPage('+ this['Id_type_package'] +')"></i></a>' +
+                    '<a type="button" class="btn btn-warning btn-sm float-center "><i class="fas fa-pen" style="color:green"></i></a>' +
+                    '<a type="button" class="btn btn-danger btn-sm float-center"><i class="fas fa-trash-alt" style="color:green"></i></a>';
+                    form = '<div class="input-group div-kode-prg" id="div-kode-prg' + this['Id_type_package'] + '">' +
+                    '<input maxlength = "50" style="width: 100%;" type="text" class="form-control input-sm " id="input-kode-penerima' + this['Id_type_package'] + '" value ="" >' +
+                    '</div>'
+                    if(this['Id_type_package'] != Id_type_package){
+                    array.push([
+                        this['type_name'],
+                        this['name'],
+                        hapus_cek
+                    ])
+                    }else{
+                        //hapus_cek = 'test';
+                    array.push([
+                        this['type_name'],
+                        form,
+                        hapus_cek
+                    ])
+                    }
                 });
                 table_list_type.rows.add(array).draw();
             } catch (e) {

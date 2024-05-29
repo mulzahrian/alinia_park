@@ -235,4 +235,17 @@ class Management extends CI_Controller
         }
     }
 
+    public function update_type(){;
+        $Id_type_package = $this->input->post('Id_type_package');
+        $type_name = $this->input->post('type_name');
+        $create_by = $this->input->post('create_by');
+        if ($this->Room_model->updateType($Id_type_package,$type_name,$create_by)) {
+            $this->output->set_status_header(200);
+            $this->output->set_output(json_encode(array('status' => '200')));
+        } else {
+            $this->output->set_status_header(500);
+            $this->output->set_output(json_encode(array('status' => '500')));
+        }
+    }
+
 }

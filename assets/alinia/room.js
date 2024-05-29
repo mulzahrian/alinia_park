@@ -312,8 +312,8 @@ function getTypeData() {
                     '<a type="button" class="btn btn-warning btn-sm float-center "><i class="fas fa-pen" style="color:green"></i></a>' +
                     '<a type="button" class="btn btn-danger btn-sm float-center"><i class="fas fa-trash-alt" style="color:green"></i></a>';
                     array.push([
-                        this['type_name'],
                         this['name'],
+                        this['type_name'],
                         hapus_cek
                     ])
                 });
@@ -345,20 +345,21 @@ function reloadPage(Id_type_package){
                     '<a type="button" class="btn btn-warning btn-sm float-center "><i class="fas fa-pen" style="color:green"></i></a>' +
                     '<a type="button" class="btn btn-danger btn-sm float-center"><i class="fas fa-trash-alt" style="color:green"></i></a>';
                     form = '<div class="input-group div-kode-prg" id="div-kode-prg' + this['Id_type_package'] + '">' +
-                    '<input maxlength = "50" style="width: 100%;" type="text" class="form-control input-sm " id="input-kode-penerima' + this['Id_type_package'] + '" value ="" >' +
+                    '<input maxlength = "50" style="width: 100%;" type="text" class="form-control input-sm " id="input-type-name' + this['Id_type_package'] + '" value ="' + this['type_name'] + '" >' +
                     '</div>'
+                    save_edit = '<a type="button" class="btn btn-success btn-sm float-center "><i class="fas fa-check" style="color:green" onclick="saveEditType('+ this['Id_type_package'] +')"></i>Edit</a>'
                     if(this['Id_type_package'] != Id_type_package){
                     array.push([
-                        this['type_name'],
                         this['name'],
+                        this['type_name'],
                         hapus_cek
                     ])
                     }else{
                         //hapus_cek = 'test';
                     array.push([
-                        this['type_name'],
+                        this['name'],
                         form,
-                        hapus_cek
+                        save_edit
                     ])
                     }
                 });
@@ -371,6 +372,39 @@ function reloadPage(Id_type_package){
         error: function(response) {
             console.log(response);
             alert('koneksi salah');
+        }
+    });
+}
+
+function saveEditType(Id_type_package){
+    var Id_type_package = Id_type_package;
+    var type_name = $('#input-type-name' + Id_type_package).val();
+    var user_id = $('#user_id').val();
+    $.ajax({
+        url: '../management/update_type',
+        method: 'POST',
+        data : {
+            Id_type_package : Id_type_package,
+            type_name : type_name,
+            create_by : user_id
+        },
+        success: function(response) {
+                try {
+                    var data = $.parseJSON(response);
+                    if (data['status'] == '200') {
+                        alert('data berhasil diinputkan');
+                        getTypeData();
+                    }else{
+                        alert('data gagal diinputkan')
+                    }
+                } catch (e) {
+                    console.log(e);
+                    alert("Terjadi Kesalahan =>" + e);
+                }
+        },
+        error: function(response) {
+            console.log(response);
+            alert('Koneksi Error');
         }
     });
 }

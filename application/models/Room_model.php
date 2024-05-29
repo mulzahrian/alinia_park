@@ -280,4 +280,14 @@ class Room_model extends CI_Model
         return $query->result_array();
     }
 
+    public function updateType($Id_type_package,$type_name,$create_by)
+    {
+        $this->db->query("UPDATE tbl_package_type a SET a.type_name = ? WHERE a.status = 1 AND a.create_by = ? AND a.Id_type_package = ?", array($type_name,$create_by,$Id_type_package));
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

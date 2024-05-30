@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 03 Mei 2024 pada 06.26
+-- Generation Time: 30 Mei 2024 pada 11.37
 -- Versi Server: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -37,6 +37,48 @@ WHERE
 END$$
 
 DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_bank`
+--
+
+CREATE TABLE `tbl_bank` (
+  `id_bank` int(12) NOT NULL,
+  `bank_name` varchar(250) NOT NULL,
+  `account_no` int(50) NOT NULL,
+  `create_by` varchar(250) NOT NULL,
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_by` varchar(100) NOT NULL,
+  `update_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` int(12) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_bank`
+--
+
+INSERT INTO `tbl_bank` (`id_bank`, `bank_name`, `account_no`, `create_by`, `create_date`, `update_by`, `update_date`, `status`) VALUES
+(1, 'Bank Bca', 976213123, '14', '2024-05-18 00:07:26', '', '2024-05-18 00:07:26', 1),
+(2, 'Bank Mandiri', 821989089, '14', '2024-05-18 00:09:20', '', '2024-05-18 00:09:20', 1),
+(3, 'Bank Bri', 776572319, '14', '2024-05-18 00:10:44', '', '2024-05-18 00:10:44', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_fav`
+--
+
+CREATE TABLE `tbl_fav` (
+  `id_fav` int(12) NOT NULL,
+  `id_package` int(50) NOT NULL,
+  `create_by` varchar(250) NOT NULL,
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_by` varchar(100) NOT NULL,
+  `update_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -155,6 +197,64 @@ INSERT INTO `tbl_hotel_type` (`Id_hotel_type`, `hotel_type`, `create_date`, `cre
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tbl_order`
+--
+
+CREATE TABLE `tbl_order` (
+  `id_order` int(12) NOT NULL,
+  `type` varchar(250) NOT NULL,
+  `order_type` varchar(250) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `image_order` text NOT NULL,
+  `bank_code` int(20) NOT NULL,
+  `orderId` varchar(100) NOT NULL,
+  `create_by` varchar(12) NOT NULL,
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_by` varchar(12) NOT NULL,
+  `update_date` datetime NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_order`
+--
+
+INSERT INTO `tbl_order` (`id_order`, `type`, `order_type`, `start_date`, `end_date`, `image_order`, `bank_code`, `orderId`, `create_by`, `create_date`, `update_by`, `update_date`, `status`) VALUES
+(20, 'Paket', '1', '0000-00-00', '2024-05-25', 'GojekDatabase.PNG', 976213123, 'NjIzcj0hO20240524191337', '22', '2024-05-24 19:13:37', '', '0000-00-00 00:00:00', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_order_detail`
+--
+
+CREATE TABLE `tbl_order_detail` (
+  `id_order_detail` int(12) NOT NULL,
+  `id_order` int(12) NOT NULL,
+  `id_hotel` int(12) NOT NULL,
+  `id_package_mas` int(12) NOT NULL,
+  `order_price` int(12) NOT NULL,
+  `total_price` int(12) NOT NULL,
+  `order_number` int(12) NOT NULL,
+  `create_by` varchar(100) NOT NULL,
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_by` varchar(250) NOT NULL,
+  `update_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` int(12) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_order_detail`
+--
+
+INSERT INTO `tbl_order_detail` (`id_order_detail`, `id_order`, `id_hotel`, `id_package_mas`, `order_price`, `total_price`, `order_number`, `create_by`, `create_date`, `update_by`, `update_date`, `status`) VALUES
+(51, 20, 0, 1, 30000, 30000, 1, '22', '2024-05-24 19:13:40', '', '2024-05-24 19:13:40', 1),
+(52, 20, 0, 5, 25000, 25000, 1, '22', '2024-05-24 19:13:52', '', '2024-05-24 19:13:52', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tbl_package`
 --
 
@@ -174,7 +274,9 @@ CREATE TABLE `tbl_package` (
 
 INSERT INTO `tbl_package` (`Id_package`, `package_name`, `create_by`, `create_date`, `update_by`, `update_date`, `status`) VALUES
 (1, 'Tiket Masuk', '14', '2024-03-27 10:20:58', '', '2024-03-27 10:20:58', 1),
-(2, 'Ruang Meeting & Hiburan', '12', '2024-05-03 10:45:20', '', '2024-05-03 10:45:20', 1);
+(2, 'Ruang Meeting & Hiburan', '12', '2024-05-03 10:45:20', '', '2024-05-03 10:45:20', 1),
+(3, 'Paket Meeting', '12', '2024-05-03 15:10:04', '', '2024-05-03 15:10:04', 1),
+(4, 'Tambahan Makanan/Meal', '12', '2024-05-03 15:10:34', '', '2024-05-03 15:10:34', 1);
 
 -- --------------------------------------------------------
 
@@ -203,7 +305,9 @@ INSERT INTO `tbl_package_detail` (`id_package_detail`, `id_package_master`, `nam
 (9, 1, 'Panahan', '12', '2024-05-03 11:20:49', '', '2024-05-03 11:20:49', 1),
 (10, 1, 'Free Parking', '12', '2024-05-03 11:21:10', '', '2024-05-03 11:21:10', 1),
 (11, 2, 'Seluruh Wahana', '12', '2024-05-03 11:21:50', '', '2024-05-03 11:21:50', 1),
-(12, 2, 'Free Parking', '12', '2024-05-03 11:22:15', '', '2024-05-03 11:22:15', 1);
+(12, 2, 'Free Parking', '12', '2024-05-03 11:22:15', '', '2024-05-03 11:22:15', 1),
+(13, 3, 'Kapasitas Max 50 - 100 Orang', '12', '2024-05-03 15:07:22', '', '2024-05-03 15:07:22', 1),
+(14, 4, 'Kapasitas Max 25 Orang', '12', '2024-05-03 15:07:22', '', '2024-05-03 15:07:22', 1);
 
 -- --------------------------------------------------------
 
@@ -218,6 +322,7 @@ CREATE TABLE `tbl_package_master` (
   `package_price` int(250) NOT NULL,
   `id_type_package` varchar(250) NOT NULL,
   `type_status` tinyint(1) NOT NULL,
+  `package_image` varchar(250) NOT NULL,
   `create_by` varchar(100) NOT NULL,
   `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_by` varchar(100) NOT NULL,
@@ -229,9 +334,13 @@ CREATE TABLE `tbl_package_master` (
 -- Dumping data untuk tabel `tbl_package_master`
 --
 
-INSERT INTO `tbl_package_master` (`Id_package_master`, `id_package`, `master_package_name`, `package_price`, `id_type_package`, `type_status`, `create_by`, `create_date`, `update_by`, `update_date`, `status`) VALUES
-(1, 1, 'Tiket Biasa', 30000, '1', 0, 'System', '2024-03-27 10:22:06', '', '2024-03-27 10:22:06', 1),
-(2, 1, 'Tiket Terusan', 50000, '1', 0, 'System', '2024-04-24 10:53:09', '', '2024-04-24 10:53:09', 1);
+INSERT INTO `tbl_package_master` (`Id_package_master`, `id_package`, `master_package_name`, `package_price`, `id_type_package`, `type_status`, `package_image`, `create_by`, `create_date`, `update_by`, `update_date`, `status`) VALUES
+(1, 1, 'Tiket Biasa', 30000, '1', 0, 'tiket_1.png', 'System', '2024-03-27 10:22:06', '', '2024-03-27 10:22:06', 1),
+(2, 1, 'Tiket Terusan', 50000, '1', 0, 'water_park.png', 'System', '2024-04-24 10:53:09', '', '2024-04-24 10:53:09', 1),
+(3, 2, 'Meeting Room 1', 2000000, '0', 0, 'meeting_1.png', '12', '2024-05-03 15:05:08', '', '2024-05-03 15:05:08', 1),
+(4, 2, 'Meeting Room 2', 500000, '0', 0, 'meeting_2.png', '12', '2024-05-03 15:05:08', '', '2024-05-03 15:05:08', 1),
+(5, 4, 'Nasi Box (1 Protein)', 25000, '0', 0, 'nasi_box1.png', '12', '2024-05-03 15:13:07', '', '2024-05-03 15:13:07', 1),
+(6, 4, 'Nasi Box (2 Protein)', 35000, '0', 0, 'no_image.png', '12', '2024-05-03 15:13:07', '', '2024-05-03 15:13:07', 1);
 
 -- --------------------------------------------------------
 
@@ -244,7 +353,7 @@ CREATE TABLE `tbl_package_type` (
   `type_name` varchar(250) NOT NULL,
   `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `create_by` varchar(250) NOT NULL,
-  `update_date` datetime NOT NULL,
+  `update_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_by` varchar(250) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -254,7 +363,34 @@ CREATE TABLE `tbl_package_type` (
 --
 
 INSERT INTO `tbl_package_type` (`Id_type_package`, `type_name`, `create_date`, `create_by`, `update_date`, `update_by`, `status`) VALUES
-(1, 'per trip', '2024-04-04 08:58:33', '14', '0000-00-00 00:00:00', '', 1);
+(1, 'per trip', '2024-04-04 08:58:33', '14', '0000-00-00 00:00:00', '', 1),
+(2, 'per orang', '2024-05-08 13:04:17', '14', '0000-00-00 00:00:00', '', 1),
+(3, 'per tenda', '2024-05-08 13:04:35', '14', '0000-00-00 00:00:00', '', 1),
+(4, 'per peieces', '2024-05-08 13:05:41', '14', '2024-05-08 13:05:41', '', 1),
+(5, 'per kilogram', '2024-05-08 13:05:52', '14', '2024-05-08 13:05:52', '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_rate`
+--
+
+CREATE TABLE `tbl_rate` (
+  `id_rate` int(12) NOT NULL,
+  `comment` text NOT NULL,
+  `start` int(11) NOT NULL,
+  `created_by` varchar(12) NOT NULL,
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` int(12) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_rate`
+--
+
+INSERT INTO `tbl_rate` (`id_rate`, `comment`, `start`, `created_by`, `create_date`, `status`) VALUES
+(4, 'Sangat sangat bagus dan sangat fast response untuk pemesanannya', 4, '13', '2024-05-24 02:22:12', 1),
+(5, 'Pelayanan bagus sekali dan cepat', 5, '22', '2024-05-24 19:14:58', 1);
 
 -- --------------------------------------------------------
 
@@ -298,9 +434,10 @@ INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_a
 (5, 'Sandhika Galih', 'sandhikagalih@unpas.ac.id', 'profile1.jpg', '$2y$10$nXnrqGQTjpvg58OtOB/N.evYQjVlz7KIW37oUSQSQ2EgNMD0Dgrzq', 1, 1, 1552120289, NULL),
 (6, 'Doddy Ferdiansyah', 'doddy@gmail.com', 'profile.jpg', '$2y$10$FhGzXwwTWLN/yonJpDLR0.nKoeWlKWBoRG9bsk0jOAgbJ007XzeFO', 2, 1, 1552285263, NULL),
 (11, 'Sandhika Galih', 'sandhikagalih@gmail.com', 'default.jpg', '$2y$10$0QYEK1pB2L.Rdo.ZQsJO5eeTSpdzT7PvHaEwsuEyGSs0J1Qf5BoSq', 2, 1, 1553151354, NULL),
-(12, 'admin', 'admin@gmail.com', 'teast123.png', '$2y$10$BX3s2MURD07J22g/YodhRefKb345dZsgr83mV0.XU5287P.agtEDK', 1, 1, 1707125369, NULL),
+(12, 'admin2', 'admin@gmail.com', 'teast123.png', '$2y$10$BX3s2MURD07J22g/YodhRefKb345dZsgr83mV0.XU5287P.agtEDK', 1, 1, 1707125369, NULL),
 (13, 'user', 'user@gmail.com', 'biru.PNG', '$2y$10$INXn0FCDUQpNNIuK1kxL.On.Vl.jVIq.cHcRAOg.r9WsX.PAK//d.', 2, 1, 1707719652, '085265711546'),
-(14, 'manajemen', 'manajemen@gmail.com', 'default.jpg', '$2y$10$yQsYFhHgy718PY8p.cF2LeIFQqHRXmVQAU32WcebhH.lJbMHGxRkm', 3, 1, 1711522122, '085265711544');
+(14, 'manajemen', 'manajemen@gmail.com', 'default.jpg', '$2y$10$yQsYFhHgy718PY8p.cF2LeIFQqHRXmVQAU32WcebhH.lJbMHGxRkm', 3, 1, 1711522122, '085265711544'),
+(22, 'indo pop culture', 'cultureindopop@gmail.com', 'default.jpg', '$2y$10$Dka4HhyfHSQPMDeNu3meweXf5eQcJAJw7wNF70UfehOumUhCqG/vm', 2, 1, 1716551188, '085265711545');
 
 -- --------------------------------------------------------
 
@@ -323,7 +460,6 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (3, 2, 2),
 (7, 1, 3),
 (8, 1, 2),
-(9, 1, 4),
 (10, 3, 4);
 
 -- --------------------------------------------------------
@@ -392,14 +528,18 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `id_sideba
 (2, 2, 'My Profile', 'user', 'fas fa-fw fa-user', 'USR', 1),
 (3, 2, 'Edit Profile', 'user/edit', 'fas fa-fw fa-user-edit', 'EPR', 1),
 (4, 3, 'Menu Management', 'menu', 'fas fa-fw fa-folder', 'MNG', 1),
-(5, 3, 'Submenu Management', 'sdm', 'fas fa-fw fa-folder-open', 'SNG', 1),
+(5, 3, 'Submenu Management', 'menu/submenu', 'fas fa-fw fa-folder-open', 'SNG', 1),
 (7, 1, 'Role', 'admin/role', 'fas fa-fw fa-user-tie', 'ROL', 1),
 (8, 2, 'Change Password', 'user/changepassword', 'fas fa-fw fa-key', 'CPS', 1),
-(9, 4, 'Package Management', 'management', 'fas fa-fw fa-key', 'RMG', 1),
-(10, 4, 'Type Management', 'management/type_package', 'fas fa-fw fa-folder', 'TYP', 1),
+(9, 4, 'Package Management', 'management', 'fas fa-fw fa-cube', 'RMG', 1),
+(10, 4, 'Type Management', 'management/type_package', 'fas fa-fw fa-list', 'TYP', 1),
 (11, 4, 'Hotel Management', 'management/hotel', 'fas fa-fw fa-hotel', 'HTL', 1),
 (12, 4, 'Hotel Type', 'management/type_hotel', 'fas fa-fw fa-building', 'HTY', 1),
-(13, 4, 'Room Type', 'management/room_type', 'fas fa-fw fa-home', 'RTP', 1);
+(13, 4, 'Room Type', 'management/room_type', 'fas fa-fw fa-home', 'RTP', 1),
+(14, 4, 'Bank', 'management/bank', 'fas fa-fw fa-donate', 'BNK', 1),
+(15, 1, 'User management', 'admin/user_management', 'fas fa-fw fa-users', 'UMG', 1),
+(16, 4, 'Approval Payment', 'management/approval', 'fas fa-fw fa-check-circle', 'APY', 1),
+(17, 4, 'Reporting', 'management/reporting', 'fas fa-fw fa-book', 'RPT', 1);
 
 -- --------------------------------------------------------
 
@@ -419,6 +559,18 @@ CREATE TABLE `user_token` (
 --
 
 --
+-- Indexes for table `tbl_bank`
+--
+ALTER TABLE `tbl_bank`
+  ADD PRIMARY KEY (`id_bank`);
+
+--
+-- Indexes for table `tbl_fav`
+--
+ALTER TABLE `tbl_fav`
+  ADD PRIMARY KEY (`id_fav`);
+
+--
 -- Indexes for table `tbl_hotel`
 --
 ALTER TABLE `tbl_hotel`
@@ -428,7 +580,8 @@ ALTER TABLE `tbl_hotel`
 -- Indexes for table `tbl_hotel_detail`
 --
 ALTER TABLE `tbl_hotel_detail`
-  ADD PRIMARY KEY (`id_hotel_detail`);
+  ADD PRIMARY KEY (`id_hotel_detail`),
+  ADD KEY `id_hotel` (`id_hotel`);
 
 --
 -- Indexes for table `tbl_hotel_manage`
@@ -441,6 +594,18 @@ ALTER TABLE `tbl_hotel_manage`
 --
 ALTER TABLE `tbl_hotel_type`
   ADD PRIMARY KEY (`Id_hotel_type`);
+
+--
+-- Indexes for table `tbl_order`
+--
+ALTER TABLE `tbl_order`
+  ADD PRIMARY KEY (`id_order`);
+
+--
+-- Indexes for table `tbl_order_detail`
+--
+ALTER TABLE `tbl_order_detail`
+  ADD PRIMARY KEY (`id_order_detail`);
 
 --
 -- Indexes for table `tbl_package`
@@ -465,6 +630,12 @@ ALTER TABLE `tbl_package_master`
 --
 ALTER TABLE `tbl_package_type`
   ADD PRIMARY KEY (`Id_type_package`);
+
+--
+-- Indexes for table `tbl_rate`
+--
+ALTER TABLE `tbl_rate`
+  ADD PRIMARY KEY (`id_rate`);
 
 --
 -- Indexes for table `tbl_room_type`
@@ -513,6 +684,16 @@ ALTER TABLE `user_token`
 --
 
 --
+-- AUTO_INCREMENT for table `tbl_bank`
+--
+ALTER TABLE `tbl_bank`
+  MODIFY `id_bank` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `tbl_fav`
+--
+ALTER TABLE `tbl_fav`
+  MODIFY `id_fav` int(12) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `tbl_hotel`
 --
 ALTER TABLE `tbl_hotel`
@@ -533,25 +714,40 @@ ALTER TABLE `tbl_hotel_manage`
 ALTER TABLE `tbl_hotel_type`
   MODIFY `Id_hotel_type` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
+-- AUTO_INCREMENT for table `tbl_order`
+--
+ALTER TABLE `tbl_order`
+  MODIFY `id_order` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+--
+-- AUTO_INCREMENT for table `tbl_order_detail`
+--
+ALTER TABLE `tbl_order_detail`
+  MODIFY `id_order_detail` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+--
 -- AUTO_INCREMENT for table `tbl_package`
 --
 ALTER TABLE `tbl_package`
-  MODIFY `Id_package` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id_package` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbl_package_detail`
 --
 ALTER TABLE `tbl_package_detail`
-  MODIFY `id_package_detail` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_package_detail` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `tbl_package_master`
 --
 ALTER TABLE `tbl_package_master`
-  MODIFY `Id_package_master` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id_package_master` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tbl_package_type`
 --
 ALTER TABLE `tbl_package_type`
-  MODIFY `Id_type_package` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id_type_package` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `tbl_rate`
+--
+ALTER TABLE `tbl_rate`
+  MODIFY `id_rate` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tbl_room_type`
 --
@@ -561,7 +757,7 @@ ALTER TABLE `tbl_room_type`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `user_access_menu`
 --
@@ -581,7 +777,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `user_token`
 --

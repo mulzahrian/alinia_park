@@ -38,7 +38,7 @@ class Room_model extends CI_Model
 
     public function getTypeData()
     {
-        $query = $this->db->query("SELECT a.Id_type_package, a.type_name, b.name FROM tbl_package_type a, USER b WHERE a.create_by = b.id");
+        $query = $this->db->query("SELECT a.Id_type_package, a.type_name, b.name FROM tbl_package_type a, USER b WHERE a.create_by = b.id AND a.status = 1");
         return $query->result_array();
     }
 
@@ -287,6 +287,25 @@ class Room_model extends CI_Model
             return true;
         } else {
             return false;
+        }
+    }
+
+    public function deleteType($Id_type_package)
+    {
+        $this->db->query("UPDATE tbl_package_type a SET a.status = 0 WHERE a.Id_type_package = ?", array($Id_type_package));
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function insert_package_type($data) {
+        $this->db->insert('tbl_package_type', $data);
+        if ($this->db->affected_rows() > 0) {
+            return true; // Insert successful
+        } else {
+            return false; // Insert failed
         }
     }
 

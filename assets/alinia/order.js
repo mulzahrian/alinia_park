@@ -293,6 +293,7 @@ function insertOrderDetailPackage(){
                 try {
                     var data = $.parseJSON(response);
                     if (data['status'] == '200') {
+                        
                           Swal.fire({
                             title: "Berhasil di Proses",
                             showDenyButton: false,

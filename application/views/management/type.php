@@ -14,7 +14,7 @@
 
             <!-- <input type="button" class="btn btn-inline btn-primary" id="btn-submit-revise" value="Submit"> -->
 
-            <a href="" id="btn_tekan" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newPackageModal">Add Type</a>
+            <a href="" id="btn_tekan" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newPackageTypeModal">Add Type</a>
 
             
             <table id="table-list-type" class="mdl-data-table" style="width:100%" cellspacing="0">
@@ -43,7 +43,7 @@
 <!-- Modal -->
 
 <!-- Modal -->
-<div class="modal fade" id="newPackageModal" tabindex="-1" role="dialog" aria-labelledby="newPackageModalLabel" aria-hidden="true">
+<div class="modal fade" id="newPackageTypeModal" tabindex="-1" role="dialog" aria-labelledby="newPackageModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -52,17 +52,17 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= base_url('menu'); ?>" method="post">
+            <!-- <form action="<?= base_url('menu'); ?>" method="post"> -->
                 <div class="modal-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="menu" name="menu" placeholder="New Type...">
+                        <input type="text" class="form-control" id="input-type-package" name="input-type-package" placeholder="New Type...">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Add</button>
+                    <a type="button" id="btn-insert-type" class="btn btn-primary" style="color:white">Add</a>
                 </div>
-            </form>
+            <!-- </form> -->
         </div>
     </div>
 </div> 

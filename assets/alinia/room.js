@@ -308,9 +308,8 @@ function getTypeData() {
                 console.log(data);
                 var array = [];
                 $.each(data['Data'], function(index) {
-                    hapus_cek = '<a type="button" class="btn btn-success btn-sm float-center "><i class="fas fa-pen" style="color:green" onclick="reloadPage('+ this['Id_type_package'] +')"></i></a>' +
-                    '<a type="button" class="btn btn-warning btn-sm float-center "><i class="fas fa-pen" style="color:green"></i></a>' +
-                    '<a type="button" class="btn btn-danger btn-sm float-center"><i class="fas fa-trash-alt" style="color:green"></i></a>';
+                    hapus_cek = '<a type="button" class="btn btn-warning btn-sm float-center "><i class="fas fa-pen" style="color:green" onclick="reloadPage('+ this['Id_type_package'] +')"></i></a>' +
+                    '<a type="button" class="btn btn-danger btn-sm float-center"><i class="fas fa-trash-alt" style="color:green" onclick="deleteTypePackage('+ this['Id_type_package'] +')"></i></a>';
                     array.push([
                         this['name'],
                         this['type_name'],
@@ -330,6 +329,45 @@ function getTypeData() {
     });
 }
 
+function deleteTypePackage(Id_type_package){
+    var Id_type_package = Id_type_package;
+    $.ajax({
+        url: '../management/delete_type',
+        method: 'POST',
+        data : {
+            Id_type_package : Id_type_package,
+        },
+        success: function(response) {
+                try {
+                    var data = $.parseJSON(response);
+                    if (data['status'] == '200') {
+                        Swal.fire({
+                            title: "Berhasil di hapus",
+                            showDenyButton: false,
+                            showCancelButton: false,
+                            confirmButtonText: "Oke",
+                            text: "Success",
+                            icon: "success"
+                          }).then((result) => {
+                            if (result.isConfirmed) {
+                                getTypeData();
+                            }
+                          });
+                    }else{
+                        alert('data gagal diinputkan')
+                    }
+                } catch (e) {
+                    console.log(e);
+                    alert("Terjadi Kesalahan =>" + e);
+                }
+        },
+        error: function(response) {
+            console.log(response);
+            alert('Koneksi Error');
+        }
+    });
+}
+
 function reloadPage(Id_type_package){
     $.ajax({ 
         url: '../management/get_type_data',
@@ -341,9 +379,8 @@ function reloadPage(Id_type_package){
                 console.log(data);
                 var array = [];
                 $.each(data['Data'], function(index) {
-                    hapus_cek = '<a type="button" class="btn btn-success btn-sm float-center "><i class="fas fa-pen" style="color:green" onclick="reloadPage('+ this['Id_type_package'] +')"></i></a>' +
-                    '<a type="button" class="btn btn-warning btn-sm float-center "><i class="fas fa-pen" style="color:green"></i></a>' +
-                    '<a type="button" class="btn btn-danger btn-sm float-center"><i class="fas fa-trash-alt" style="color:green"></i></a>';
+                    hapus_cek = '<a type="button" class="btn btn-warning btn-sm float-center "><i class="fas fa-pen" style="color:green" onclick="reloadPage('+ this['Id_type_package'] +')"></i></a>' +
+                    '<a type="button" class="btn btn-danger btn-sm float-center"><i class="fas fa-trash-alt" style="color:green" onclick="deleteTypePackage('+ this['Id_type_package'] +')"></i></a>';
                     form = '<div class="input-group div-kode-prg" id="div-kode-prg' + this['Id_type_package'] + '">' +
                     '<input maxlength = "50" style="width: 100%;" type="text" class="form-control input-sm " id="input-type-name' + this['Id_type_package'] + '" value ="' + this['type_name'] + '" >' +
                     '</div>'
@@ -392,8 +429,18 @@ function saveEditType(Id_type_package){
                 try {
                     var data = $.parseJSON(response);
                     if (data['status'] == '200') {
-                        alert('data berhasil diinputkan');
-                        getTypeData();
+                        Swal.fire({
+                            title: "Berhasil di Edit",
+                            showDenyButton: false,
+                            showCancelButton: false,
+                            confirmButtonText: "Oke",
+                            text: "Success",
+                            icon: "success"
+                          }).then((result) => {
+                            if (result.isConfirmed) {
+                                getTypeData();
+                            }
+                          });
                     }else{
                         alert('data gagal diinputkan')
                     }
@@ -408,6 +455,55 @@ function saveEditType(Id_type_package){
         }
     });
 }
+
+$('#btn-insert-type').on('click', function() {
+    insertTypePackage();
+});
+
+function insertTypePackage(){
+    var input_type_package = $('#input-type-package').val();
+    var user_id = $('#user_id').val();
+    $.ajax({
+        url: '../management/add_type_package',
+        method: 'POST',
+        data : {
+            input_type_package : input_type_package,
+            create_by : user_id,
+            status : 1
+        },
+        success: function(response) {
+                try {
+                    var data = $.parseJSON(response);
+                    if (data['status'] == '200') {
+                        $('#newPackageTypeModal').modal('hide');
+                        Swal.fire({
+                            title: "data berhasil ditambahkan",
+                            showDenyButton: false,
+                            showCancelButton: false,
+                            confirmButtonText: "Oke",
+                            text: "Success",
+                            icon: "success"
+                          }).then((result) => {
+                            if (result.isConfirmed) {
+                                getTypeData();
+                            }
+                          });
+                    }else{
+                        alert('data gagal diinputkan')
+                    }
+                } catch (e) {
+                    console.log(e);
+                    alert("Terjadi Kesalahan =>" + e);
+                }
+        },
+        error: function(response) {
+            console.log(response);
+            alert('Koneksi Error');
+        }
+    });
+}
+
+
 
 function getHotelData() {
     $.ajax({ 

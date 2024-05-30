@@ -248,4 +248,35 @@ class Management extends CI_Controller
         }
     }
 
+    public function delete_type(){;
+        $Id_type_package = $this->input->post('Id_type_package');
+        if ($this->Room_model->deleteType($Id_type_package)) {
+            $this->output->set_status_header(200);
+            $this->output->set_output(json_encode(array('status' => '200')));
+        } else {
+            $this->output->set_status_header(500);
+            $this->output->set_output(json_encode(array('status' => '500')));
+        }
+    }
+
+    public function add_type_package() {
+        // Assuming you're getting data from a form post
+        $data = array(
+            'type_name' => $this->input->post('input_type_package'),
+            'create_by' => $this->input->post('create_by'),
+            'status' => $this->input->post('status'),
+            // Add other fields as needed
+        );
+        // Call the insert function
+        if ($this->Room_model->insert_package_type($data)) {
+            // Insert successful
+            $this->output->set_status_header(200);
+            $this->output->set_output(json_encode(array('status' => '200')));
+        } else {
+            // Insert failed
+            $this->output->set_status_header(500);
+            $this->output->set_output(json_encode(array('status' => '500')));
+        }
+    }
+
 }

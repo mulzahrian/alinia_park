@@ -279,4 +279,19 @@ class Management extends CI_Controller
         }
     }
 
+    public function room_type(){
+        $data['title'] = 'Type Hotel';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('management/room_type');
+            $this->load->view('templates/footer');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">New Master Package Added!</div>');
+        } 
+    }
+
 }

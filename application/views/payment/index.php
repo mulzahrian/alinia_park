@@ -10,7 +10,7 @@
                     <h4 class="m-0 font-weight-bold text-success"><?= $title; ?></h4>
                     </div>
                     <div class="card-body">
-                        <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+                        <?= form_error('payment', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
                         <?= $this->session->flashdata('message'); ?>
 
                         <!-- content test -->

@@ -42,6 +42,8 @@ class Payment extends CI_Controller
                 $check = 0;
                 if (!in_array($file_type, $allowed_types)) {
                     $check = 1;
+                    $message = 'Silahkan cek menu approval terdapat user yang telah memesan paket';
+                    $this->send_whatsapp($message);
                 }else{
                     if ($this->upload->do_upload('payment_image')) {
                         $new_image = $this->upload->data('file_name');
@@ -62,5 +64,27 @@ class Payment extends CI_Controller
             }else{
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Format File Upload Todak Sesuai</div>');            }
                 redirect('payment');
+        }
+
+        function send_whatsapp($message){
+            $phone="+6285265711545";  // Enter your phone number here
+            $apikey="9264248";       // Enter your personal apikey received in step 3 above
+        
+            $url='https://api.callmebot.com/whatsapp.php?source=php&phone='.$phone.'&text='.urlencode($message).'&apikey='.$apikey;
+        
+            if($ch = curl_init($url))
+            {
+                curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, 0);
+                $html = curl_exec($ch);
+                $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                // echo "Output:".$html;  // you can print the output for troubleshooting
+                curl_close($ch);
+                return (int) $status;
+            }
+            else
+            {
+                return false;
+            }
         }
 }

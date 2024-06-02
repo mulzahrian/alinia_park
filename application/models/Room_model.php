@@ -309,4 +309,10 @@ class Room_model extends CI_Model
         }
     }
 
+    public function getHotelDashboard()
+    {
+        $query = $this->db->query("SELECT * FROM tbl_hotel WHERE status = 1 LIMIT 6");
+        return $query->result_array();
+    }
+
 }

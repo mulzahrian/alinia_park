@@ -7,6 +7,7 @@ class Dashboard extends CI_Controller
     {
         parent::__construct();
         //is_logged_in();
+        $this->load->model('Room_model');
     }
 
     public function index()
@@ -14,9 +15,11 @@ class Dashboard extends CI_Controller
         $data['title'] = 'Dashboard';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
+        $id_user = $data['user']['id'];
+        $data['hotels'] = $this->Room_model->getHotelDashboard();
         //$this->load->view('user/index', $data);
         //$this->load->view('welcome_message');
-        $this->load->view('dashboard/index');
+        $this->load->view('dashboard/index',$data);
     }
 
 

@@ -326,4 +326,10 @@ class Room_model extends CI_Model
         return $query->result_array();
     }
 
+    public function getReviewDashboard()
+    {
+        $query = $this->db->query("SELECT a.comment,a.start,b.* FROM tbl_rate a,user b WHERE a.created_by = b.id LIMIT 6");
+        return $query->result_array();
+    }
+
 }

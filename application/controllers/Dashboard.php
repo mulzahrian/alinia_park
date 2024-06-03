@@ -17,6 +17,8 @@ class Dashboard extends CI_Controller
 
         $id_user = $data['user']['id'];
         $data['hotels'] = $this->Room_model->getHotelDashboard();
+        $data['hotels2'] = $this->Room_model->getHotelDashboardCheap();
+        $data['hotels3'] = $this->Room_model->getHotelDashboardBest();
         //$this->load->view('user/index', $data);
         //$this->load->view('welcome_message');
         $this->load->view('dashboard/index',$data);

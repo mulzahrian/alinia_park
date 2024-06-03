@@ -314,5 +314,16 @@ class Room_model extends CI_Model
         $query = $this->db->query("SELECT * FROM tbl_hotel WHERE status = 1 LIMIT 6");
         return $query->result_array();
     }
+    public function getHotelDashboardCheap()
+    {
+        $query = $this->db->query("SELECT * FROM tbl_hotel WHERE status = 1 ORDER BY price ASC LIMIT 6");
+        return $query->result_array();
+    }
+
+    public function getHotelDashboardBest()
+    {
+        $query = $this->db->query("SELECT * FROM tbl_hotel WHERE status = 1 LIMIT 6");
+        return $query->result_array();
+    }
 
 }

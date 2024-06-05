@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 30 Mei 2024 pada 11.37
+-- Generation Time: 05 Jun 2024 pada 04.20
 -- Versi Server: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -221,7 +221,10 @@ CREATE TABLE `tbl_order` (
 --
 
 INSERT INTO `tbl_order` (`id_order`, `type`, `order_type`, `start_date`, `end_date`, `image_order`, `bank_code`, `orderId`, `create_by`, `create_date`, `update_by`, `update_date`, `status`) VALUES
-(20, 'Paket', '1', '0000-00-00', '2024-05-25', 'GojekDatabase.PNG', 976213123, 'NjIzcj0hO20240524191337', '22', '2024-05-24 19:13:37', '', '0000-00-00 00:00:00', 6);
+(20, 'Paket', '1', '0000-00-00', '2024-05-25', 'GojekDatabase.PNG', 976213123, 'NjIzcj0hO20240524191337', '22', '2024-05-24 19:13:37', '', '0000-00-00 00:00:00', 6),
+(21, 'Paket', '1', '0000-00-00', '2024-06-06', 'IMG-20230225-WA0002.jpg', 976213123, 'CUAU2Ebqz20240601173411', '22', '2024-06-01 17:34:12', '', '0000-00-00 00:00:00', 6),
+(22, 'Hotel', '1', '2024-06-01', '2024-06-04', 'IMG-20230225-WA0002.jpg', 976213123, 'ewRAtNsF020240601182732', '13', '2024-06-01 18:27:32', '', '0000-00-00 00:00:00', 4),
+(23, 'Paket', '1', '0000-00-00', '2024-06-03', 'save1.png', 976213123, 'ecJ2iC4qb20240602142323', '22', '2024-06-02 14:23:23', '', '0000-00-00 00:00:00', 4);
 
 -- --------------------------------------------------------
 
@@ -250,7 +253,10 @@ CREATE TABLE `tbl_order_detail` (
 
 INSERT INTO `tbl_order_detail` (`id_order_detail`, `id_order`, `id_hotel`, `id_package_mas`, `order_price`, `total_price`, `order_number`, `create_by`, `create_date`, `update_by`, `update_date`, `status`) VALUES
 (51, 20, 0, 1, 30000, 30000, 1, '22', '2024-05-24 19:13:40', '', '2024-05-24 19:13:40', 1),
-(52, 20, 0, 5, 25000, 25000, 1, '22', '2024-05-24 19:13:52', '', '2024-05-24 19:13:52', 1);
+(52, 20, 0, 5, 25000, 25000, 1, '22', '2024-05-24 19:13:52', '', '2024-05-24 19:13:52', 1),
+(53, 21, 0, 1, 30000, 30000, 1, '22', '2024-06-01 17:34:15', '', '2024-06-01 17:34:15', 1),
+(54, 22, 1, 0, 1200000, 1200000, 1, '13', '2024-06-01 18:27:33', '', '2024-06-01 18:27:33', 1),
+(55, 23, 0, 1, 30000, 30000, 1, '22', '2024-06-02 14:23:25', '', '2024-06-02 14:23:25', 1);
 
 -- --------------------------------------------------------
 
@@ -435,9 +441,10 @@ INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_a
 (6, 'Doddy Ferdiansyah', 'doddy@gmail.com', 'profile.jpg', '$2y$10$FhGzXwwTWLN/yonJpDLR0.nKoeWlKWBoRG9bsk0jOAgbJ007XzeFO', 2, 1, 1552285263, NULL),
 (11, 'Sandhika Galih', 'sandhikagalih@gmail.com', 'default.jpg', '$2y$10$0QYEK1pB2L.Rdo.ZQsJO5eeTSpdzT7PvHaEwsuEyGSs0J1Qf5BoSq', 2, 1, 1553151354, NULL),
 (12, 'admin2', 'admin@gmail.com', 'teast123.png', '$2y$10$BX3s2MURD07J22g/YodhRefKb345dZsgr83mV0.XU5287P.agtEDK', 1, 1, 1707125369, NULL),
-(13, 'user', 'user@gmail.com', 'biru.PNG', '$2y$10$INXn0FCDUQpNNIuK1kxL.On.Vl.jVIq.cHcRAOg.r9WsX.PAK//d.', 2, 1, 1707719652, '085265711546'),
+(13, 'user', 'user@gmail.com', 'save1.png', '$2y$10$INXn0FCDUQpNNIuK1kxL.On.Vl.jVIq.cHcRAOg.r9WsX.PAK//d.', 2, 1, 1707719652, '085265711546'),
 (14, 'manajemen', 'manajemen@gmail.com', 'default.jpg', '$2y$10$yQsYFhHgy718PY8p.cF2LeIFQqHRXmVQAU32WcebhH.lJbMHGxRkm', 3, 1, 1711522122, '085265711544'),
-(22, 'indo pop culture', 'cultureindopop@gmail.com', 'default.jpg', '$2y$10$Dka4HhyfHSQPMDeNu3meweXf5eQcJAJw7wNF70UfehOumUhCqG/vm', 2, 1, 1716551188, '085265711545');
+(22, 'indo pop culture', 'cultureindopop@gmail.com', 'default.jpg', '$2y$10$Dka4HhyfHSQPMDeNu3meweXf5eQcJAJw7wNF70UfehOumUhCqG/vm', 2, 1, 1716551188, '085265711545'),
+(23, 'admin2', 'admin1@gmail.com', 'default.jpg', '$2y$10$X.Ue/.7ktTp8lmoay/3LmeeSeWx/3jdBcfOWNVXXqLKo7pltW5uCy', 2, 0, 1717237859, '085265711542');
 
 -- --------------------------------------------------------
 
@@ -553,6 +560,13 @@ CREATE TABLE `user_token` (
   `token` varchar(128) NOT NULL,
   `date_created` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `user_token`
+--
+
+INSERT INTO `user_token` (`id`, `email`, `token`, `date_created`) VALUES
+(1, 'admin1@gmail.com', 'QRSTUVWXYZabcdefghijklmnopqrst', 1717237859);
 
 --
 -- Indexes for dumped tables
@@ -717,12 +731,12 @@ ALTER TABLE `tbl_hotel_type`
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `id_order` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_order` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `tbl_order_detail`
 --
 ALTER TABLE `tbl_order_detail`
-  MODIFY `id_order_detail` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id_order_detail` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 --
 -- AUTO_INCREMENT for table `tbl_package`
 --
@@ -742,7 +756,7 @@ ALTER TABLE `tbl_package_master`
 -- AUTO_INCREMENT for table `tbl_package_type`
 --
 ALTER TABLE `tbl_package_type`
-  MODIFY `Id_type_package` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Id_type_package` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tbl_rate`
 --
@@ -757,7 +771,7 @@ ALTER TABLE `tbl_room_type`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `user_access_menu`
 --
@@ -782,7 +796,7 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT for table `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

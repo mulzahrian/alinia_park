@@ -57,20 +57,21 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
                         <a href="<?php echo base_url('dashboard'); ?>" class="nav-item nav-link active">Reservasi</a>
-                        <a href="about.html" class="nav-item nav-link">Tiket</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Paket</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="property-list.html" class="dropdown-item">Paket 1</a>
-                                <a href="property-type.html" class="dropdown-item">Paket 2</a>
-                                <a href="property-agent.html" class="dropdown-item">Paket 3</a>
+                                <a href="property-list.html" class="dropdown-item">Hotel</a>
+                                <a href="property-type.html" class="dropdown-item">Tiket</a>
+                                <a href="property-agent.html" class="dropdown-item">Paket</a>
                             </div>
                         </div>
+                        <a href="about.html" class="nav-item nav-link">Fasilitas</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Ketentuan</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <a href="testimonial.html" class="dropdown-item">Regulasi</a>
                                 <a href="404.html" class="dropdown-item">Pembayaran</a>
+                                <a href="404.html" class="dropdown-item">Kontak</a>
                             </div>
                         </div>
                         <!-- <a href="contact.html" class="nav-item nav-link">null</a> -->

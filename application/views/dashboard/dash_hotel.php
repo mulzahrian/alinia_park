@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Alinia Park</title>
+    <title>Alinia Park Hotel</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -20,14 +20,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="assets/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <!-- <link href="assets/lib/animate/animate.min.css" rel="stylesheet"> -->
+    <link href="<?= base_url('assets/'); ?>lib/animate/animate.min.css" rel="stylesheet">
+    <!-- <link href="assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"> -->
+    <link href="<?= base_url('assets/'); ?>lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/'); ?>css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="assets/css/bootstrap.min.css" rel="stylesheet"> -->
 
     <!-- Template Stylesheet -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="<?= base_url('assets/'); ?>assets/css/style.css" rel="stylesheet">
+    <!-- <link href="assets/css/style.css" rel="stylesheet"> -->
 </head>
 
 <body>
@@ -46,7 +50,7 @@
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
                 <a href="index.html" class="navbar-brand d-flex align-items-center text-center">
                     <div class="icon p-2 me-2">
-                        <img class="img-fluid" src="assets/img/alinia-logo.png" alt="Icon" style="width: 30px; height: 30px;">
+                        <img class="img-fluid" src="<?= base_url('assets/'); ?>img/alinia-logo.png" alt="Icon" style="width: 30px; height: 30px;">
                     </div>
                     <h1 class="m-0 text-primary">Alinia Park & Resort</h1>
                 </a>
@@ -60,7 +64,7 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Paket</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="<?php echo base_url('dashboard/das_hotel'); ?>"  class="dropdown-item">Hotel</a>
+                                <a href="property-list.html" class="dropdown-item">Hotel</a>
                                 <a href="property-type.html" class="dropdown-item">Tiket</a>
                                 <a href="property-agent.html" class="dropdown-item">Paket</a>
                             </div>
@@ -443,13 +447,19 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/lib/wow/wow.min.js"></script>
+
+    <!-- <script src="assets/lib/wow/wow.min.js"></script>
     <script src="assets/lib/easing/easing.min.js"></script>
     <script src="assets/lib/waypoints/waypoints.min.js"></script>
-    <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script> -->
 
+    <script src="<?php echo base_url(); ?>assets/lib/wow/wow.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/lib/easing/easing.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/lib/waypoints/waypoints.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/lib/owlcarousel/owl.carousel.min.js"></script>
     <!-- Template Javascript -->
-    <script src="assets/js/main.js"></script>
+    <!-- <script src="assets/js/main.js"></script> -->
+    <script src="<?php echo base_url(); ?>assets/js/main.js"></script>
 </body>
 
 </html>

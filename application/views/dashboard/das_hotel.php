@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Alinia Park Hotel</title>
+    <title>Alinia Park</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -20,18 +20,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <!-- <link href="assets/lib/animate/animate.min.css" rel="stylesheet"> -->
-    <link href="<?= base_url('assets/'); ?>lib/animate/animate.min.css" rel="stylesheet">
-    <!-- <link href="assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"> -->
-    <link href="<?= base_url('assets/'); ?>lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="<?= base_url('assets/'); ?>css/bootstrap.min.css" rel="stylesheet">
-    <!-- <link href="assets/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="<?= base_url('assets/'); ?>assets/css/style.css" rel="stylesheet">
-    <!-- <link href="assets/css/style.css" rel="stylesheet"> -->
+    <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -50,7 +46,7 @@
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
                 <a href="index.html" class="navbar-brand d-flex align-items-center text-center">
                     <div class="icon p-2 me-2">
-                        <img class="img-fluid" src="<?= base_url('assets/'); ?>img/alinia-logo.png" alt="Icon" style="width: 30px; height: 30px;">
+                        <img class="img-fluid" src="assets/img/alinia-logo.png" alt="Icon" style="width: 30px; height: 30px;">
                     </div>
                     <h1 class="m-0 text-primary">Alinia Park & Resort</h1>
                 </a>
@@ -60,12 +56,12 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
-                        <a href="<?php echo base_url('dashboard'); ?>" class="nav-item nav-link active">Reservasi</a>
+                        <a href="<?php echo base_url('dashboard'); ?>" class="nav-item nav-link">Reservasi</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Paket</a>
+                            <a href="#" class="nav-link active dropdown-toggle" data-bs-toggle="dropdown">Paket</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="property-list.html" class="dropdown-item">Hotel</a>
-                                <a href="property-type.html" class="dropdown-item">Tiket</a>
+                                <a href="<?php echo base_url('dashboard/das_hotel'); ?>"  class="dropdown-item active">Hotel</a>
+                                <a href="<?php echo base_url('dashboardtiket'); ?>" class="dropdown-item">Tiket</a>
                                 <a href="property-agent.html" class="dropdown-item">Paket</a>
                             </div>
                         </div>
@@ -91,9 +87,8 @@
         <div class="container-fluid header bg-white p-0">
             <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
                 <div class="col-md-6 p-5 mt-lg-5">
-                    <h1 class="display-5 animated fadeIn mb-4">Taman <span class="text-primary">Rekreasi Keluarga</span> & Edukasi Terlengkap & Terunik</h1>
-                    <p class="animated fadeIn mb-4 pb-2">Objek wisata yang menawarkan hiburan dan edukasi untuk masyarakat dharmasraya 
-                        dengan keasrian dan keindahan alamnya.</p>
+                    <h1 class="display-5 animated fadeIn mb-4"><span class="text-primary">List</span> Hotel</h1>
+                    <p class="animated fadeIn mb-4 pb-2">Berikut adalah list hotel hotel yang tersedia di Alinia Park And Resort.</p>
                     <a href="<?= base_url('auth'); ?>" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Reservasi</a>
                 </div>
                 <div class="col-md-6 animated fadeIn">
@@ -148,29 +143,6 @@
             </div>
         </div>
         <!-- Search End -->
-
-        <!-- About Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="row g-5 align-items-center">
-                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                        <div class="about-img position-relative overflow-hidden p-5 pe-0">
-                            <img class="img-fluid w-100" src="assets/img/slide-3.png">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                        <h1 class="mb-4">#1 Tempat wisata terbaik di dharmasraya</h1>
-                        <p class="mb-4">ALINIA PARK & RESORT berada di Timpeh. Resepsionis siap 24 jam untuk melayani proses check-in, check-out dan kebutuhan Anda yang lain. Jangan ragu untuk menghubungi resepsionis, kami siap melayani Anda. WiFi tersedia di seluruh area publik properti untuk membantu Anda tetap terhubung dengan keluarga dan teman.</p>
-                        <p><i class="fa fa-check text-primary me-3"></i>Fasilitas yang lengkap</p>
-                        <p><i class="fa fa-check text-primary me-3"></i>Suasana yang asri</p>
-                        <p><i class="fa fa-check text-primary me-3"></i>Tempat yang nyaman</p>
-                        <a class="btn btn-primary py-3 px-5 mt-3" href="">Pesan sekarang</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- About End -->
-
 
         <!-- Property List Start -->
         <div class="container-xxl py-5">
@@ -340,35 +312,7 @@
             </div>
         </div>
         <!-- Call to Action End -->
-        <!-- Testimonial Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <h1 class="mb-3">Review Pelanggan Kita!</h1>
-                </div>
-
-                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                <?php foreach ($reviews as $reviews): ?>
-                    <div class="testimonial-item bg-light rounded p-3">
-                        <div class="bg-white border rounded p-4">
-                            <p><?= $reviews['comment']; ?></p>
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded" src="<?= base_url('assets/img/profile/') . $reviews['image']; ?>" style="width: 45px; height: 45px;">
-                                <div class="ps-3">
-                                    <h6 class="fw-bold mb-1"><?= $reviews['name']; ?></h6>
-                                    <small>user</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-                </div>
-
-            </div>
-        </div>
-        <!-- Testimonial End -->
         
-
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
@@ -447,19 +391,13 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- <script src="assets/lib/wow/wow.min.js"></script>
+    <script src="assets/lib/wow/wow.min.js"></script>
     <script src="assets/lib/easing/easing.min.js"></script>
     <script src="assets/lib/waypoints/waypoints.min.js"></script>
-    <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script> -->
+    <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script>
 
-    <script src="<?php echo base_url(); ?>assets/lib/wow/wow.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/lib/easing/easing.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/lib/waypoints/waypoints.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/lib/owlcarousel/owl.carousel.min.js"></script>
     <!-- Template Javascript -->
-    <!-- <script src="assets/js/main.js"></script> -->
-    <script src="<?php echo base_url(); ?>assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

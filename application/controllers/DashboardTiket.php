@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller
+class DashboardTiket extends CI_Controller
 {
     public function __construct()
     {
@@ -15,15 +15,11 @@ class Dashboard extends CI_Controller
         $data['title'] = 'Dashboard';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-        $id_user = $data['user']['id'];
-        $data['hotels'] = $this->Room_model->getHotelDashboard();
-        $data['hotels2'] = $this->Room_model->getHotelDashboardCheap();
-        $data['hotels3'] = $this->Room_model->getHotelDashboardBest();
-        $data['reviews'] = $this->Room_model->getReviewDashboard();
+        $ticket = $this->db->query("SELECT DATE_FORMAT(CURDATE(), '%d') AS current_month, a.Id_package_master, b.package_name, a.master_package_name, a.package_price FROM tbl_package_master a, tbl_package b WHERE a.id_package = b.Id_package AND b.Id_package = 1");
+        $data['tickets'] = $ticket->result_array();
         //$this->load->view('user/index', $data);
         //$this->load->view('welcome_message');
-        $this->load->view('dashboard/index',$data);
+        $this->load->view('dashboard/das_tiket',$data);
     }
-
     
 }

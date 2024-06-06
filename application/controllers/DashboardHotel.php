@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller
+class DashboardHotel extends CI_Controller
 {
     public function __construct()
     {
@@ -22,8 +22,7 @@ class Dashboard extends CI_Controller
         $data['reviews'] = $this->Room_model->getReviewDashboard();
         //$this->load->view('user/index', $data);
         //$this->load->view('welcome_message');
-        $this->load->view('dashboard/index',$data);
+        $this->load->view('dashboard/das_hotel',$data);
     }
-
     
 }

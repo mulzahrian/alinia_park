@@ -60,8 +60,8 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Paket</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="<?php echo base_url('dashboard/das_hotel'); ?>"  class="dropdown-item">Hotel</a>
-                                <a href="property-type.html" class="dropdown-item">Tiket</a>
+                                <a href="<?php echo base_url('dashboardhotel'); ?>"  class="dropdown-item">Hotel</a>
+                                <a href="<?php echo base_url('dashboardtiket'); ?>" class="dropdown-item">Tiket</a>
                                 <a href="property-agent.html" class="dropdown-item">Paket</a>
                             </div>
                         </div>

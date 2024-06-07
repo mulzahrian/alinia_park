@@ -56,13 +56,13 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
-                        <a href="<?php echo base_url('dashboard'); ?>" class="nav-item nav-link active">Reservasi</a>
+                        <a href="<?php echo base_url('dashboard'); ?>" class="nav-item nav-link">Reservasi</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Paket</a>
+                            <a href="#" class="nav-link active dropdown-toggle" data-bs-toggle="dropdown">Paket</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="<?php echo base_url('dashboardhotel'); ?>"  class="dropdown-item">Hotel</a>
+                                <a href="<?php echo base_url('dashboard/das_hotel'); ?>"  class="dropdown-item">Hotel</a>
                                 <a href="<?php echo base_url('dashboardtiket'); ?>" class="dropdown-item">Tiket</a>
-                                <a href="<?php echo base_url('dashboardpaket'); ?>" class="dropdown-item">Paket</a>
+                                <a href="property-agent.html" class="dropdown-item active">Paket</a>
                             </div>
                         </div>
                         <a href="about.html" class="nav-item nav-link">Fasilitas</a>
@@ -87,9 +87,8 @@
         <div class="container-fluid header bg-white p-0">
             <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
                 <div class="col-md-6 p-5 mt-lg-5">
-                    <h1 class="display-5 animated fadeIn mb-4">Taman <span class="text-primary">Rekreasi Keluarga</span> & Edukasi Terlengkap & Terunik</h1>
-                    <p class="animated fadeIn mb-4 pb-2">Objek wisata yang menawarkan hiburan dan edukasi untuk masyarakat dharmasraya 
-                        dengan keasrian dan keindahan alamnya.</p>
+                    <h1 class="display-5 animated fadeIn mb-4"><span class="text-primary">List</span> Paket</h1>
+                    <p class="animated fadeIn mb-4 pb-2">Berikut adalah list Paket Paket yang tersedia di Alinia Park And Resort.</p>
                     <a href="<?= base_url('auth'); ?>" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Reservasi</a>
                 </div>
                 <div class="col-md-6 animated fadeIn">
@@ -145,29 +144,6 @@
         </div>
         <!-- Search End -->
 
-        <!-- About Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="row g-5 align-items-center">
-                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                        <div class="about-img position-relative overflow-hidden p-5 pe-0">
-                            <img class="img-fluid w-100" src="assets/img/slide-3.png">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                        <h1 class="mb-4">#1 Tempat wisata terbaik di dharmasraya</h1>
-                        <p class="mb-4">ALINIA PARK & RESORT berada di Timpeh. Resepsionis siap 24 jam untuk melayani proses check-in, check-out dan kebutuhan Anda yang lain. Jangan ragu untuk menghubungi resepsionis, kami siap melayani Anda. WiFi tersedia di seluruh area publik properti untuk membantu Anda tetap terhubung dengan keluarga dan teman.</p>
-                        <p><i class="fa fa-check text-primary me-3"></i>Fasilitas yang lengkap</p>
-                        <p><i class="fa fa-check text-primary me-3"></i>Suasana yang asri</p>
-                        <p><i class="fa fa-check text-primary me-3"></i>Tempat yang nyaman</p>
-                        <a class="btn btn-primary py-3 px-5 mt-3" href="">Pesan sekarang</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- About End -->
-
-
         <!-- Property List Start -->
         <div class="container-xxl py-5">
             <div class="container">
@@ -195,118 +171,44 @@
                 <div class="tab-content">
                     <div id="tab-1" class="tab-pane fade show p-0 active">
                         <div class="row g-4">
-                        <?php if (isset($hotels)): ?>
-                                <?php foreach ($hotels as $hotels): ?>
+                    <?php foreach ($package_tbls as $package_tbl): ?>
+                        <?php if (isset($packages[$package_tbl['package_name']])): ?>
+                            <?php foreach ($packages[$package_tbl['package_name']] as $package_master_id => $package_data): ?>
                                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                     <div class="property-item rounded overflow-hidden">
                                         <div class="position-relative overflow-hidden">
-                                            <a href=""><img class="img-fluid" src="<?= base_url('assets/img/profile/') . $hotels['image_hotel']; ?>" alt=""></a>
-                                            <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">Reservasi</div>
-                                            <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Hotel</div>
+                                            <a href=""><img class="img-fluid" src="<?= base_url('assets/img/profile/') . $package_data['master']['package_image']; ?>" alt=""></a>
+                                            <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"><?= $package_tbl['package_name']; ?></div>
+                                            <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Paket</div>
                                         </div>
                                         <div class="p-4 pb-0">
                                             <h5 class="text-primary mb-3"><?= 
-                                            "Rp " . number_format($hotels['price'], 0, ",", "."); 
+                                             "Rp " . number_format($package_data['master']['package_price'], 0, ",", "."); 
                                             ?></h5>
-                                            <a class="d-block h5 mb-2" href=""><?= $hotels['hotel_name']; ?></a>
-                                            <p><i class="fa fa-check text-primary me-2"></i><?= $hotels['service']; ?></p>
+                                            <a class="d-block h5 mb-2" href=""><?= $package_data['master']['master_package_name']; ?></a>
+                                            <!-- <p><i class="fa fa-check text-primary me-2"></i><?= $hotels['service']; ?></p> -->
                                         </div>
                                         <div class="d-flex border-top">
-                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i><?= $hotels['ukuran']; ?></small>
+                                            <!-- <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i><?= $hotels['ukuran']; ?></small>
                                             <small class="flex-fill text-center border-end py-2"><i class="fa fa-wifi text-primary me-2"></i></small>
-                                            <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>1 Bath</small>
+                                            <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>1 Bath</small> -->
                                         </div>
                                     </div>
                                 </div>
                                 <?php endforeach; ?>
                                 <?php else: ?>
-                                <div class="card mb-3 col-lg-8 mx-auto">
-                                    <div class="card-body">
-                                        <p>List Hotel Kosong</p>
-                                    </div>
-                                </div>
                             <?php endif; ?>
+                        <?php endforeach; ?>
                                 <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                                    <a class="btn btn-primary py-3 px-5" href="">Browse More Property</a>
+                                    <a class="btn btn-primary py-3 px-5" href="">Browse More Paket</a>
                                 </div>
                             </div>
                     </div>
                     <div id="tab-2" class="tab-pane fade show p-0">
-                    <div class="row g-4">
-                        <?php if (isset($hotels2)): ?>
-                                <?php foreach ($hotels2 as $hotels2): ?>
-                                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                                    <div class="property-item rounded overflow-hidden">
-                                        <div class="position-relative overflow-hidden">
-                                            <a href=""><img class="img-fluid" src="<?= base_url('assets/img/profile/') . $hotels2['image_hotel']; ?>" alt=""></a>
-                                            <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">Reservasi</div>
-                                            <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Hotel</div>
-                                        </div>
-                                        <div class="p-4 pb-0">
-                                            <h5 class="text-primary mb-3"><?= 
-                                            "Rp " . number_format($hotels2['price'], 0, ",", "."); 
-                                            ?></h5>
-                                            <a class="d-block h5 mb-2" href=""><?= $hotels2['hotel_name']; ?></a>
-                                            <p><i class="fa fa-check text-primary me-2"></i><?= $hotels2['service']; ?></p>
-                                        </div>
-                                        <div class="d-flex border-top">
-                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i><?= $hotels2['ukuran']; ?></small>
-                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-wifi text-primary me-2"></i></small>
-                                            <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>1 Bath</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php endforeach; ?>
-                                <?php else: ?>
-                                <div class="card mb-3 col-lg-8 mx-auto">
-                                    <div class="card-body">
-                                        <p>List Hotel Kosong</p>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
-                                <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                                    <a class="btn btn-primary py-3 px-5" href="">Browse More Property</a>
-                                </div>
-                            </div>
+                    
                     </div>
                     <div id="tab-3" class="tab-pane fade show p-0">
-                    <div class="row g-4">
-                        <?php if (isset($hotels3)): ?>
-                                <?php foreach ($hotels3 as $hotels3): ?>
-                                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                                    <div class="property-item rounded overflow-hidden">
-                                        <div class="position-relative overflow-hidden">
-                                            <a href=""><img class="img-fluid" src="<?= base_url('assets/img/profile/') . $hotels3['image_hotel']; ?>" alt=""></a>
-                                            <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">Reservasi</div>
-                                            <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Hotel</div>
-                                        </div>
-                                        <div class="p-4 pb-0">
-                                            <h5 class="text-primary mb-3"><?= 
-                                            "Rp " . number_format($hotels3['price'], 0, ",", "."); 
-                                            ?></h5>
-                                            <a class="d-block h5 mb-2" href=""><?= $hotels3['hotel_name']; ?></a>
-                                            <p><i class="fa fa-check text-primary me-2"></i><?= $hotels3['service']; ?></p>
-                                        </div>
-                                        <div class="d-flex border-top">
-                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i><?= $hotels3['ukuran']; ?></small>
-                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-wifi text-primary me-2"></i></small>
-                                            <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>1 Bath</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php endforeach; ?>
-                                <?php else: ?>
-                                <div class="card mb-3 col-lg-8 mx-auto">
-                                    <div class="card-body">
-                                        <p>List Hotel Kosong</p>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
-                                <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                                    <a class="btn btn-primary py-3 px-5" href="">Browse More Property</a>
-                                </div>
-                            </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -336,35 +238,7 @@
             </div>
         </div>
         <!-- Call to Action End -->
-        <!-- Testimonial Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <h1 class="mb-3">Review Pelanggan Kita!</h1>
-                </div>
-
-                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                <?php foreach ($reviews as $reviews): ?>
-                    <div class="testimonial-item bg-light rounded p-3">
-                        <div class="bg-white border rounded p-4">
-                            <p><?= $reviews['comment']; ?></p>
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded" src="<?= base_url('assets/img/profile/') . $reviews['image']; ?>" style="width: 45px; height: 45px;">
-                                <div class="ps-3">
-                                    <h6 class="fw-bold mb-1"><?= $reviews['name']; ?></h6>
-                                    <small>user</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-                </div>
-
-            </div>
-        </div>
-        <!-- Testimonial End -->
         
-
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">

@@ -174,6 +174,7 @@
             </section>
         </article>    
     </div>
+    <p> </p>
     <?php endforeach; ?>
     <!-- content -->
         </div>

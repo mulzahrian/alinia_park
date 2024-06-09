@@ -62,7 +62,7 @@
                             <div class="dropdown-menu rounded-0 m-0">
                                 <a href="<?php echo base_url('dashboardhotel'); ?>"  class="dropdown-item">Hotel</a>
                                 <a href="<?php echo base_url('dashboardtiket'); ?>" class="dropdown-item">Tiket</a>
-                                <a href="<?php echo base_url('dashboardpaket'); ?>" class="dropdown-item">Paket</a>
+                                <a href="<?php echo base_url('dashboard'); ?>" class="dropdown-item">Paket</a>
                             </div>
                         </div>
                         <a href="about.html" class="nav-item nav-link">Fasilitas</a>
@@ -199,7 +199,7 @@
                                 <?php foreach ($hotels as $hotels): ?>
                                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                     <div class="property-item rounded overflow-hidden">
-                                        <div class="position-relative overflow-hidden">
+                                        <div class="position-relative overflow-hidden">src="<?= base_url('assets/img/profile/') ?><?= $hotels['image_hotel']; ?>"
                                             <a href=""><img class="img-fluid" src="<?= base_url('assets/img/profile/') . $hotels['image_hotel']; ?>" alt=""></a>
                                             <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">Reservasi</div>
                                             <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Hotel</div>

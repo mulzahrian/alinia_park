@@ -12,9 +12,9 @@ class DashboardFasilitas extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Dashboard';
+        $data['title'] = 'Dashboard Fasilitas';
         
-        $this->load->view('dashboard/das_hotel',$data);
+        $this->load->view('dashboard/das_fasilitas');
     }
     
 }

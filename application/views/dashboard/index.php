@@ -65,7 +65,7 @@
                                 <a href="<?php echo base_url('dashboard'); ?>" class="dropdown-item">Paket</a>
                             </div>
                         </div>
-                        <a href="about.html" class="nav-item nav-link">Fasilitas</a>
+                        <a href="<?php echo base_url('dashboardFasilitas'); ?>" class="nav-item nav-link">Fasilitas</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Ketentuan</a>
                             <div class="dropdown-menu rounded-0 m-0">

@@ -19,6 +19,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <!-- Libraries Stylesheet -->
     <link href="assets/lib/animate/animate.min.css" rel="stylesheet">
     <link href="assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -144,6 +147,113 @@
         </div>
         <!-- Search End -->
          
+        <div class="container mt-5">
+    <h1 class="text-center mb-4">Fasilitas</h1>
+
+    <div class="facility-category">
+        <h3>Fasilitas Publik</h3>
+        <div class="row">
+            <div class="col-md-4 facility-item"><i class="fas fa-parking"></i>Area parkir</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-coffee"></i>Kafe</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-clock"></i>Early check-in</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-clock"></i>Late check-out</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-utensils"></i>Restoran</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-utensils"></i>Restoran untuk sarapan</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-utensils"></i>Restoran untuk makan malam</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-utensils"></i>Restoran untuk makan siang</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-wifi"></i>WiFi di area umum</div>
+        </div>
+    </div>
+
+    <div class="facility-category">
+        <h3>Kegiatan Lainnya</h3>
+        <div class="row">
+            <div class="col-md-4 facility-item"><i class="fas fa-fire"></i>Barbecue</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-child"></i>Area main anak</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-tree"></i>Taman</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-hiking"></i>Aktivitas outdoor</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-swimmer"></i>Kolam renang outdoor</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-picnic"></i>Area piknik</div>
+        </div>
+    </div>
+
+    <div class="facility-category">
+        <h3>Makanan dan Minuman</h3>
+        <div class="row">
+            <div class="col-md-4 facility-item"><i class="fas fa-bread-slice"></i>Sarapan</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-bread-slice"></i>Sarapan prasmanan</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-bread-slice"></i>Sarapan berbiaya</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-bread-slice"></i>Sarapan kontinental</div>
+        </div>
+    </div>
+
+    <div class="facility-category">
+        <h3>Umum</h3>
+        <div class="row">
+            <div class="col-md-4 facility-item"><i class="fas fa-fan"></i>AC</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-university"></i>Aula</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-swimming-pool"></i>Kolam renang</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-umbrella-beach"></i>Teras</div>
+        </div>
+    </div>
+
+    <div class="facility-category">
+        <h3>Fasilitas Kamar</h3>
+        <div class="row">
+            <div class="col-md-4 facility-item"><i class="fas fa-bath"></i>Bathtub</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-desk"></i>Meja</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-shower"></i>Pancuran</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-tv"></i>TV</div>
+        </div>
+    </div>
+
+    <div class="facility-category">
+        <h3>Servis Hotel</h3>
+        <div class="row">
+            <div class="col-md-4 facility-item"><i class="fas fa-clock"></i>Early Check-in</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-concierge-bell"></i>Resepsionis 24 jam</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-clock"></i>LATE_CHECK_OUT</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-concierge-bell"></i>Layanan kamar dengan jam terbatas</div>
+        </div>
+    </div>
+
+    <div class="facility-category">
+        <h3>Fasilitas Bisnis</h3>
+        <div class="row">
+            <div class="col-md-4 facility-item"><i class="fas fa-briefcase"></i>Fasilitas rapat</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-projector"></i>Proyektor</div>
+        </div>
+    </div>
+
+    <div class="facility-category">
+        <h3>Olahraga & Rekreasi</h3>
+        <div class="row">
+            <div class="col-md-4 facility-item"><i class="fas fa-bullseye"></i>Panahan</div>
+            <div class="col-md-4 facility-item"><i class="fas fa-horse"></i>Tunggang kuda</div>
+        </div>
+    </div>
+
+    <div class="facility-category">
+        <h3>Fasilitas Ramah Keluarga</h3>
+        <div class="row">
+            <div class="col-md-4 facility-item"><i class="fas fa-swimmer"></i>Kolam renang anak</div>
+        </div>
+    </div>
+
+    <div class="facility-category">
+        <h3>Konektivitas</h3>
+        <div class="row">
+            <div class="col-md-4 facility-item"><i class="fas fa-wifi"></i>WiFi gratis</div>
+        </div>
+    </div>
+
+    <div class="facility-category">
+        <h3>Aksesibilitas</h3>
+        <div class="row">
+            <div class="col-md-4 facility-item"><i class="fas fa-wheelchair"></i>Toilet bagi penyandang disabilitas</div>
+        </div>
+    </div>
+</div>
 
 
         <!-- Call to Action Start -->
@@ -255,6 +365,23 @@
 
     <!-- Template Javascript -->
     <script src="assets/js/main.js"></script>
+
+    <style>
+        .facility-category {
+            margin-bottom: 20px;
+        }
+        .facility-category h3 {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .facility-item {
+            padding: 10px 0;
+        }
+        .facility-item i {
+            margin-right: 10px;
+        }
+    </style>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 <!-- Begin Page Content -->
-<div class="container-fluid" id="main-form-room">
+<div class="container-fluid" id="main-package-data">
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>

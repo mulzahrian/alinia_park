@@ -113,8 +113,8 @@ var id_package_public = '';
 var id_package_master_public = '';
 var id_hotel_public = '';
 
-if ($("#main-form-room").length) {
-    get_room_data();
+if ($("#main-package-data").length) {
+    getPackageData();
 }
 if ($("#main-form-master").length) {
     var id_package_public = localStorage.getItem('id_package_public');
@@ -137,15 +137,13 @@ if ($("#main-approval").length) {
     getApprovalData();
 }
 
-
-function get_room_data() {
+function getPackageData() {
     $.ajax({ 
-        url: 'management/get_room_data',
+        url: 'management/get_package_data',
         method: 'GET',
         success: function(response) {
             try {
                 var data = $.parseJSON(response);
-                //data1 = $.parseJSON(data);
                 table_list_room.clear().draw();
                 console.log(data);
                 var array = [];
@@ -172,6 +170,41 @@ function get_room_data() {
         }
     });
 }
+
+// function getRoomData() {
+//     $.ajax({ 
+//         url: '../management/get_room_data',
+//         method: 'GET',
+//         success: function(response) {
+//             try {
+//                 var data = $.parseJSON(response);
+//                 //data1 = $.parseJSON(data);
+//                 table_list_room.clear().draw();
+//                 console.log(data);
+//                 var array = [];
+                // $.each(data['Data'], function(index) {
+                //     var action = '';
+                //     hapus_cek = '<a type="button" class="btn btn-primary btn-sm float-center" onclick="addMasterPackage('+ this['Id_package'] +')"><i class="fas fa-plus" style="color:green"></i></a>' + 
+                //     '<a type="button" class="btn btn-warning btn-sm float-center "><i class="fas fa-pen" style="color:green"></i></a>' +
+                //     '<a type="button" class="btn btn-danger btn-sm float-center"><i class="fas fa-trash-alt" style="color:green"></i></a>';
+                //     array.push([
+                //         this['package_name'],
+                //         this['name'],
+                //         hapus_cek
+                //     ])
+                // });
+                // table_list_room.rows.add(array).draw();
+//             } catch (e) {
+//                 console.log(e);
+//                 alert("Terjadi Kesalahan => 2" + e);
+//             }
+//         },
+//         error: function(response) {
+//             console.log(response);
+//             alert('koneksi salah');
+//         }
+//     });
+// }
 
 
 function addMasterPackage(id_package) {

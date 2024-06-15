@@ -27,7 +27,7 @@ class Management extends CI_Controller
         }
     }
 
-    public function get_room_data(){
+    public function get_package_data(){
       
 		$result['Data'] = $this->Room_model->getRoomData();
 		$this->output->set_output(json_encode($result));

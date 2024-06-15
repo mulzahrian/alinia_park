@@ -11,8 +11,9 @@ class Room_model extends CI_Model
 
     public function getRoomData()
     {
-        $query = $this->db->query("CALL PRC_GET_PACKAGE()");
-        return $query->result();
+
+        $query = $this->db->query("SELECT a.Id_package,a.package_name,b.name FROM tbl_package a,user b WHERE a.create_by = b.id");
+        return $query->result_array();
     }
 
     public function getPackageMasterById($id_package)
@@ -23,7 +24,7 @@ class Room_model extends CI_Model
 
     public function getPackageDetailById($id_package_master)
     {
-        $query = $this->db->query("SELECT a.id_package_detail, a.name_detail_pack, b.name FROM tbl_package_detail a, USER b WHERE a.create_by = b.id and a.id_package_master = ?", array($id_package_master));
+        $query = $this->db->query("SELECT a.id_package_detail, a.name_detail_pack, b.name FROM tbl_package_detail a, user b WHERE a.create_by = b.id and a.id_package_master = ?", array($id_package_master));
         return $query->result_array();
     }
 
@@ -38,13 +39,13 @@ class Room_model extends CI_Model
 
     public function getTypeData()
     {
-        $query = $this->db->query("SELECT a.Id_type_package, a.type_name, b.name FROM tbl_package_type a, USER b WHERE a.create_by = b.id AND a.status = 1");
+        $query = $this->db->query("SELECT a.Id_type_package, a.type_name, b.name FROM tbl_package_type a, user b WHERE a.create_by = b.id AND a.status = 1");
         return $query->result_array();
     }
 
     public function getHotelData()
     {
-        $query = $this->db->query("SELECT a.Id_hotel, a.hotel_name,a.price,b.name FROM tbl_hotel a, USER b WHERE a.create_by = b.id");
+        $query = $this->db->query("SELECT a.Id_hotel, a.hotel_name,a.price,b.name FROM tbl_hotel a, user b WHERE a.create_by = b.id");
         return $query->result_array();
     }
 

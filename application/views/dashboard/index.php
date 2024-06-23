@@ -336,6 +336,22 @@
             </div>
         </div>
         <!-- Call to Action End -->
+
+         <!-- Call to google map -->
+         <div class="container-xxl py-5">
+            <div class="container">
+                <div class="bg-light rounded p-3">
+                    <div class="bg-white rounded p-4" style="border: 1px dashed rgba(0, 185, 142, .3)">
+                        <!-- ini isi -->
+
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15956.850273655346!2d101.6098099!3d-0.9984216!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e2b911cbe73db97%3A0x112148370b7c9d94!2sHotel%20Alinia%20Park%20%26%20Resort!5e0!3m2!1sid!2sid!4v1719153940248!5m2!1sid!2sid" width="1100" height="400" style="border:20;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                        <!-- end isi -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Call to google map End -->
         <!-- Testimonial Start -->
         <div class="container-xxl py-5">
             <div class="container">

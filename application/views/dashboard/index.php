@@ -344,7 +344,9 @@
                     <div class="bg-white rounded p-4" style="border: 1px dashed rgba(0, 185, 142, .3)">
                         <!-- ini isi -->
 
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15956.850273655346!2d101.6098099!3d-0.9984216!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e2b911cbe73db97%3A0x112148370b7c9d94!2sHotel%20Alinia%20Park%20%26%20Resort!5e0!3m2!1sid!2sid!4v1719153940248!5m2!1sid!2sid" width="1100" height="400" style="border:20;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15956.850273655346!2d101.6098099!3d-0.9984216!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e2b911cbe73db97%3A0x112148370b7c9d94!2sHotel%20Alinia%20Park%20%26%20Resort!5e0!3m2!1sid!2sid!4v1719153940248!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
 
                         <!-- end isi -->
                     </div>
@@ -466,6 +468,27 @@
 
     <!-- Template Javascript -->
     <script src="assets/js/main.js"></script>
+
+    <style>
+  .map-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0; /* optional: remove border */
+  }
+</style>
+
 </body>
 
 </html>

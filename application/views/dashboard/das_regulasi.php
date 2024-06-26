@@ -140,6 +140,29 @@
                 <h3>Hewan Peliharaan</h3>
                 <p><i class="fas fa-paw"></i> Hewan peliharaan tidak diperbolehkan.</p>
         </div>
+<p> </p>
+        <div class="card_reg">
+    <h2>Prosedur Pemesanan Tiket Digital</h2>
+
+    <h3>Prosedur Pemesanan</h3>
+    <p><i class="fas fa-ticket-alt"></i> Pemesanan tiket digital hanya dapat dilakukan melalui situs resmi Alinea dan Park atau aplikasi mobile resmi.</p>
+    <p><i class="fas fa-user"></i> Pengunjung harus membuat akun pengguna dengan informasi yang valid dan akurat untuk melakukan pemesanan.</p>
+
+    <h3>Metode Pembayaran</h3>
+    <p><i class="fas fa-money-check-alt"></i> Pembayaran tiket digital dapat dilakukan menggunakan transfer bank.</p>
+
+    <h3>Konfirmasi Pemesanan</h3>
+    <p><i class="fas fa-envelope"></i> Setelah pembayaran berhasil, tiket digital akan dikirimkan ke email yang terdaftar atau dapat diakses melalui akun pengguna di aplikasi.</p>
+    <p><i class="fas fa-search"></i> Pengunjung harus memeriksa kembali detail tiket yang diterima untuk memastikan semua informasi benar.</p>
+
+    <h3>Penggunaan Tiket Digital</h3>
+    <p><i class="fas fa-mobile-alt"></i> Tiket digital harus ditunjukkan pada saat masuk melalui perangkat mobile atau cetak tiket fisik dari tiket digital yang diterima.</p>
+    <p><i class="fas fa-calendar-day"></i> Tiket digital hanya berlaku untuk satu kali masuk pada tanggal yang tertera dan tidak dapat digunakan kembali.</p>
+
+    <h3>Ketentuan Umum</h3>
+    <p><i class="fas fa-exchange-alt"></i> Tiket digital tidak dapat dialihkan kepada orang lain tanpa persetujuan resmi dari pihak manajemen Alinea dan Park.</p>
+    <p><i class="fas fa-exclamation-circle"></i> Pihak manajemen berhak mengubah regulasi ini sewaktu-waktu tanpa pemberitahuan terlebih dahulu.</p>
+  </div>
             </div>
         </div>
 

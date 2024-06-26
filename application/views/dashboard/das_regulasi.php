@@ -116,16 +116,30 @@
         <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
             <div class="container">
             <div class="card_reg">
-    <h2>ALINIA PARK & RESORT</h2>
-    <h3>Waktu Check-in/Check-out</h3>
-    <p><i class="fas fa-sign-in-alt"></i> <strong>Check-in:</strong> Dari 13:00</p>
-    <p><i class="fas fa-sign-out-alt"></i> <strong>Check-out:</strong> Sebelum 12:00</p>
-    <p><em>Hotel policy is not yet available.</em></p>
-    <h3>Informasi Umum</h3>
-    <p><i class="fas fa-concierge-bell"></i> <strong>Fasilitas Populer:</strong> AC, Restoran, Kolam Renang, Resepsionis 24 Jam, Parkir, WiFi</p>
-    <p><i class="fas fa-clock"></i> <strong>Waktu Check-In/Check-Out:</strong> Dari 13:00 - Sebelum 12:00</p>
-    <p><i class="fas fa-utensils"></i> <strong>Ketersediaan Sarapan:</strong> Ya, beberapa ruangan menyediakan sarapan.</p>
-  </div>
+                <h2>ALINIA PARK & RESORT</h2>
+                <h3>Waktu Check-in/Check-out</h3>
+                <p><i class="fas fa-sign-in-alt"></i> <strong>Check-in:</strong> Dari 13:00</p>
+                <p><i class="fas fa-sign-out-alt"></i> <strong>Check-out:</strong> Sebelum 12:00</p>
+                <p><em>Hotel policy is not yet available.</em></p>
+
+                <h3>Informasi Umum</h3>
+                <p><i class="fas fa-concierge-bell"></i> <strong>Fasilitas Populer:</strong> AC, Restoran, Kolam Renang, Resepsionis 24 Jam, Parkir, WiFi</p>
+                <p><i class="fas fa-clock"></i> <strong>Waktu Check-In/Check-Out:</strong> Dari 13:00 - Sebelum 12:00</p>
+                <p><i class="fas fa-utensils"></i> <strong>Ketersediaan Sarapan:</strong> Ya, beberapa ruangan menyediakan sarapan.</p>
+
+                <h3>Kebijakan Pembatalan dan Pembayaran</h3>
+                <p><i class="fas fa-credit-card"></i> Kebijakan pembatalan dan pembayaran di muka bervariasi tergantung tipe akomodasi. Harap masukkan tanggal inap Anda dan periksa ketentuan dari kamar yang Anda butuhkan.</p>
+
+                <h3>Anak-anak dan Tempat Tidur</h3>
+                <p><i class="fas fa-child"></i> <strong>Kebijakan Anak:</strong> Anak-anak bisa menginap. Untuk melihat informasi harga dan okupansi yang tepat, mohon tambahkan jumlah dan usia anak dalam grup Anda di pencarian.</p>
+                <p><i class="fas fa-bed"></i> <strong>Kebijakan Ranjang Bayi dan Tempat Tidur Ekstra:</strong> Tidak tersedia ranjang bayi dan tempat tidur ekstra di akomodasi ini.</p>
+
+                <h3>Tanpa Batasan Usia</h3>
+                <p><i class="fas fa-calendar-check"></i> Tidak ada persyaratan usia untuk check-in.</p>
+
+                <h3>Hewan Peliharaan</h3>
+                <p><i class="fas fa-paw"></i> Hewan peliharaan tidak diperbolehkan.</p>
+        </div>
             </div>
         </div>
 

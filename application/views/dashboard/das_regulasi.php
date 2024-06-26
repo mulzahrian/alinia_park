@@ -90,8 +90,8 @@
         <div class="container-fluid header bg-white p-0">
             <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
                 <div class="col-md-6 p-5 mt-lg-5">
-                    <h1 class="display-5 animated fadeIn mb-4"><span class="text-primary">List</span> Fasilitas</h1>
-                    <p class="animated fadeIn mb-4 pb-2">Berikut adalah list Fasilitas Fasilitas yang tersedia di Alinia Park And Resort.</p>
+                    <h1 class="display-5 animated fadeIn mb-4"><span class="text-primary">Regulasi</span> Pemesanan</h1>
+                    <p class="animated fadeIn mb-4 pb-2">Berikut adalah Regulasi Pemesanan di Alinia Park And Resort.</p>
                     <a href="<?= base_url('auth'); ?>" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Reservasi</a>
                 </div>
                 <div class="col-md-6 animated fadeIn">
@@ -111,41 +111,28 @@
         </div>
         <!-- Header End -->
 
+        <!-- regulasi -->
 
-        <!-- Search Start -->
         <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
             <div class="container">
-                <div class="row g-2">
-                    <div class="col-md-10">
-                        <div class="row g-2">
-                            <div class="col-md-4">
-                                <input type="text" class="form-control border-0 py-3" placeholder="Cari....">
-                            </div>
-                            <div class="col-md-4">
-                                <select class="form-select border-0 py-3">
-                                    <option selected>Paket</option>
-                                    <option value="1">Paket 1</option>
-                                    <option value="2">Paket 2</option>
-                                    <option value="3">Paket 3</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <select class="form-select border-0 py-3">
-                                    <option selected>Hotel</option>
-                                    <option value="1">Hotel 1</option>
-                                    <option value="2">Hotel 2</option>
-                                    <option value="3">Hotel 3</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-dark border-0 w-100 py-3">Search</button>
-                    </div>
-                </div>
+            <div class="card_reg">
+    <h2>ALINIA PARK & RESORT</h2>
+    <h3>Waktu Check-in/Check-out</h3>
+    <p><i class="fas fa-sign-in-alt"></i> <strong>Check-in:</strong> Dari 13:00</p>
+    <p><i class="fas fa-sign-out-alt"></i> <strong>Check-out:</strong> Sebelum 12:00</p>
+    <p><em>Hotel policy is not yet available.</em></p>
+    <h3>Informasi Umum</h3>
+    <p><i class="fas fa-concierge-bell"></i> <strong>Fasilitas Populer:</strong> AC, Restoran, Kolam Renang, Resepsionis 24 Jam, Parkir, WiFi</p>
+    <p><i class="fas fa-clock"></i> <strong>Waktu Check-In/Check-Out:</strong> Dari 13:00 - Sebelum 12:00</p>
+    <p><i class="fas fa-utensils"></i> <strong>Ketersediaan Sarapan:</strong> Ya, beberapa ruangan menyediakan sarapan.</p>
+  </div>
             </div>
         </div>
-        <!-- Search End -->
+
+
+        <!-- end regulasi -->
+
+
 
         <!-- Call to Action Start -->
         <div class="container-xxl py-5">
@@ -256,6 +243,24 @@
 
     <!-- Template Javascript -->
     <script src="assets/js/main.js"></script>
+
+    <style>
+    .card_reg {
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+      background-color: #fff;
+    }
+    .card_reg h2 {
+      text-align: center;
+    }
+    .card_reg h3 {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+  </style>
 
 
 </body>

@@ -69,7 +69,7 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Ketentuan</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="testimonial.html" class="dropdown-item">Regulasi</a>
+                                <a href="<?php echo base_url('dashboardRegulasi'); ?>" class="dropdown-item">Regulasi</a>
                                 <a href="404.html" class="dropdown-item">Pembayaran</a>
                                 <a href="404.html" class="dropdown-item">Kontak</a>
                             </div>
